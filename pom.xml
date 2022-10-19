@@ -11,4 +11,11 @@
         <maven.compiler.target>18</maven.compiler.target>
     </properties>
     <name>Zebrax</name>
+    <dependencies>
+        <dependency>
+            <groupId>org.netbeans.external</groupId>
+            <artifactId>AbsoluteLayout</artifactId>
+            <version>RELEASE150</version>
+        </dependency>
+    </dependencies>
 </project>
