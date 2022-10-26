@@ -228,7 +228,8 @@ public class Admin_Login extends javax.swing.JFrame {
                 if(username.trim().equals(user.trim()) && password.trim().equals(pw.trim())) // to see if it matches
                 {
                     JOptionPane.showMessageDialog(null, "Hey hi, it's good to have you back!");
-                    Home_Page adminPage = new Home_Page(); //pop new page
+                    Admin_Home_Page adminPage; //pop new page
+                    adminPage = new Admin_Home_Page();
                     adminPage.setVisible(true);
                     this.dispose(); //close this window
                 }
