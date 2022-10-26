@@ -4,6 +4,11 @@
  */
 package rent;
 
+import java.io.File;
+import java.io.IOException;
+import java.util.Scanner;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author aunir
@@ -16,6 +21,8 @@ public class Admin_Login extends javax.swing.JFrame {
     public Admin_Login() {
         initComponents();
     }
+    
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -27,56 +34,57 @@ public class Admin_Login extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jLabel5 = new javax.swing.JLabel();
+        welcomeBack_BG = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
+        logo_pic = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         username = new javax.swing.JTextField();
         password = new javax.swing.JPasswordField();
         jSeparator1 = new javax.swing.JSeparator();
         jSeparator2 = new javax.swing.JSeparator();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
+        user_logo = new javax.swing.JLabel();
+        password_logo = new javax.swing.JLabel();
         ForgotPassLbl = new javax.swing.JLabel();
         SignInBtn = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("ZEBRAX");
-        setPreferredSize(new java.awt.Dimension(0, 0));
+        setLocation(new java.awt.Point(325, 95));
         setSize(new java.awt.Dimension(669, 441));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setPreferredSize(new java.awt.Dimension(346, 441));
 
-        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/rent/images/Hey Welcome Back_2.jpg")));
-
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(welcomeBack_BG, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(welcomeBack_BG, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         jPanel2.setBackground(new java.awt.Color(198, 225, 176));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/rent/images/100px_logo_icon.png")));
-
         jLabel2.setFont(new java.awt.Font("Dubai Medium", 0, 14)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(249, 255, 245));
         jLabel2.setText("Sign in to your account");
 
         username.setBackground(new java.awt.Color(198, 225, 176));
-        username.setFont(new java.awt.Font("Nirmala UI", 0, 12)); // NOI18N
+        username.setFont(new java.awt.Font("Franklin Gothic Demi", 0, 12)); // NOI18N
         username.setForeground(new java.awt.Color(249, 255, 245));
         username.setText("Username");
         username.setBorder(null);
+        username.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                usernameFocusGained(evt);
+            }
+        });
         username.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 usernameActionPerformed(evt);
@@ -84,8 +92,14 @@ public class Admin_Login extends javax.swing.JFrame {
         });
 
         password.setBackground(new java.awt.Color(198, 225, 176));
+        password.setFont(new java.awt.Font("Franklin Gothic Demi", 0, 12)); // NOI18N
         password.setForeground(new java.awt.Color(249, 255, 245));
         password.setBorder(null);
+        password.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                passwordFocusGained(evt);
+            }
+        });
         password.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 passwordActionPerformed(evt);
@@ -96,17 +110,19 @@ public class Admin_Login extends javax.swing.JFrame {
 
         jSeparator2.setForeground(new java.awt.Color(249, 255, 245));
 
-        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/rent/images/user.png")));
-
-        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/rent/images/lock (1).png")));
-
         ForgotPassLbl.setFont(new java.awt.Font("Dubai Medium", 0, 12)); // NOI18N
         ForgotPassLbl.setForeground(new java.awt.Color(249, 255, 245));
         ForgotPassLbl.setText("Forgot Password? ");
 
+        SignInBtn.setBackground(new java.awt.Color(252, 205, 146));
         SignInBtn.setFont(new java.awt.Font("Dubai Medium", 0, 14)); // NOI18N
         SignInBtn.setForeground(new java.awt.Color(66, 63, 63));
         SignInBtn.setText("Sign In");
+        SignInBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                SignInBtnActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -129,24 +145,24 @@ public class Admin_Login extends javax.swing.JFrame {
                                 .addGroup(jPanel2Layout.createSequentialGroup()
                                     .addComponent(password, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(password_logo, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGroup(jPanel2Layout.createSequentialGroup()
                                     .addComponent(username, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGap(18, 18, 18)
-                                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(user_logo, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(0, 61, Short.MAX_VALUE))))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(logo_pic, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(112, 112, 112))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(37, 37, 37)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(logo_pic, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel2)
                 .addGap(26, 26, 26)
@@ -155,11 +171,11 @@ public class Admin_Login extends javax.swing.JFrame {
                         .addComponent(username, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, 0)
                         .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(user_logo, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(40, 40, 40)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(password, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(password_logo, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(0, 0, 0)
                 .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
@@ -175,12 +191,60 @@ public class Admin_Login extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void usernameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_usernameActionPerformed
-        username.setText("");
+        
     }//GEN-LAST:event_usernameActionPerformed
 
     private void passwordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_passwordActionPerformed
-        password.setText("");
+        
     }//GEN-LAST:event_passwordActionPerformed
+
+    private void usernameFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_usernameFocusGained
+        username.setText("");
+    }//GEN-LAST:event_usernameFocusGained
+
+    private void passwordFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_passwordFocusGained
+        password.setText("");
+ 
+    }//GEN-LAST:event_passwordFocusGained
+
+    private void SignInBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SignInBtnActionPerformed
+        
+        
+        //to get the username and password
+         String username = this.username.getText();
+         String password = this.password.getText();
+        
+        //find file to check the name inside the file
+        try {
+            File admin = new File("D:\\OODJ_ASSIGNMENT\\Zebrax\\src\\main\\java\\admin_database\\admin_login.txt");
+            Scanner scan = new Scanner(admin);
+            scan.useDelimiter("[,\n]"); //pattern stop at comma or newline
+            
+            while(scan.hasNext()) //to check if there's still non white space char
+            {
+                String user = scan.next(); //read the next thing until it reached ',' or newline
+                String pw = scan.next();
+                
+                if(username.trim().equals(user.trim()) && password.trim().equals(pw.trim())) // to see if it matches
+                {
+                    JOptionPane.showMessageDialog(null, "Hey hi, it's good to have you back!");
+                    Home_Page adminPage = new Home_Page(); //pop new page
+                    adminPage.setVisible(true);
+                    this.dispose(); //close this window
+                }
+                
+                else
+                {
+                    JOptionPane.showMessageDialog(null,"Invalid Credentials");
+                }
+            }    
+            
+        }
+        catch(IOException e)
+        {
+            JOptionPane.showMessageDialog(null,"Error, please report to admin!");
+        }
+    }//GEN-LAST:event_SignInBtnActionPerformed
 
     /**
      * @param args the command line arguments
@@ -221,16 +285,18 @@ public class Admin_Login extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel ForgotPassLbl;
     private javax.swing.JButton SignInBtn;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
+    private javax.swing.JLabel logo_pic;
     private javax.swing.JPasswordField password;
+    private javax.swing.JLabel password_logo;
+    private javax.swing.JLabel user_logo;
     private javax.swing.JTextField username;
+    private javax.swing.JLabel welcomeBack_BG;
     // End of variables declaration//GEN-END:variables
+
+    
 }
