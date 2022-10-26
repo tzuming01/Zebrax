@@ -113,6 +113,11 @@ public class Admin_Login extends javax.swing.JFrame {
         ForgotPassLbl.setFont(new java.awt.Font("Dubai Medium", 0, 12)); // NOI18N
         ForgotPassLbl.setForeground(new java.awt.Color(249, 255, 245));
         ForgotPassLbl.setText("Forgot Password? ");
+        ForgotPassLbl.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                ForgotPassLblMouseClicked(evt);
+            }
+        });
 
         SignInBtn.setBackground(new java.awt.Color(252, 205, 146));
         SignInBtn.setFont(new java.awt.Font("Dubai Medium", 0, 14)); // NOI18N
@@ -246,6 +251,13 @@ public class Admin_Login extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null,"Error, please report to admin!");
         }
     }//GEN-LAST:event_SignInBtnActionPerformed
+
+    private void ForgotPassLblMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ForgotPassLblMouseClicked
+                    Admin_ForgotPW_Page ForgotPW; //pop new page
+                    ForgotPW = new Admin_ForgotPW_Page();
+                    ForgotPW.setVisible(true);
+                    this.dispose(); //close this window
+    }//GEN-LAST:event_ForgotPassLblMouseClicked
 
     /**
      * @param args the command line arguments
