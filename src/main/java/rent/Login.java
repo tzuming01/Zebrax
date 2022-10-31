@@ -137,7 +137,7 @@ public class Login extends javax.swing.JFrame {
         this.setVisible(false);
     }//GEN-LAST:event_btncancelActionPerformed
 
-    private void verifyLogin(String email, String password) {
+    private void VerifyLogin(String email, String password) {
         boolean found = false;
         
         try {
@@ -153,7 +153,6 @@ public class Login extends javax.swing.JFrame {
                 }
             }
             if (found == true) {
-                JOptionPane.showMessageDialog(this, "Login Successfully");
                 Main main = new Main(this.userName);
                 this.hide();
                 main.setVisible(true);
@@ -170,7 +169,16 @@ public class Login extends javax.swing.JFrame {
         String email = txtemail.getText();
         String password = txtpassword.getText();
        
-        verifyLogin(email, password);
+        String errormsg = "";
+        if (email.length()==0 || password.length()==0) {
+            errormsg += "Email or Password cannot be empty.";
+        }
+        
+        if (errormsg.length()>0) {
+            JOptionPane.showMessageDialog(this, errormsg);
+        } else {
+             VerifyLogin(email, password);
+        }
     }//GEN-LAST:event_btnloginActionPerformed
 
     private void btnregisterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnregisterActionPerformed

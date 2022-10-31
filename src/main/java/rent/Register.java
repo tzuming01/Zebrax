@@ -234,7 +234,7 @@ public class Register extends javax.swing.JFrame {
         if (errormsg.length()>0) {
             JOptionPane.showMessageDialog(this, errormsg);
         } else {
-            writefile(email, password, firstname, lastname, mobilenumber);
+            WriteFile(email, password, firstname, lastname, mobilenumber);
             JOptionPane.showMessageDialog(this, "Registration Successfully");
             Login login = new Login();
             this.hide();
@@ -242,7 +242,7 @@ public class Register extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnregisterActionPerformed
     
-    private void writefile (String email, String password, String firstname, String lastname, String mobilenumber) {
+    private void WriteFile (String email, String password, String firstname, String lastname, String mobilenumber) {
         Scanner sc = new Scanner(System.in);
         try
         {
@@ -250,8 +250,6 @@ public class Register extends javax.swing.JFrame {
             PrintWriter pw=new PrintWriter(new FileOutputStream(f,true));
             pw.append(email+","+password+","+firstname+","+lastname+","+mobilenumber+"\n");
             pw.close();
-            this.userName=email;
-            this.passWord=password;
         } catch (IOException ex) {
             JOptionPane.showMessageDialog(this, ex);
         }
