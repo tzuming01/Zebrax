@@ -250,8 +250,6 @@ public class Register extends javax.swing.JFrame {
             PrintWriter pw=new PrintWriter(new FileOutputStream(f,true));
             pw.append(email+","+password+","+firstname+","+lastname+","+mobilenumber+"\n");
             pw.close();
-            this.userName=email;
-            this.passWord=password;
         } catch (IOException ex) {
             JOptionPane.showMessageDialog(this, ex);
         }
