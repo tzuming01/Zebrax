@@ -1,0 +1,5 @@
+Nissa,Almera,Yew Jian Pang,RM100
+Nissan,GTR,Yew Jian Pang,RM1000
+Honda,City,Yew Jian Pang,RM100
+Honda,Civic,Yew Jian Pang,RM200
+Mercedes,CLA45,Yew Jian Pang,RM1000
