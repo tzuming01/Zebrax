@@ -39,16 +39,18 @@ public class Admin_Home_Page extends javax.swing.JFrame {
         jSeparator5 = new javax.swing.JSeparator();
         jSeparator7 = new javax.swing.JSeparator();
         jSeparator6 = new javax.swing.JSeparator();
-        jLabel1 = new javax.swing.JLabel();
-        report_Btn = new javax.swing.JButton();
+        jPanel3 = new javax.swing.JPanel();
         employeeList_Btn1 = new javax.swing.JButton();
-        jLabel2 = new javax.swing.JLabel();
+        report_Btn = new javax.swing.JButton();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("ZEBRAX");
         setLocation(new java.awt.Point(325, 95));
+        setResizable(false);
 
-        jPanel1.setBackground(new java.awt.Color(255, 248, 240));
+        jPanel1.setBackground(new java.awt.Color(198, 225, 176));
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -125,22 +127,8 @@ public class Admin_Home_Page extends javax.swing.JFrame {
         jPanel2.add(jSeparator7, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 50, 60, 10));
         jPanel2.add(jSeparator6, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 50, 60, 11));
 
-        jLabel1.setBackground(new java.awt.Color(198, 225, 176));
-        jLabel1.setFont(new java.awt.Font("Dubai Medium", 1, 48)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(198, 225, 176));
-        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("What drives you today?");
-
-        report_Btn.setBackground(new java.awt.Color(252, 205, 146));
-        report_Btn.setFont(new java.awt.Font("Dubai Medium", 0, 12)); // NOI18N
-        report_Btn.setForeground(new java.awt.Color(66, 63, 63));
-        report_Btn.setText("Reports");
-        report_Btn.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
-        report_Btn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                report_BtnActionPerformed(evt);
-            }
-        });
+        jPanel3.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         employeeList_Btn1.setBackground(new java.awt.Color(252, 205, 146));
         employeeList_Btn1.setFont(new java.awt.Font("Dubai Medium", 0, 12)); // NOI18N
@@ -152,51 +140,49 @@ public class Admin_Home_Page extends javax.swing.JFrame {
                 employeeList_Btn1ActionPerformed(evt);
             }
         });
+        jPanel3.add(employeeList_Btn1, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 210, 85, 31));
 
-        jLabel2.setBackground(new java.awt.Color(198, 225, 176));
-        jLabel2.setFont(new java.awt.Font("Dubai Medium", 1, 48)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(66, 63, 63));
-        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel2.setText("What drives you today?");
+        report_Btn.setBackground(new java.awt.Color(252, 205, 146));
+        report_Btn.setFont(new java.awt.Font("Dubai Medium", 0, 12)); // NOI18N
+        report_Btn.setForeground(new java.awt.Color(66, 63, 63));
+        report_Btn.setText("Reports");
+        report_Btn.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        report_Btn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                report_BtnActionPerformed(evt);
+            }
+        });
+        jPanel3.add(report_Btn, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 210, 85, 31));
+
+        jLabel3.setFont(new java.awt.Font("Dubai Medium", 0, 50)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(60, 63, 65));
+        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel3.setText("What drives you today?");
+        jPanel3.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 120, -1, 63));
+
+        jLabel1.setFont(new java.awt.Font("Dubai Medium", 0, 45)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(60, 63, 65));
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel1.setText("Hello,");
+        jPanel3.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 40, -1, -1));
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, 811, Short.MAX_VALUE)
+            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, 796, Short.MAX_VALUE)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(employeeList_Btn1, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(132, 132, 132)
-                        .addComponent(report_Btn, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(252, 252, 252))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addGap(155, 155, 155))))
-            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                    .addContainerGap(158, Short.MAX_VALUE)
-                    .addComponent(jLabel2)
-                    .addGap(154, 154, 154)))
+                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 546, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(120, 120, 120))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(72, 72, 72)
-                .addComponent(jLabel1)
-                .addGap(42, 42, 42)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(report_Btn, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(employeeList_Btn1, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(0, 215, Short.MAX_VALUE))
-            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanel1Layout.createSequentialGroup()
-                    .addGap(139, 139, 139)
-                    .addComponent(jLabel2)
-                    .addContainerGap(286, Short.MAX_VALUE)))
+                .addGap(35, 35, 35)
+                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 329, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(49, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -306,9 +292,10 @@ public class Admin_Home_Page extends javax.swing.JFrame {
     private javax.swing.JLabel goTo_host;
     private javax.swing.JLabel goTo_payment;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
     private javax.swing.JSeparator jSeparator3;
     private javax.swing.JSeparator jSeparator4;
     private javax.swing.JSeparator jSeparator5;

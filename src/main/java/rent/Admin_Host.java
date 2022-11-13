@@ -4,12 +4,18 @@
  */
 package rent;
 
+import java.text.SimpleDateFormat;
+import javax.swing.table.DefaultTableModel;
+
+
 /**
  *
  * @author aunir
  */
 public class Admin_Host extends javax.swing.JFrame {
 
+    private String date1, date2;
+    private int row, column;
     /**
      * Creates new form Admin_Host
      */
@@ -26,22 +32,468 @@ public class Admin_Host extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        btnGroupZshield = new javax.swing.ButtonGroup();
+        btnGroupZtrack = new javax.swing.ButtonGroup();
+        jPanel1 = new javax.swing.JPanel();
+        hostFnameLbl = new javax.swing.JLabel();
+        hostLnameLbl = new javax.swing.JLabel();
+        hostIdentityLbl = new javax.swing.JLabel();
+        hostLicenseLbl = new javax.swing.JLabel();
+        ZShieldLbl = new javax.swing.JLabel();
+        deleteHostBtn = new javax.swing.JButton();
+        updateHostBtn = new javax.swing.JButton();
+        saveHostBtn = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        host_data = new javax.swing.JTable();
+        jPanel3 = new javax.swing.JPanel();
+        homeBtn = new javax.swing.JButton();
+        registerCar = new javax.swing.JLabel();
+        hostLogo = new javax.swing.JLabel();
+        zLogo = new javax.swing.JLabel();
+        jSeparator1 = new javax.swing.JSeparator();
+        toPayHost = new javax.swing.JLabel();
+        jSeparator2 = new javax.swing.JSeparator();
+        hostLastName = new javax.swing.JTextField();
+        hostIdentity = new javax.swing.JTextField();
+        hostFirstName = new javax.swing.JTextField();
+        DateFrom_license = new com.toedter.calendar.JDateChooser();
+        DateTo_license = new com.toedter.calendar.JDateChooser();
+        hostValidLbl = new javax.swing.JLabel();
+        jLabel12 = new javax.swing.JLabel();
+        jLabel13 = new javax.swing.JLabel();
+        ZtrackLbl = new javax.swing.JLabel();
+        jSeparator3 = new javax.swing.JSeparator();
+        jSeparator4 = new javax.swing.JSeparator();
+        jSeparator5 = new javax.swing.JSeparator();
+        zshieldNo = new javax.swing.JRadioButton();
+        ztrackNo = new javax.swing.JRadioButton();
+        zshieldYes = new javax.swing.JRadioButton();
+        ztrackYes = new javax.swing.JRadioButton();
+        jButton1 = new javax.swing.JButton();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("Z: Host");
+        setTitle("[Z] Host");
+        setLocation(new java.awt.Point(325, 95));
+        setResizable(false);
+
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.setPreferredSize(new java.awt.Dimension(810, 510));
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        hostFnameLbl.setFont(new java.awt.Font("Dubai Medium", 0, 13)); // NOI18N
+        hostFnameLbl.setForeground(new java.awt.Color(66, 63, 63));
+        hostFnameLbl.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        hostFnameLbl.setText("First name");
+        jPanel1.add(hostFnameLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 70, -1, -1));
+
+        hostLnameLbl.setFont(new java.awt.Font("Dubai Medium", 0, 13)); // NOI18N
+        hostLnameLbl.setForeground(new java.awt.Color(66, 63, 63));
+        hostLnameLbl.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        hostLnameLbl.setText("Last name");
+        jPanel1.add(hostLnameLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 110, -1, -1));
+
+        hostIdentityLbl.setFont(new java.awt.Font("Dubai Medium", 0, 13)); // NOI18N
+        hostIdentityLbl.setForeground(new java.awt.Color(66, 63, 63));
+        hostIdentityLbl.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        hostIdentityLbl.setText("NRIC/Passport");
+        jPanel1.add(hostIdentityLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 150, 100, -1));
+
+        hostLicenseLbl.setFont(new java.awt.Font("Dubai Medium", 0, 13)); // NOI18N
+        hostLicenseLbl.setForeground(new java.awt.Color(66, 63, 63));
+        hostLicenseLbl.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        hostLicenseLbl.setText("Driving license");
+        jPanel1.add(hostLicenseLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 190, 100, -1));
+
+        ZShieldLbl.setFont(new java.awt.Font("Dubai Medium", 0, 13)); // NOI18N
+        ZShieldLbl.setForeground(new java.awt.Color(66, 63, 63));
+        ZShieldLbl.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        ZShieldLbl.setText("Z Shield?");
+        jPanel1.add(ZShieldLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 70, -1, 40));
+
+        deleteHostBtn.setBackground(new java.awt.Color(255, 105, 97));
+        deleteHostBtn.setFont(new java.awt.Font("Dubai Medium", 0, 12)); // NOI18N
+        deleteHostBtn.setForeground(new java.awt.Color(255, 255, 255));
+        deleteHostBtn.setText("Delete");
+        deleteHostBtn.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        deleteHostBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                deleteHostBtnActionPerformed(evt);
+            }
+        });
+        jPanel1.add(deleteHostBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 250, 70, 30));
+
+        updateHostBtn.setBackground(new java.awt.Color(255, 255, 255));
+        updateHostBtn.setFont(new java.awt.Font("Dubai Medium", 0, 12)); // NOI18N
+        updateHostBtn.setForeground(new java.awt.Color(66, 63, 63));
+        updateHostBtn.setText("Update");
+        updateHostBtn.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        updateHostBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                updateHostBtnActionPerformed(evt);
+            }
+        });
+        jPanel1.add(updateHostBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 250, 70, 30));
+
+        saveHostBtn.setBackground(new java.awt.Color(252, 205, 146));
+        saveHostBtn.setFont(new java.awt.Font("Dubai Medium", 0, 12)); // NOI18N
+        saveHostBtn.setForeground(new java.awt.Color(66, 63, 63));
+        saveHostBtn.setText("Save");
+        saveHostBtn.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        saveHostBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                saveHostBtnActionPerformed(evt);
+            }
+        });
+        jPanel1.add(saveHostBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 250, 70, 30));
+
+        host_data.setBackground(new java.awt.Color(255, 255, 255));
+        host_data.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        host_data.setFont(new java.awt.Font("Dubai Medium", 0, 12)); // NOI18N
+        host_data.setForeground(new java.awt.Color(66, 63, 63));
+        host_data.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "No.", "First name", "Last name", "NRIC/Passport", "Date valid from", "Date valid to ", "Z Shield", "Z Track"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, true, true, true, true, true, true, true
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        host_data.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                host_dataMouseClicked(evt);
+            }
+        });
+        jScrollPane1.setViewportView(host_data);
+
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 290, 650, 190));
+
+        jPanel3.setBackground(new java.awt.Color(198, 225, 176));
+        jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        homeBtn.setBackground(new java.awt.Color(252, 205, 146));
+        homeBtn.setFont(new java.awt.Font("Dubai Medium", 0, 12)); // NOI18N
+        homeBtn.setForeground(new java.awt.Color(66, 63, 63));
+        homeBtn.setText("HOME");
+        homeBtn.setBorder(null);
+        homeBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                homeBtnActionPerformed(evt);
+            }
+        });
+        jPanel3.add(homeBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 410, 60, 30));
+
+        registerCar.setFont(new java.awt.Font("Dubai Medium", 0, 15)); // NOI18N
+        registerCar.setForeground(new java.awt.Color(66, 63, 63));
+        registerCar.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        registerCar.setText("Register car");
+        registerCar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                registerCarMouseClicked(evt);
+            }
+        });
+        jPanel3.add(registerCar, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 170, 80, -1));
+
+        hostLogo.setFont(new java.awt.Font("Dubai Medium", 0, 15)); // NOI18N
+        hostLogo.setForeground(new java.awt.Color(249, 255, 245));
+        hostLogo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        hostLogo.setText("HOST");
+        jPanel3.add(hostLogo, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 30, -1, -1));
+
+        zLogo.setFont(new java.awt.Font("Dubai Medium", 0, 15)); // NOI18N
+        zLogo.setForeground(new java.awt.Color(249, 255, 245));
+        zLogo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        zLogo.setText("Z");
+        jPanel3.add(zLogo, new org.netbeans.lib.awtextra.AbsoluteConstraints(39, 10, 20, -1));
+
+        jSeparator1.setForeground(new java.awt.Color(66, 63, 63));
+        jPanel3.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 190, 80, 10));
+
+        toPayHost.setFont(new java.awt.Font("Dubai Medium", 0, 15)); // NOI18N
+        toPayHost.setForeground(new java.awt.Color(66, 63, 63));
+        toPayHost.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        toPayHost.setText("Payment");
+        toPayHost.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                toPayHostMouseClicked(evt);
+            }
+        });
+        jPanel3.add(toPayHost, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 230, -1, -1));
+        jPanel3.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 247, 80, -1));
+
+        jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 100, 510));
+
+        hostLastName.setBackground(new java.awt.Color(255, 255, 255));
+        hostLastName.setFont(new java.awt.Font("Dubai Medium", 0, 12)); // NOI18N
+        hostLastName.setForeground(new java.awt.Color(66, 63, 63));
+        hostLastName.setBorder(null);
+        hostLastName.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                hostLastNameFocusGained(evt);
+            }
+        });
+        jPanel1.add(hostLastName, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 110, 180, -1));
+
+        hostIdentity.setBackground(new java.awt.Color(255, 255, 255));
+        hostIdentity.setFont(new java.awt.Font("Dubai Medium", 0, 12)); // NOI18N
+        hostIdentity.setForeground(new java.awt.Color(66, 63, 63));
+        hostIdentity.setBorder(null);
+        hostIdentity.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                hostIdentityFocusGained(evt);
+            }
+        });
+        jPanel1.add(hostIdentity, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 150, 180, -1));
+
+        hostFirstName.setBackground(new java.awt.Color(255, 255, 255));
+        hostFirstName.setFont(new java.awt.Font("Dubai Medium", 0, 12)); // NOI18N
+        hostFirstName.setForeground(new java.awt.Color(66, 63, 63));
+        hostFirstName.setBorder(null);
+        hostFirstName.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                hostFirstNameFocusGained(evt);
+            }
+        });
+        jPanel1.add(hostFirstName, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 70, 180, -1));
+
+        DateFrom_license.setForeground(new java.awt.Color(66, 63, 63));
+        DateFrom_license.setFont(new java.awt.Font("Dubai Medium", 0, 12)); // NOI18N
+        jPanel1.add(DateFrom_license, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 190, 130, -1));
+
+        DateTo_license.setForeground(new java.awt.Color(66, 63, 63));
+        DateTo_license.setFont(new java.awt.Font("Dubai Medium", 0, 12)); // NOI18N
+        jPanel1.add(DateTo_license, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 220, 130, -1));
+
+        hostValidLbl.setFont(new java.awt.Font("Dubai Medium", 0, 13)); // NOI18N
+        hostValidLbl.setForeground(new java.awt.Color(66, 63, 63));
+        hostValidLbl.setText("Validity");
+        jPanel1.add(hostValidLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 210, -1, -1));
+
+        jLabel12.setFont(new java.awt.Font("Dubai Medium", 0, 12)); // NOI18N
+        jLabel12.setForeground(new java.awt.Color(66, 63, 63));
+        jLabel12.setText("From");
+        jPanel1.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 190, -1, -1));
+
+        jLabel13.setFont(new java.awt.Font("Dubai Medium", 0, 12)); // NOI18N
+        jLabel13.setForeground(new java.awt.Color(66, 63, 63));
+        jLabel13.setText("To");
+        jPanel1.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 220, -1, 20));
+
+        ZtrackLbl.setFont(new java.awt.Font("Dubai Medium", 0, 13)); // NOI18N
+        ZtrackLbl.setForeground(new java.awt.Color(66, 63, 63));
+        ZtrackLbl.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        ZtrackLbl.setText("Z Track?");
+        jPanel1.add(ZtrackLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 110, 70, 30));
+
+        jSeparator3.setForeground(new java.awt.Color(66, 63, 63));
+        jPanel1.add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 90, 180, -1));
+
+        jSeparator4.setForeground(new java.awt.Color(66, 63, 63));
+        jPanel1.add(jSeparator4, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 130, 180, -1));
+
+        jSeparator5.setForeground(new java.awt.Color(66, 63, 63));
+        jPanel1.add(jSeparator5, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 170, 180, -1));
+
+        zshieldNo.setBackground(new java.awt.Color(255, 255, 255));
+        btnGroupZshield.add(zshieldNo);
+        zshieldNo.setFont(new java.awt.Font("Dubai Medium", 0, 12)); // NOI18N
+        zshieldNo.setForeground(new java.awt.Color(66, 63, 63));
+        zshieldNo.setText("No");
+        zshieldNo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                zshieldNoActionPerformed(evt);
+            }
+        });
+        jPanel1.add(zshieldNo, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 80, -1, -1));
+
+        ztrackNo.setBackground(new java.awt.Color(255, 255, 255));
+        btnGroupZtrack.add(ztrackNo);
+        ztrackNo.setFont(new java.awt.Font("Dubai Medium", 0, 12)); // NOI18N
+        ztrackNo.setForeground(new java.awt.Color(66, 63, 63));
+        ztrackNo.setText("No");
+        ztrackNo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ztrackNoActionPerformed(evt);
+            }
+        });
+        jPanel1.add(ztrackNo, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 110, -1, -1));
+
+        zshieldYes.setBackground(new java.awt.Color(255, 255, 255));
+        btnGroupZshield.add(zshieldYes);
+        zshieldYes.setFont(new java.awt.Font("Dubai Medium", 0, 12)); // NOI18N
+        zshieldYes.setForeground(new java.awt.Color(66, 63, 63));
+        zshieldYes.setText("Yes");
+        zshieldYes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                zshieldYesActionPerformed(evt);
+            }
+        });
+        jPanel1.add(zshieldYes, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 80, -1, -1));
+
+        ztrackYes.setBackground(new java.awt.Color(255, 255, 255));
+        btnGroupZtrack.add(ztrackYes);
+        ztrackYes.setFont(new java.awt.Font("Dubai Medium", 0, 12)); // NOI18N
+        ztrackYes.setForeground(new java.awt.Color(66, 63, 63));
+        ztrackYes.setText("Yes");
+        ztrackYes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ztrackYesActionPerformed(evt);
+            }
+        });
+        jPanel1.add(ztrackYes, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 110, -1, -1));
+
+        jButton1.setBackground(new java.awt.Color(198, 225, 176));
+        jButton1.setFont(new java.awt.Font("Dubai Medium", 0, 12)); // NOI18N
+        jButton1.setForeground(new java.awt.Color(66, 63, 63));
+        jButton1.setText("Reset");
+        jButton1.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 210, 70, 30));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void homeBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_homeBtnActionPerformed
+        Admin_Home_Page acc = new Admin_Home_Page();
+        acc.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_homeBtnActionPerformed
+
+    private void registerCarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_registerCarMouseClicked
+        Admin_Cars regCar = new Admin_Cars();
+        regCar.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_registerCarMouseClicked
+
+    private void toPayHostMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_toPayHostMouseClicked
+        Admin_payment hostPay = new Admin_payment();
+        hostPay.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_toPayHostMouseClicked
+
+    private void saveHostBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveHostBtnActionPerformed
+        
+        //to format the date and display on the Jtable (host_data)
+        SimpleDateFormat dFormat = new SimpleDateFormat("dd-MM-yyyy");
+        date1 = dFormat.format(DateFrom_license.getDate());
+        date2 = dFormat.format(DateTo_license.getDate());
+        
+        //to get the table
+        DefaultTableModel host_table = (DefaultTableModel)this.host_data.getModel();
+        //to add row
+        host_table.addRow(new Object[]{this.hostFirstName.getText(),this.hostLastName.getText(),this.hostIdentity.getText(),date1,date2,
+        this.btnGroupZshield.getSelection().getActionCommand(),this.btnGroupZtrack.getSelection().getActionCommand()});
+        
+        
+        
+    }//GEN-LAST:event_saveHostBtnActionPerformed
+
+    private void zshieldYesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_zshieldYesActionPerformed
+        //to get the selected value'yes' return as text in Jtable
+        this.zshieldYes.setActionCommand("Yes");
+    }//GEN-LAST:event_zshieldYesActionPerformed
+
+    private void zshieldNoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_zshieldNoActionPerformed
+        //to get the selected value 'no' return as text in Jtable
+        this.zshieldNo.setActionCommand("No");
+    }//GEN-LAST:event_zshieldNoActionPerformed
+
+    private void ztrackYesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ztrackYesActionPerformed
+        // to get the selected value'yes' return as text in Jtable
+        this.ztrackYes.setActionCommand("Yes");
+    }//GEN-LAST:event_ztrackYesActionPerformed
+
+    private void ztrackNoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ztrackNoActionPerformed
+        // to get the selected value 'no' return as text in Jtable
+        this.ztrackNo.setActionCommand("No");
+    }//GEN-LAST:event_ztrackNoActionPerformed
+
+    private void hostFirstNameFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_hostFirstNameFocusGained
+        hostFirstName.setText("");
+    }//GEN-LAST:event_hostFirstNameFocusGained
+
+    private void hostLastNameFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_hostLastNameFocusGained
+        hostLastName.setText("");
+    }//GEN-LAST:event_hostLastNameFocusGained
+
+    private void hostIdentityFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_hostIdentityFocusGained
+        hostIdentity.setText("");
+    }//GEN-LAST:event_hostIdentityFocusGained
+
+    private void host_dataMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_host_dataMouseClicked
+        //To get any number of row or column to get it clicked so that it could be
+        //update or delete
+        
+        // get value when point, and store the value in this.row / this.column
+        this.row = this.host_data.rowAtPoint(evt.getPoint()); 
+        this.column = this.host_data.columnAtPoint(evt.getPoint());
+        
+        //means that it's a valid row not just anywhere
+        if(row >= 0) {
+            //to get the value, set to text
+            String value1 = this.host_data.getModel().getValueAt(this.row,1).toString();  
+            this.hostFirstName.setText(value1);
+            String value2 = this.host_data.getModel().getValueAt(this.row,2).toString();  
+            this.hostLastName.setText(value2);
+            String value3 = this.host_data.getModel().getValueAt(this.row,3).toString();  
+            this.hostIdentity.setText(value3);
+            String value4 = this.host_data.getModel().getValueAt(this.row,4).toString();  
+            this.date1 = value4;
+            String value5 = this.host_data.getModel().getValueAt(this.row,5).toString();  
+            this.date2 = value5;
+           
+        } 
+    }//GEN-LAST:event_host_dataMouseClicked
+
+    private void updateHostBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateHostBtnActionPerformed
+        // to get the value and set the value
+        
+        DefaultTableModel host_table = (DefaultTableModel)this.host_data.getModel();
+        
+        host_table.setValueAt(this.hostFirstName.getText(), this.row, 1);
+        host_table.setValueAt(this.hostLastName.getText(), this.row, 2);
+        host_table.setValueAt(this.hostIdentity.getText(), this.row,3);
+        host_table.setValueAt(this.DateFrom_license, this.row, 4);
+        host_table.setValueAt(this.DateTo_license, this.row, 5);
+        host_table.setValueAt(this.btnGroupZshield, this.row, 6);
+        host_table.setValueAt(this.btnGroupZtrack, this.row, 7);
+    }//GEN-LAST:event_updateHostBtnActionPerformed
+
+    private void deleteHostBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteHostBtnActionPerformed
+        // To delete row from the table
+        ((DefaultTableModel)this.host_data.getModel()).removeRow(this.row);
+        
+    }//GEN-LAST:event_deleteHostBtnActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        //reset
+        hostFirstName.setText("");
+        hostLastName.setText("");
+        hostIdentity.setText("");
+        
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -72,6 +524,7 @@ public class Admin_Host extends javax.swing.JFrame {
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
+            @Override
             public void run() {
                 new Admin_Host().setVisible(true);
             }
@@ -79,5 +532,49 @@ public class Admin_Host extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private com.toedter.calendar.JDateChooser DateFrom_license;
+    private com.toedter.calendar.JDateChooser DateTo_license;
+    private javax.swing.JLabel ZShieldLbl;
+    private javax.swing.JLabel ZtrackLbl;
+    private javax.swing.ButtonGroup btnGroupZshield;
+    private javax.swing.ButtonGroup btnGroupZtrack;
+    private javax.swing.JButton deleteHostBtn;
+    private javax.swing.JButton homeBtn;
+    private javax.swing.JTextField hostFirstName;
+    private javax.swing.JLabel hostFnameLbl;
+    private javax.swing.JTextField hostIdentity;
+    private javax.swing.JLabel hostIdentityLbl;
+    private javax.swing.JTextField hostLastName;
+    private javax.swing.JLabel hostLicenseLbl;
+    private javax.swing.JLabel hostLnameLbl;
+    private javax.swing.JLabel hostLogo;
+    private javax.swing.JLabel hostValidLbl;
+    private javax.swing.JTable host_data;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel3;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JSeparator jSeparator2;
+    private javax.swing.JSeparator jSeparator3;
+    private javax.swing.JSeparator jSeparator4;
+    private javax.swing.JSeparator jSeparator5;
+    private javax.swing.JLabel registerCar;
+    private javax.swing.JButton saveHostBtn;
+    private javax.swing.JLabel toPayHost;
+    private javax.swing.JButton updateHostBtn;
+    private javax.swing.JLabel zLogo;
+    private javax.swing.JRadioButton zshieldNo;
+    private javax.swing.JRadioButton zshieldYes;
+    private javax.swing.JRadioButton ztrackNo;
+    private javax.swing.JRadioButton ztrackYes;
     // End of variables declaration//GEN-END:variables
+
+    private void setActionCommand(String yes) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    
 }

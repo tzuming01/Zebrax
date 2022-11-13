@@ -26,27 +26,250 @@ public class Admin_employeeList extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPanel1 = new javax.swing.JPanel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        admin_data = new javax.swing.JTable();
+        adminIDLbl = new javax.swing.JLabel();
+        adminFnameLbl = new javax.swing.JLabel();
+        adminLnameLbl = new javax.swing.JLabel();
+        adminEmailLbl = new javax.swing.JLabel();
+        adminCtcLbl = new javax.swing.JLabel();
+        adminPWlbl = new javax.swing.JLabel();
+        admin_ID = new javax.swing.JTextField();
+        admin_firstName = new javax.swing.JTextField();
+        admin_lastName = new javax.swing.JTextField();
+        admin_email = new javax.swing.JTextField();
+        admin_contact = new javax.swing.JTextField();
+        admin_PW = new javax.swing.JPasswordField();
+        jSeparator1 = new javax.swing.JSeparator();
+        jSeparator2 = new javax.swing.JSeparator();
+        jSeparator3 = new javax.swing.JSeparator();
+        jSeparator4 = new javax.swing.JSeparator();
+        jSeparator5 = new javax.swing.JSeparator();
+        jSeparator6 = new javax.swing.JSeparator();
+        jPanel2 = new javax.swing.JPanel();
+        backHomeBtn = new javax.swing.JButton();
+        saveAdminBtn = new javax.swing.JButton();
+        updateAdminBtn = new javax.swing.JButton();
+        deleteAdminBtn = new javax.swing.JButton();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("Z: Employee List");
+        setTitle("[Z] Employee List");
+        setLocation(new java.awt.Point(325, 95));
+        setPreferredSize(new java.awt.Dimension(800, 478));
+        setResizable(false);
+
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.setName(""); // NOI18N
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        admin_data.setBackground(new java.awt.Color(255, 255, 255));
+        admin_data.setFont(new java.awt.Font("Dubai Medium", 0, 12)); // NOI18N
+        admin_data.setForeground(new java.awt.Color(66, 63, 63));
+        admin_data.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "ID", "First name", "Last name", "Email address", "Contact number"
+            }
+        ));
+        jScrollPane2.setViewportView(admin_data);
+
+        jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 260, 600, 170));
+
+        adminIDLbl.setFont(new java.awt.Font("Dubai Medium", 0, 13)); // NOI18N
+        adminIDLbl.setForeground(new java.awt.Color(66, 63, 63));
+        adminIDLbl.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        adminIDLbl.setText("ID");
+        jPanel1.add(adminIDLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 80, -1, 20));
+
+        adminFnameLbl.setFont(new java.awt.Font("Dubai Medium", 0, 13)); // NOI18N
+        adminFnameLbl.setForeground(new java.awt.Color(66, 63, 63));
+        adminFnameLbl.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        adminFnameLbl.setText("First name");
+        jPanel1.add(adminFnameLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 80, -1, -1));
+
+        adminLnameLbl.setFont(new java.awt.Font("Dubai Medium", 0, 13)); // NOI18N
+        adminLnameLbl.setForeground(new java.awt.Color(66, 63, 63));
+        adminLnameLbl.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        adminLnameLbl.setText("Last name");
+        jPanel1.add(adminLnameLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 140, -1, 20));
+
+        adminEmailLbl.setFont(new java.awt.Font("Dubai Medium", 0, 13)); // NOI18N
+        adminEmailLbl.setForeground(new java.awt.Color(66, 63, 63));
+        adminEmailLbl.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        adminEmailLbl.setText("Email address");
+        jPanel1.add(adminEmailLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 200, -1, 20));
+
+        adminCtcLbl.setFont(new java.awt.Font("Dubai Medium", 0, 13)); // NOI18N
+        adminCtcLbl.setForeground(new java.awt.Color(66, 63, 63));
+        adminCtcLbl.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        adminCtcLbl.setText("Contact number");
+        jPanel1.add(adminCtcLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 80, -1, 20));
+
+        adminPWlbl.setFont(new java.awt.Font("Dubai Medium", 0, 13)); // NOI18N
+        adminPWlbl.setForeground(new java.awt.Color(66, 63, 63));
+        adminPWlbl.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        adminPWlbl.setText("Password");
+        jPanel1.add(adminPWlbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 140, -1, -1));
+
+        admin_ID.setBackground(new java.awt.Color(255, 255, 255));
+        admin_ID.setFont(new java.awt.Font("Dubai Medium", 0, 12)); // NOI18N
+        admin_ID.setForeground(new java.awt.Color(66, 63, 63));
+        admin_ID.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        jPanel1.add(admin_ID, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 100, 80, -1));
+
+        admin_firstName.setBackground(new java.awt.Color(255, 255, 255));
+        admin_firstName.setFont(new java.awt.Font("Dubai Medium", 0, 12)); // NOI18N
+        admin_firstName.setForeground(new java.awt.Color(66, 63, 63));
+        admin_firstName.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        jPanel1.add(admin_firstName, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 100, 160, -1));
+
+        admin_lastName.setBackground(new java.awt.Color(255, 255, 255));
+        admin_lastName.setFont(new java.awt.Font("Dubai Medium", 0, 12)); // NOI18N
+        admin_lastName.setForeground(new java.awt.Color(66, 63, 63));
+        admin_lastName.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        jPanel1.add(admin_lastName, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 160, 160, -1));
+
+        admin_email.setBackground(new java.awt.Color(255, 255, 255));
+        admin_email.setFont(new java.awt.Font("Dubai Medium", 0, 12)); // NOI18N
+        admin_email.setForeground(new java.awt.Color(66, 63, 63));
+        admin_email.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        admin_email.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                admin_emailActionPerformed(evt);
+            }
+        });
+        jPanel1.add(admin_email, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 220, 160, -1));
+
+        admin_contact.setBackground(new java.awt.Color(255, 255, 255));
+        admin_contact.setFont(new java.awt.Font("Dubai Medium", 0, 12)); // NOI18N
+        admin_contact.setForeground(new java.awt.Color(66, 63, 63));
+        admin_contact.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        admin_contact.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                admin_contactActionPerformed(evt);
+            }
+        });
+        jPanel1.add(admin_contact, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 100, 160, -1));
+
+        admin_PW.setBackground(new java.awt.Color(255, 255, 255));
+        admin_PW.setFont(new java.awt.Font("Dubai Medium", 0, 12)); // NOI18N
+        admin_PW.setForeground(new java.awt.Color(66, 63, 63));
+        admin_PW.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        admin_PW.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                admin_PWActionPerformed(evt);
+            }
+        });
+        jPanel1.add(admin_PW, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 160, 160, -1));
+
+        jSeparator1.setForeground(new java.awt.Color(66, 63, 63));
+        jPanel1.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 130, 80, 10));
+
+        jSeparator2.setForeground(new java.awt.Color(66, 63, 63));
+        jPanel1.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 130, 160, 10));
+
+        jSeparator3.setForeground(new java.awt.Color(66, 63, 63));
+        jPanel1.add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 187, 160, 10));
+
+        jSeparator4.setForeground(new java.awt.Color(66, 63, 63));
+        jPanel1.add(jSeparator4, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 250, 160, 10));
+
+        jSeparator5.setForeground(new java.awt.Color(66, 63, 63));
+        jPanel1.add(jSeparator5, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 130, 160, 10));
+
+        jSeparator6.setForeground(new java.awt.Color(66, 63, 63));
+        jPanel1.add(jSeparator6, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 187, 160, 10));
+
+        jPanel2.setBackground(new java.awt.Color(198, 225, 176));
+        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        backHomeBtn.setBackground(new java.awt.Color(252, 205, 146));
+        backHomeBtn.setFont(new java.awt.Font("Dubai Medium", 0, 12)); // NOI18N
+        backHomeBtn.setForeground(new java.awt.Color(66, 63, 63));
+        backHomeBtn.setText("HOME");
+        backHomeBtn.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        backHomeBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                backHomeBtnActionPerformed(evt);
+            }
+        });
+        jPanel2.add(backHomeBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 10, 60, 30));
+
+        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 800, 50));
+
+        saveAdminBtn.setBackground(new java.awt.Color(252, 205, 146));
+        saveAdminBtn.setFont(new java.awt.Font("Dubai Medium", 0, 12)); // NOI18N
+        saveAdminBtn.setForeground(new java.awt.Color(66, 63, 63));
+        saveAdminBtn.setText("Save");
+        saveAdminBtn.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        jPanel1.add(saveAdminBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 260, 90, 30));
+
+        updateAdminBtn.setBackground(new java.awt.Color(255, 255, 255));
+        updateAdminBtn.setFont(new java.awt.Font("Dubai Medium", 0, 12)); // NOI18N
+        updateAdminBtn.setForeground(new java.awt.Color(97, 97, 97));
+        updateAdminBtn.setText("Update");
+        updateAdminBtn.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        jPanel1.add(updateAdminBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 310, 90, 30));
+
+        deleteAdminBtn.setBackground(new java.awt.Color(255, 105, 97));
+        deleteAdminBtn.setFont(new java.awt.Font("Dubai Medium", 0, 12)); // NOI18N
+        deleteAdminBtn.setForeground(new java.awt.Color(255, 255, 255));
+        deleteAdminBtn.setText("Delete ");
+        deleteAdminBtn.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        jPanel1.add(deleteAdminBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 360, 90, 30));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 800, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 471, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
+
+        getAccessibleContext().setAccessibleName("[Z] Employee List");
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void admin_PWActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_admin_PWActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_admin_PWActionPerformed
+
+    private void admin_emailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_admin_emailActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_admin_emailActionPerformed
+
+    private void admin_contactActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_admin_contactActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_admin_contactActionPerformed
+
+    private void backHomeBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backHomeBtnActionPerformed
+        Admin_Home_Page acc = new Admin_Home_Page();
+        acc.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_backHomeBtnActionPerformed
+
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
+    /*public static void main(String args[]) {
+        /* Set the Nimbus look and feel */
+        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+         */
+       
+        //</editor-fold>
+
+       public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
@@ -60,14 +283,15 @@ public class Admin_employeeList extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Admin_employeeList.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Admin_Home_Page.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Admin_employeeList.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Admin_Home_Page.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Admin_employeeList.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Admin_Home_Page.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Admin_employeeList.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Admin_Home_Page.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
@@ -79,5 +303,31 @@ public class Admin_employeeList extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel adminCtcLbl;
+    private javax.swing.JLabel adminEmailLbl;
+    private javax.swing.JLabel adminFnameLbl;
+    private javax.swing.JLabel adminIDLbl;
+    private javax.swing.JLabel adminLnameLbl;
+    private javax.swing.JLabel adminPWlbl;
+    private javax.swing.JTextField admin_ID;
+    private javax.swing.JPasswordField admin_PW;
+    private javax.swing.JTextField admin_contact;
+    private javax.swing.JTable admin_data;
+    private javax.swing.JTextField admin_email;
+    private javax.swing.JTextField admin_firstName;
+    private javax.swing.JTextField admin_lastName;
+    private javax.swing.JButton backHomeBtn;
+    private javax.swing.JButton deleteAdminBtn;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JSeparator jSeparator2;
+    private javax.swing.JSeparator jSeparator3;
+    private javax.swing.JSeparator jSeparator4;
+    private javax.swing.JSeparator jSeparator5;
+    private javax.swing.JSeparator jSeparator6;
+    private javax.swing.JButton saveAdminBtn;
+    private javax.swing.JButton updateAdminBtn;
     // End of variables declaration//GEN-END:variables
 }
