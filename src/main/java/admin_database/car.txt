@@ -1,0 +1,5 @@
+Nissan,Almera,AJF 7651,Yew Jian Pang,RM100
+Nissan,GTR,JUG 71,Yew Jian Pang,RM1000
+Honda,City,BME 878,Yew Jian Pang,RM100
+Honda,Civic,MCA 999,Yew Jian Pang,RM200
+Mercedes,CLA45,AMG 455,Yew Jian Pang,RM1000

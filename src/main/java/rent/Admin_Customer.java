@@ -28,93 +28,173 @@ public class Admin_Customer extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
-        getUsername = new javax.swing.JTextField();
-        jSeparator1 = new javax.swing.JSeparator();
+        lbl_manageCustomer = new javax.swing.JLabel();
+        jButton5 = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
+        lbl_emailUser = new javax.swing.JLabel();
+        lbl_CpassW = new javax.swing.JLabel();
+        lbl_CfName = new javax.swing.JLabel();
+        lbl_CLname = new javax.swing.JLabel();
+        lbl_C_ctcNum = new javax.swing.JLabel();
+        lbl_C_IC = new javax.swing.JLabel();
+        lbl__ = new javax.swing.JLabel();
         jTextField1 = new javax.swing.JTextField();
+        jPasswordField1 = new javax.swing.JPasswordField();
+        jTextField2 = new javax.swing.JTextField();
+        jTextField3 = new javax.swing.JTextField();
+        jTextField4 = new javax.swing.JTextField();
+        jTextField5 = new javax.swing.JTextField();
+        jTextField6 = new javax.swing.JTextField();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
+        jButton3 = new javax.swing.JButton();
+        jButton4 = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        jSeparator1 = new javax.swing.JSeparator();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("Z: Customers");
+        setTitle("[Z] CUSTOMERS");
         setLocation(new java.awt.Point(325, 95));
 
-        jPanel1.setBackground(new java.awt.Color(255, 248, 240));
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel2.setBackground(new java.awt.Color(198, 225, 176));
+        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 62, Short.MAX_VALUE)
-        );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
-        );
+        lbl_manageCustomer.setFont(new java.awt.Font("Dubai Medium", 0, 14)); // NOI18N
+        lbl_manageCustomer.setForeground(new java.awt.Color(60, 63, 65));
+        lbl_manageCustomer.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lbl_manageCustomer.setText("MANAGE CUSTOMER");
+        jPanel2.add(lbl_manageCustomer, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 20, -1, 20));
 
-        getUsername.setBackground(new java.awt.Color(255, 248, 240));
-        getUsername.setFont(new java.awt.Font("Dubai Medium", 0, 13)); // NOI18N
-        getUsername.setForeground(new java.awt.Color(60, 63, 65));
-        getUsername.setText("Find users...");
-        getUsername.setBorder(null);
-        getUsername.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                getUsernameFocusGained(evt);
+        jButton5.setBackground(new java.awt.Color(252, 205, 146));
+        jButton5.setFont(new java.awt.Font("Dubai Medium", 0, 12)); // NOI18N
+        jButton5.setForeground(new java.awt.Color(60, 63, 65));
+        jButton5.setText("HOME");
+        jButton5.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        jPanel2.add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 10, 60, 30));
+
+        jLabel2.setFont(new java.awt.Font("Dubai Medium", 0, 12)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(60, 63, 65));
+        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel2.setText("QUICK BOOK");
+        jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 10, -1, 30));
+
+        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 810, 50));
+
+        lbl_emailUser.setFont(new java.awt.Font("Dubai Medium", 0, 13)); // NOI18N
+        lbl_emailUser.setForeground(new java.awt.Color(60, 63, 65));
+        lbl_emailUser.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lbl_emailUser.setText("Username/email");
+        jPanel1.add(lbl_emailUser, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 80, -1, -1));
+
+        lbl_CpassW.setFont(new java.awt.Font("Dubai Medium", 0, 13)); // NOI18N
+        lbl_CpassW.setForeground(new java.awt.Color(60, 63, 65));
+        lbl_CpassW.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lbl_CpassW.setText("Password");
+        jPanel1.add(lbl_CpassW, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 130, -1, -1));
+
+        lbl_CfName.setFont(new java.awt.Font("Dubai Medium", 0, 13)); // NOI18N
+        lbl_CfName.setForeground(new java.awt.Color(60, 63, 65));
+        lbl_CfName.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lbl_CfName.setText("First name");
+        jPanel1.add(lbl_CfName, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 80, -1, -1));
+
+        lbl_CLname.setFont(new java.awt.Font("Dubai Medium", 0, 13)); // NOI18N
+        lbl_CLname.setForeground(new java.awt.Color(60, 63, 65));
+        lbl_CLname.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lbl_CLname.setText("Last name");
+        jPanel1.add(lbl_CLname, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 130, -1, -1));
+
+        lbl_C_ctcNum.setFont(new java.awt.Font("Dubai Medium", 0, 13)); // NOI18N
+        lbl_C_ctcNum.setForeground(new java.awt.Color(60, 63, 65));
+        lbl_C_ctcNum.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lbl_C_ctcNum.setText("Contact number");
+        jPanel1.add(lbl_C_ctcNum, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 130, 90, -1));
+
+        lbl_C_IC.setFont(new java.awt.Font("Dubai Medium", 0, 13)); // NOI18N
+        lbl_C_IC.setForeground(new java.awt.Color(60, 63, 65));
+        lbl_C_IC.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lbl_C_IC.setText("NRIC");
+        jPanel1.add(lbl_C_IC, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 80, -1, -1));
+
+        lbl__.setFont(new java.awt.Font("Dubai Medium", 0, 13)); // NOI18N
+        lbl__.setForeground(new java.awt.Color(60, 63, 65));
+        lbl__.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lbl__.setText("Thelast one");
+        jPanel1.add(lbl__, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 180, -1, -1));
+
+        jTextField1.setText("jTextField1");
+        jPanel1.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 100, 150, -1));
+
+        jPasswordField1.setText("jPasswordField1");
+        jPanel1.add(jPasswordField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 150, 150, -1));
+
+        jTextField2.setText("jTextField2");
+        jPanel1.add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 100, 150, -1));
+
+        jTextField3.setText("jTextField3");
+        jPanel1.add(jTextField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 150, 150, -1));
+
+        jTextField4.setText("jTextField4");
+        jPanel1.add(jTextField4, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 150, 150, -1));
+
+        jTextField5.setText("jTextField4");
+        jPanel1.add(jTextField5, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 100, 150, -1));
+
+        jTextField6.setText("jTextField6");
+        jPanel1.add(jTextField6, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 200, 150, -1));
+
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
             }
-        });
+        ));
+        jScrollPane1.setViewportView(jTable1);
 
-        jSeparator1.setForeground(new java.awt.Color(60, 63, 65));
-
-        jTextField1.setBackground(new java.awt.Color(255, 248, 240));
-        jTextField1.setFont(new java.awt.Font("Dubai Medium", 0, 13)); // NOI18N
-        jTextField1.setForeground(new java.awt.Color(60, 63, 65));
-        jTextField1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 270, 810, 250));
 
         jButton1.setBackground(new java.awt.Color(252, 205, 146));
-        jButton1.setFont(new java.awt.Font("Dubai Medium", 0, 13)); // NOI18N
+        jButton1.setFont(new java.awt.Font("Dubai Medium", 0, 12)); // NOI18N
         jButton1.setForeground(new java.awt.Color(60, 63, 65));
-        jButton1.setText(" Update");
+        jButton1.setText("Save");
         jButton1.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 100, 90, 30));
 
-        jButton2.setBackground(new java.awt.Color(252, 205, 146));
-        jButton2.setFont(new java.awt.Font("Dubai Medium", 0, 13)); // NOI18N
-        jButton2.setForeground(new java.awt.Color(60, 63, 65));
+        jButton2.setBackground(new java.awt.Color(255, 105, 97));
+        jButton2.setForeground(new java.awt.Color(255, 255, 255));
         jButton2.setText("Delete");
         jButton2.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 180, 90, 30));
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(37, 37, 37)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(getUsername, javax.swing.GroupLayout.DEFAULT_SIZE, 203, Short.MAX_VALUE)
-                    .addComponent(jSeparator1)
-                    .addComponent(jTextField1))
-                .addGap(18, 18, 18)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(352, Short.MAX_VALUE))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(64, 64, 64)
-                .addComponent(getUsername, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, 0)
-                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.DEFAULT_SIZE, 34, Short.MAX_VALUE)
-                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(349, Short.MAX_VALUE))
-        );
+        jButton3.setBackground(new java.awt.Color(198, 225, 176));
+        jButton3.setFont(new java.awt.Font("Dubai Medium", 0, 12)); // NOI18N
+        jButton3.setForeground(new java.awt.Color(97, 97, 97));
+        jButton3.setText("Reset");
+        jButton3.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        jPanel1.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 220, 90, 30));
+
+        jButton4.setBackground(new java.awt.Color(255, 255, 255));
+        jButton4.setFont(new java.awt.Font("Dubai Medium", 0, 12)); // NOI18N
+        jButton4.setForeground(new java.awt.Color(97, 97, 97));
+        jButton4.setText("Update");
+        jButton4.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        jPanel1.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 140, 90, 30));
+
+        jLabel1.setFont(new java.awt.Font("Dubai Medium", 0, 13)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(60, 63, 65));
+        jLabel1.setText("View customer list");
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 230, -1, 20));
+        jPanel1.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 250, 100, 10));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -129,10 +209,6 @@ public class Admin_Customer extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void getUsernameFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_getUsernameFocusGained
-        getUsername.setText("");
-    }//GEN-LAST:event_getUsernameFocusGained
 
     /**
      * @param args the command line arguments
@@ -170,12 +246,32 @@ public class Admin_Customer extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextField getUsername;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton4;
+    private javax.swing.JButton jButton5;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JPasswordField jPasswordField1;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JTable jTable1;
     private javax.swing.JTextField jTextField1;
+    private javax.swing.JTextField jTextField2;
+    private javax.swing.JTextField jTextField3;
+    private javax.swing.JTextField jTextField4;
+    private javax.swing.JTextField jTextField5;
+    private javax.swing.JTextField jTextField6;
+    private javax.swing.JLabel lbl_CLname;
+    private javax.swing.JLabel lbl_C_IC;
+    private javax.swing.JLabel lbl_C_ctcNum;
+    private javax.swing.JLabel lbl_CfName;
+    private javax.swing.JLabel lbl_CpassW;
+    private javax.swing.JLabel lbl__;
+    private javax.swing.JLabel lbl_emailUser;
+    private javax.swing.JLabel lbl_manageCustomer;
     // End of variables declaration//GEN-END:variables
 }

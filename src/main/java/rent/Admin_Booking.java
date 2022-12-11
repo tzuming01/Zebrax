@@ -37,7 +37,7 @@ public class Admin_Booking extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("Z: Booking");
+        setTitle("[Z] BOOKING STATUS");
         setLocation(new java.awt.Point(325, 95));
 
         jPanel1.setBackground(new java.awt.Color(255, 248, 240));

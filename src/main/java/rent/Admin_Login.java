@@ -4,7 +4,9 @@
  */
 package rent;
 
+import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileReader;
 import java.io.IOException;
 import java.util.Scanner;
 import javax.swing.JOptionPane;
@@ -40,8 +42,8 @@ public class Admin_Login extends javax.swing.JFrame {
         jPanel2 = new javax.swing.JPanel();
         logo_pic = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        username = new javax.swing.JTextField();
-        password = new javax.swing.JPasswordField();
+        usernameTXT = new javax.swing.JTextField();
+        passwordTXT = new javax.swing.JPasswordField();
         jSeparator1 = new javax.swing.JSeparator();
         jSeparator2 = new javax.swing.JSeparator();
         user_logo = new javax.swing.JLabel();
@@ -49,6 +51,7 @@ public class Admin_Login extends javax.swing.JFrame {
         ForgotPassLbl = new javax.swing.JLabel();
         SignInBtn = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("ZEBRAX");
@@ -82,49 +85,49 @@ public class Admin_Login extends javax.swing.JFrame {
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         logo_pic.setFont(new java.awt.Font("Dubai Medium", 0, 20)); // NOI18N
-        logo_pic.setForeground(new java.awt.Color(249, 255, 245));
+        logo_pic.setForeground(new java.awt.Color(254, 254, 254));
         logo_pic.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         logo_pic.setText("Hey, welcome back!");
         logo_pic.setToolTipText("");
         jPanel2.add(logo_pic, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 100, 190, 30));
 
         jLabel2.setFont(new java.awt.Font("Dubai Medium", 0, 14)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(249, 255, 245));
+        jLabel2.setForeground(new java.awt.Color(66, 63, 63));
         jLabel2.setText("Sign in to your account");
         jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(102, 137, -1, -1));
 
-        username.setBackground(new java.awt.Color(198, 225, 176));
-        username.setFont(new java.awt.Font("Franklin Gothic Demi", 0, 12)); // NOI18N
-        username.setForeground(new java.awt.Color(249, 255, 245));
-        username.setText("Username");
-        username.setBorder(null);
-        username.addFocusListener(new java.awt.event.FocusAdapter() {
+        usernameTXT.setBackground(new java.awt.Color(198, 225, 176));
+        usernameTXT.setFont(new java.awt.Font("Dubai Medium", 0, 13)); // NOI18N
+        usernameTXT.setForeground(new java.awt.Color(254, 254, 254));
+        usernameTXT.setText("Username");
+        usernameTXT.setBorder(null);
+        usernameTXT.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
-                usernameFocusGained(evt);
+                usernameTXTFocusGained(evt);
             }
         });
-        username.addActionListener(new java.awt.event.ActionListener() {
+        usernameTXT.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                usernameActionPerformed(evt);
+                usernameTXTActionPerformed(evt);
             }
         });
-        jPanel2.add(username, new org.netbeans.lib.awtextra.AbsoluteConstraints(79, 187, 143, 30));
+        jPanel2.add(usernameTXT, new org.netbeans.lib.awtextra.AbsoluteConstraints(79, 187, 143, 30));
 
-        password.setBackground(new java.awt.Color(198, 225, 176));
-        password.setFont(new java.awt.Font("Franklin Gothic Demi", 0, 12)); // NOI18N
-        password.setForeground(new java.awt.Color(249, 255, 245));
-        password.setBorder(null);
-        password.addFocusListener(new java.awt.event.FocusAdapter() {
+        passwordTXT.setBackground(new java.awt.Color(198, 225, 176));
+        passwordTXT.setFont(new java.awt.Font("Franklin Gothic Demi", 0, 12)); // NOI18N
+        passwordTXT.setForeground(new java.awt.Color(249, 255, 245));
+        passwordTXT.setBorder(null);
+        passwordTXT.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
-                passwordFocusGained(evt);
+                passwordTXTFocusGained(evt);
             }
         });
-        password.addActionListener(new java.awt.event.ActionListener() {
+        passwordTXT.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                passwordActionPerformed(evt);
+                passwordTXTActionPerformed(evt);
             }
         });
-        jPanel2.add(password, new org.netbeans.lib.awtextra.AbsoluteConstraints(79, 260, 143, 30));
+        jPanel2.add(passwordTXT, new org.netbeans.lib.awtextra.AbsoluteConstraints(79, 260, 143, 30));
 
         jSeparator1.setForeground(new java.awt.Color(249, 255, 245));
         jPanel2.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(79, 217, 180, -1));
@@ -134,15 +137,15 @@ public class Admin_Login extends javax.swing.JFrame {
         jPanel2.add(user_logo, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 187, 29, 29));
         jPanel2.add(password_logo, new org.netbeans.lib.awtextra.AbsoluteConstraints(234, 260, 35, 28));
 
-        ForgotPassLbl.setFont(new java.awt.Font("Dubai Medium", 0, 12)); // NOI18N
-        ForgotPassLbl.setForeground(new java.awt.Color(249, 255, 245));
+        ForgotPassLbl.setFont(new java.awt.Font("Dubai Medium", 0, 13)); // NOI18N
+        ForgotPassLbl.setForeground(new java.awt.Color(254, 254, 254));
         ForgotPassLbl.setText("Forgot Password? ");
         ForgotPassLbl.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 ForgotPassLblMouseClicked(evt);
             }
         });
-        jPanel2.add(ForgotPassLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(178, 293, -1, -1));
+        jPanel2.add(ForgotPassLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 300, -1, -1));
 
         SignInBtn.setBackground(new java.awt.Color(252, 205, 146));
         SignInBtn.setFont(new java.awt.Font("Dubai Medium", 0, 14)); // NOI18N
@@ -161,47 +164,51 @@ public class Admin_Login extends javax.swing.JFrame {
         jLabel5.setText("Z");
         jPanel2.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 50, -1, 40));
 
+        jLabel6.setFont(new java.awt.Font("Dubai Medium", 0, 13)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(254, 254, 254));
+        jLabel6.setText("Password");
+        jPanel2.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 240, -1, -1));
+
         getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(342, 0, 330, 441));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void usernameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_usernameActionPerformed
+    private void usernameTXTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_usernameTXTActionPerformed
         
-    }//GEN-LAST:event_usernameActionPerformed
+    }//GEN-LAST:event_usernameTXTActionPerformed
 
-    private void passwordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_passwordActionPerformed
+    private void passwordTXTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_passwordTXTActionPerformed
         
-    }//GEN-LAST:event_passwordActionPerformed
+    }//GEN-LAST:event_passwordTXTActionPerformed
 
-    private void usernameFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_usernameFocusGained
-        username.setText("");
-    }//GEN-LAST:event_usernameFocusGained
+    private void usernameTXTFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_usernameTXTFocusGained
+        usernameTXT.setText("");
+    }//GEN-LAST:event_usernameTXTFocusGained
 
-    private void passwordFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_passwordFocusGained
-        password.setText("");
+    private void passwordTXTFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_passwordTXTFocusGained
+        passwordTXT.setText("");
  
-    }//GEN-LAST:event_passwordFocusGained
+    }//GEN-LAST:event_passwordTXTFocusGained
 
     private void SignInBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SignInBtnActionPerformed
         
-        
         //to get the username and password
-         String username = this.username.getText();
-         String password = this.password.getText();
+        String Username = usernameTXT.getText();
+        String Password = passwordTXT.getText();
         
         //find file to check the name inside the file
         try {
-            File admin = new File("D:\\OODJ_ASSIGNMENT\\Zebrax\\src\\main\\java\\admin_database\\admin_login.txt");
+            File admin = new File("D:\\OODJ_ASSIGNMENT\\Zebrax\\src\\main\\java\\admin_database\\Z_admins.txt");
             Scanner scan = new Scanner(admin);
-            scan.useDelimiter("[,\n]"); //pattern stop at comma or newline
+            scan.useDelimiter("[,\n]"); //pattern stop at space or newline
             
             while(scan.hasNext()) //to check if there's still non white space char
             {
                 String user = scan.next(); //read the next thing until it reached ',' or newline
-                String pw = scan.next();
+                String pass = scan.next();
                 
-                if(username.trim().equals(user.trim()) && password.trim().equals(pw.trim())) // to see if it matches
+                if((Username.equals(user.trim())) && (Password.equals(pass.trim()))) // to see if it matches
                 {
                     JOptionPane.showMessageDialog(null, "Hey hi, it's good to have you back!");
                     Admin_Home_Page adminPage; //pop new page
@@ -214,13 +221,15 @@ public class Admin_Login extends javax.swing.JFrame {
                 {
                     JOptionPane.showMessageDialog(null,"Invalid Credentials");
                 }
+                scan.close();
             }    
             
         }
         catch(IOException e)
         {
-            JOptionPane.showMessageDialog(null,"Error, please report to admin!");
+            JOptionPane.showMessageDialog(null,"Error, please report to techincal support!");
         }
+                                     
     }//GEN-LAST:event_SignInBtnActionPerformed
 
     private void ForgotPassLblMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ForgotPassLblMouseClicked
@@ -274,15 +283,16 @@ public class Admin_Login extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JLabel logo_pic;
-    private javax.swing.JPasswordField password;
+    private javax.swing.JPasswordField passwordTXT;
     private javax.swing.JLabel password_logo;
     private javax.swing.JLabel user_logo;
-    private javax.swing.JTextField username;
+    private javax.swing.JTextField usernameTXT;
     // End of variables declaration//GEN-END:variables
 
     

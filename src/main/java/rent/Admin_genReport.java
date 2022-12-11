@@ -27,7 +27,7 @@ public class Admin_genReport extends javax.swing.JFrame {
     private void initComponents() {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("Z: Reports");
+        setTitle("[Z] REPORT");
         setLocation(new java.awt.Point(325, 95));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());

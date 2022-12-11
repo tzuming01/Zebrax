@@ -4,6 +4,14 @@
  */
 package rent;
 
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author aunir
@@ -102,7 +110,7 @@ public class Admin_Home_Page extends javax.swing.JFrame {
         goTo_carModels.setFont(new java.awt.Font("Dubai Medium", 0, 15)); // NOI18N
         goTo_carModels.setForeground(new java.awt.Color(66, 63, 63));
         goTo_carModels.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        goTo_carModels.setText("Car Models");
+        goTo_carModels.setText("Car Registration");
         goTo_carModels.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 goTo_carModelsMouseClicked(evt);
@@ -125,7 +133,7 @@ public class Admin_Home_Page extends javax.swing.JFrame {
         jPanel2.add(jSeparator4, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 50, 50, 10));
         jPanel2.add(jSeparator5, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 50, 30, 10));
         jPanel2.add(jSeparator7, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 50, 60, 10));
-        jPanel2.add(jSeparator6, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 50, 60, 11));
+        jPanel2.add(jSeparator6, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 50, 100, 11));
 
         jPanel3.setBackground(new java.awt.Color(255, 255, 255));
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -230,7 +238,7 @@ public class Admin_Home_Page extends javax.swing.JFrame {
     }//GEN-LAST:event_goTo_carModelsMouseClicked
 
     private void employeeList_Btn1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_employeeList_Btn1ActionPerformed
-        Admin_employeeList empList = new Admin_employeeList();
+        Admin_reg_viewAdminList empList = new Admin_reg_viewAdminList();
         empList.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_employeeList_Btn1ActionPerformed
