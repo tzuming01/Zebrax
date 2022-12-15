@@ -86,8 +86,6 @@ public class Admin_Host extends javax.swing.JFrame {
         hostLogo = new javax.swing.JLabel();
         zLogo = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
-        toPayHost = new javax.swing.JLabel();
-        jSeparator2 = new javax.swing.JSeparator();
         hostLastName = new javax.swing.JTextField();
         hostIdentity = new javax.swing.JTextField();
         hostFirstName = new javax.swing.JTextField();
@@ -228,7 +226,7 @@ public class Admin_Host extends javax.swing.JFrame {
                 registerCarMouseClicked(evt);
             }
         });
-        jPanel3.add(registerCar, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 170, 80, -1));
+        jPanel3.add(registerCar, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 80, 80, -1));
 
         hostLogo.setFont(new java.awt.Font("Dubai Medium", 0, 15)); // NOI18N
         hostLogo.setForeground(new java.awt.Color(249, 255, 245));
@@ -248,19 +246,7 @@ public class Admin_Host extends javax.swing.JFrame {
         jPanel3.add(zLogo, new org.netbeans.lib.awtextra.AbsoluteConstraints(39, 10, 20, -1));
 
         jSeparator1.setForeground(new java.awt.Color(66, 63, 63));
-        jPanel3.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 190, 80, 10));
-
-        toPayHost.setFont(new java.awt.Font("Dubai Medium", 0, 15)); // NOI18N
-        toPayHost.setForeground(new java.awt.Color(66, 63, 63));
-        toPayHost.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        toPayHost.setText("Payment");
-        toPayHost.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                toPayHostMouseClicked(evt);
-            }
-        });
-        jPanel3.add(toPayHost, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 230, -1, -1));
-        jPanel3.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 247, 80, -1));
+        jPanel3.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 100, 80, 10));
 
         jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 100, 510));
 
@@ -427,12 +413,6 @@ public class Admin_Host extends javax.swing.JFrame {
         regCar.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_registerCarMouseClicked
-
-    private void toPayHostMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_toPayHostMouseClicked
-        Admin_payment hostPay = new Admin_payment();
-        hostPay.setVisible(true);
-        this.dispose();
-    }//GEN-LAST:event_toPayHostMouseClicked
 
     private void saveHostBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveHostBtnActionPerformed
 
@@ -733,7 +713,6 @@ public class Admin_Host extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
-    private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSeparator jSeparator3;
     private javax.swing.JSeparator jSeparator4;
     private javax.swing.JSeparator jSeparator5;
@@ -741,7 +720,6 @@ public class Admin_Host extends javax.swing.JFrame {
     private javax.swing.JLabel registerCar;
     private javax.swing.JButton resetBtn;
     private javax.swing.JButton saveHostBtn;
-    private javax.swing.JLabel toPayHost;
     private javax.swing.JButton updateHostBtn;
     private javax.swing.JLabel zLogo;
     private javax.swing.JRadioButton zshieldNo;

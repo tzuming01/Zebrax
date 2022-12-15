@@ -4,17 +4,37 @@
  */
 package rent;
 
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author aunir
  */
 public class Admin_Booking extends javax.swing.JFrame {
+    
+    private int row, column;
 
     /**
      * Creates new form Admin_Booking
      */
     public Admin_Booking() {
         initComponents();
+        
+        //set size of column
+        BookingStatus_table.getColumnModel().getColumn(0).setPreferredWidth(50);
+        BookingStatus_table.getColumnModel().getColumn(1).setPreferredWidth(50);
+        BookingStatus_table.getColumnModel().getColumn(2).setPreferredWidth(60);
+        BookingStatus_table.getColumnModel().getColumn(3).setPreferredWidth(70);
     }
 
     /**
@@ -26,109 +46,136 @@ public class Admin_Booking extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        btnGrp_bookingStats = new javax.swing.ButtonGroup();
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jList1 = new javax.swing.JList<>();
-        jTextField1 = new javax.swing.JTextField();
-        jSeparator1 = new javax.swing.JSeparator();
-        jButton1 = new javax.swing.JButton();
+        lbl_booking = new javax.swing.JLabel();
+        lbl_toCustPage = new javax.swing.JLabel();
+        btn_goToHomePage = new javax.swing.JButton();
+        jSeparator2 = new javax.swing.JSeparator();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        BookingStatus_table = new javax.swing.JTable();
+        lbl_confirmation = new javax.swing.JLabel();
+        radBtn_booked = new javax.swing.JRadioButton();
+        radBtn_cancel = new javax.swing.JRadioButton();
+        btn_confirm = new javax.swing.JButton();
+        btn_viewEnquiries = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("[Z] BOOKING STATUS");
         setLocation(new java.awt.Point(325, 95));
+        setPreferredSize(new java.awt.Dimension(811, 507));
+        setResizable(false);
 
-        jPanel1.setBackground(new java.awt.Color(255, 248, 240));
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel2.setBackground(new java.awt.Color(198, 225, 176));
+        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel3.setFont(new java.awt.Font("Dubai Medium", 0, 13)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(60, 63, 65));
-        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel3.setText("Quick booking");
+        lbl_booking.setFont(new java.awt.Font("Dubai Medium", 0, 14)); // NOI18N
+        lbl_booking.setForeground(new java.awt.Color(60, 63, 65));
+        lbl_booking.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lbl_booking.setText("BOOKING ENQUIRIES");
+        jPanel2.add(lbl_booking, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 20, -1, 20));
 
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(243, 243, 243)
-                .addComponent(jLabel3)
-                .addContainerGap(490, Short.MAX_VALUE))
-        );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap(15, Short.MAX_VALUE)
-                .addComponent(jLabel3)
-                .addContainerGap())
-        );
-
-        jLabel2.setFont(new java.awt.Font("Dubai Medium", 0, 15)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(60, 63, 65));
-        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel2.setText("Active ");
-
-        jList1.setBackground(new java.awt.Color(255, 248, 240));
-        jList1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        jList1.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
-            public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
+        lbl_toCustPage.setFont(new java.awt.Font("Dubai Medium", 0, 12)); // NOI18N
+        lbl_toCustPage.setForeground(new java.awt.Color(60, 63, 65));
+        lbl_toCustPage.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lbl_toCustPage.setText("CUSTOMER");
+        lbl_toCustPage.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lbl_toCustPageMouseClicked(evt);
+            }
         });
-        jScrollPane1.setViewportView(jList1);
+        jPanel2.add(lbl_toCustPage, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 20, -1, 10));
 
-        jTextField1.setBackground(new java.awt.Color(255, 248, 240));
-        jTextField1.setFont(new java.awt.Font("Dubai Medium", 0, 13)); // NOI18N
-        jTextField1.setForeground(new java.awt.Color(60, 63, 65));
-        jTextField1.setHorizontalAlignment(javax.swing.JTextField.LEFT);
-        jTextField1.setText("Booked ID");
-        jTextField1.setBorder(null);
+        btn_goToHomePage.setBackground(new java.awt.Color(252, 205, 146));
+        btn_goToHomePage.setFont(new java.awt.Font("Dubai Medium", 0, 12)); // NOI18N
+        btn_goToHomePage.setForeground(new java.awt.Color(60, 63, 65));
+        btn_goToHomePage.setText("HOME");
+        btn_goToHomePage.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        btn_goToHomePage.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_goToHomePageActionPerformed(evt);
+            }
+        });
+        jPanel2.add(btn_goToHomePage, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 10, 60, 30));
+        jPanel2.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 30, 60, -1));
 
-        jButton1.setBackground(new java.awt.Color(252, 205, 146));
-        jButton1.setFont(new java.awt.Font("Dubai Medium", 0, 12)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(60, 63, 65));
-        jButton1.setText("OK");
-        jButton1.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 810, 50));
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(121, 121, 121)
-                        .addComponent(jLabel2))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(52, 52, 52)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jScrollPane1)
-                            .addComponent(jTextField1, javax.swing.GroupLayout.DEFAULT_SIZE, 183, Short.MAX_VALUE)
-                            .addComponent(jSeparator1))
-                        .addGap(28, 28, 28)
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(25, 25, 25)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton1))
-                .addGap(0, 0, 0)
-                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(4, 4, 4)
-                .addComponent(jLabel2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 319, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(50, Short.MAX_VALUE))
-        );
+        BookingStatus_table.setBackground(new java.awt.Color(255, 255, 255));
+        BookingStatus_table.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        BookingStatus_table.setFont(new java.awt.Font("Dubai Medium", 0, 12)); // NOI18N
+        BookingStatus_table.setForeground(new java.awt.Color(60, 63, 65));
+        BookingStatus_table.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Car Make", "Car Model", "No. Plate", "Customer Name", "Total Payment", "Booking Status"
+            }
+        ));
+        BookingStatus_table.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                BookingStatus_tableMouseClicked(evt);
+            }
+        });
+        jScrollPane2.setViewportView(BookingStatus_table);
+
+        jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 130, 500, 310));
+
+        lbl_confirmation.setFont(new java.awt.Font("Dubai Medium", 0, 12)); // NOI18N
+        lbl_confirmation.setForeground(new java.awt.Color(60, 63, 65));
+        lbl_confirmation.setText("BOOKING STATUS");
+        jPanel1.add(lbl_confirmation, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 120, -1, -1));
+
+        btnGrp_bookingStats.add(radBtn_booked);
+        radBtn_booked.setFont(new java.awt.Font("Dubai Medium", 0, 14)); // NOI18N
+        radBtn_booked.setForeground(new java.awt.Color(60, 63, 65));
+        radBtn_booked.setText("Booked");
+        radBtn_booked.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                radBtn_bookedActionPerformed(evt);
+            }
+        });
+        jPanel1.add(radBtn_booked, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 160, -1, -1));
+
+        btnGrp_bookingStats.add(radBtn_cancel);
+        radBtn_cancel.setFont(new java.awt.Font("Dubai Medium", 0, 14)); // NOI18N
+        radBtn_cancel.setForeground(new java.awt.Color(60, 63, 65));
+        radBtn_cancel.setText("Cancel");
+        radBtn_cancel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                radBtn_cancelActionPerformed(evt);
+            }
+        });
+        jPanel1.add(radBtn_cancel, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 190, -1, -1));
+
+        btn_confirm.setBackground(new java.awt.Color(252, 205, 146));
+        btn_confirm.setFont(new java.awt.Font("Dubai Medium", 0, 12)); // NOI18N
+        btn_confirm.setForeground(new java.awt.Color(60, 63, 65));
+        btn_confirm.setText("CONFIRM");
+        btn_confirm.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        btn_confirm.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_confirmActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btn_confirm, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 260, 80, 30));
+
+        btn_viewEnquiries.setBackground(new java.awt.Color(198, 225, 176));
+        btn_viewEnquiries.setFont(new java.awt.Font("Dubai Medium", 0, 12)); // NOI18N
+        btn_viewEnquiries.setForeground(new java.awt.Color(60, 63, 65));
+        btn_viewEnquiries.setText("View Enquiries");
+        btn_viewEnquiries.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        btn_viewEnquiries.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_viewEnquiriesActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btn_viewEnquiries, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 90, 90, 30));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -138,11 +185,135 @@ public class Admin_Booking extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 507, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void lbl_toCustPageMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbl_toCustPageMouseClicked
+        Admin_Customer customerPage = new Admin_Customer();
+        customerPage.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_lbl_toCustPageMouseClicked
+
+    private void btn_goToHomePageActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_goToHomePageActionPerformed
+        Admin_Home_Page goToHome = new Admin_Home_Page();
+        goToHome.setVisible(true);
+        this.dispose();
+        
+    }//GEN-LAST:event_btn_goToHomePageActionPerformed
+
+    private void btn_viewEnquiriesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_viewEnquiriesActionPerformed
+        String bookFilePath = "D:\\OODJ_ASSIGNMENT\\Zebrax\\src\\main\\java\\admin_database\\car.txt";
+        File bookingFile = new File(bookFilePath);
+        
+        try
+        {
+            FileReader fr = new FileReader(bookingFile);
+            BufferedReader br = new BufferedReader(fr);
+            
+            DefaultTableModel bookingTable = (DefaultTableModel)BookingStatus_table.getModel();
+            //get lines from txt file
+            Object[] lines = br.lines().toArray();
+            
+            //extract data from lines
+            //set data to the table
+            
+            for (int i = 0; i < lines.length; i++)
+            {
+                String line = lines[i].toString().trim();
+                String [] row = line.split(",");
+                bookingTable.addRow(row);
+            }
+        } 
+        catch (FileNotFoundException ex) 
+        {
+            Logger.getLogger(Admin_Booking.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_btn_viewEnquiriesActionPerformed
+
+    private void btn_confirmActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_confirmActionPerformed
+        
+        DefaultTableModel bookingTable = (DefaultTableModel)BookingStatus_table.getModel();
+        int i = BookingStatus_table.getSelectedRow();
+        
+        if (i >= 0)
+        {
+            bookingTable.setValueAt(this.btnGrp_bookingStats.getSelection().getActionCommand(),i,5);
+            
+        }
+        
+        String bookFilePath = "D:\\OODJ_ASSIGNMENT\\Zebrax\\src\\main\\java\\admin_database\\car.txt";
+        File bookFile = new File(bookFilePath);
+        
+        try
+        {
+            FileWriter fw = new FileWriter(bookFile);
+            BufferedWriter bw = new BufferedWriter(fw);
+            
+            for(i = 0; i < BookingStatus_table.getRowCount(); i++ )
+            {
+                
+                for(int j = 0; j <BookingStatus_table.getColumnCount(); j++)
+                { //rows
+                    bw.write(BookingStatus_table.getValueAt(i , j).toString() + ",");//columns
+                        
+                }
+                bw.newLine();
+            
+            }
+            
+            JOptionPane.showMessageDialog(this, "Booking confirmed!");
+            
+            bw.flush(); //to clear whatever in buffered writer stream
+            bw.close();
+            fw.close();
+     
+        } 
+        catch (IOException ex) 
+        {
+            Logger.getLogger(Admin_Booking.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        
+    }//GEN-LAST:event_btn_confirmActionPerformed
+
+    private void radBtn_bookedActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_radBtn_bookedActionPerformed
+        //to get the selected value 'Booked' return as text in Jtable
+        this.radBtn_booked.setActionCommand("Booked");
+    }//GEN-LAST:event_radBtn_bookedActionPerformed
+
+    private void radBtn_cancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_radBtn_cancelActionPerformed
+        //to get the selected value 'cancel' return as text in Jtable
+        this.radBtn_cancel.setActionCommand("Cancel");
+    }//GEN-LAST:event_radBtn_cancelActionPerformed
+
+    private void BookingStatus_tableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BookingStatus_tableMouseClicked
+        //To get any number of row or column to get it clicked so that it could be
+        //update or delete
+        
+        // get value when point, and store the value in this.row / this.column
+        this.row = this.BookingStatus_table.getSelectedRow();
+        this.column = this.BookingStatus_table.columnAtPoint(evt.getPoint());
+        
+        if (row >= 0)
+        {
+            String bookStats = this.BookingStatus_table.getModel().getValueAt(this.row,5).toString();
+            if (bookStats.equals("Booked"))
+            {
+                radBtn_booked.setSelected(true);
+            }
+            else
+            {
+                radBtn_cancel.setSelected(true);
+            }
+            
+        }
+        
+        
+       
+    }//GEN-LAST:event_BookingStatus_tableMouseClicked
 
     /**
      * @param args the command line arguments
@@ -180,14 +351,19 @@ public class Admin_Booking extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JList<String> jList1;
+    private javax.swing.JTable BookingStatus_table;
+    private javax.swing.ButtonGroup btnGrp_bookingStats;
+    private javax.swing.JButton btn_confirm;
+    private javax.swing.JButton btn_goToHomePage;
+    private javax.swing.JButton btn_viewEnquiries;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JSeparator jSeparator1;
-    private javax.swing.JTextField jTextField1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JSeparator jSeparator2;
+    private javax.swing.JLabel lbl_booking;
+    private javax.swing.JLabel lbl_confirmation;
+    private javax.swing.JLabel lbl_toCustPage;
+    private javax.swing.JRadioButton radBtn_booked;
+    private javax.swing.JRadioButton radBtn_cancel;
     // End of variables declaration//GEN-END:variables
 }

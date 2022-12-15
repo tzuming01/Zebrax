@@ -38,17 +38,14 @@ public class Admin_Home_Page extends javax.swing.JFrame {
         jPanel2 = new javax.swing.JPanel();
         goTo_customer = new javax.swing.JLabel();
         goTo_booking = new javax.swing.JLabel();
-        goTo_payment = new javax.swing.JLabel();
         goTo_host = new javax.swing.JLabel();
         goTo_carModels = new javax.swing.JLabel();
-        ViewAccountBtn = new javax.swing.JButton();
+        btn_logout = new javax.swing.JButton();
         jSeparator3 = new javax.swing.JSeparator();
-        jSeparator4 = new javax.swing.JSeparator();
         jSeparator5 = new javax.swing.JSeparator();
         jSeparator7 = new javax.swing.JSeparator();
         jSeparator6 = new javax.swing.JSeparator();
         jPanel3 = new javax.swing.JPanel();
-        employeeList_Btn1 = new javax.swing.JButton();
         report_Btn = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
@@ -59,6 +56,7 @@ public class Admin_Home_Page extends javax.swing.JFrame {
         setResizable(false);
 
         jPanel1.setBackground(new java.awt.Color(198, 225, 176));
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -85,17 +83,6 @@ public class Admin_Home_Page extends javax.swing.JFrame {
         });
         jPanel2.add(goTo_booking, new org.netbeans.lib.awtextra.AbsoluteConstraints(131, 24, -1, -1));
 
-        goTo_payment.setFont(new java.awt.Font("Dubai Medium", 0, 15)); // NOI18N
-        goTo_payment.setForeground(new java.awt.Color(66, 63, 63));
-        goTo_payment.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        goTo_payment.setText("Payments");
-        goTo_payment.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                goTo_paymentMouseClicked(evt);
-            }
-        });
-        jPanel2.add(goTo_payment, new org.netbeans.lib.awtextra.AbsoluteConstraints(215, 24, -1, -1));
-
         goTo_host.setFont(new java.awt.Font("Dubai Medium", 0, 15)); // NOI18N
         goTo_host.setForeground(new java.awt.Color(66, 63, 63));
         goTo_host.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -105,7 +92,7 @@ public class Admin_Home_Page extends javax.swing.JFrame {
                 goTo_hostMouseClicked(evt);
             }
         });
-        jPanel2.add(goTo_host, new org.netbeans.lib.awtextra.AbsoluteConstraints(311, 24, -1, -1));
+        jPanel2.add(goTo_host, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 24, -1, -1));
 
         goTo_carModels.setFont(new java.awt.Font("Dubai Medium", 0, 15)); // NOI18N
         goTo_carModels.setForeground(new java.awt.Color(66, 63, 63));
@@ -116,39 +103,28 @@ public class Admin_Home_Page extends javax.swing.JFrame {
                 goTo_carModelsMouseClicked(evt);
             }
         });
-        jPanel2.add(goTo_carModels, new org.netbeans.lib.awtextra.AbsoluteConstraints(375, 24, -1, -1));
+        jPanel2.add(goTo_carModels, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 24, -1, -1));
 
-        ViewAccountBtn.setBackground(new java.awt.Color(252, 205, 146));
-        ViewAccountBtn.setFont(new java.awt.Font("Dubai Medium", 0, 15)); // NOI18N
-        ViewAccountBtn.setForeground(new java.awt.Color(66, 63, 63));
-        ViewAccountBtn.setText("Z ");
-        ViewAccountBtn.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
-        ViewAccountBtn.addActionListener(new java.awt.event.ActionListener() {
+        btn_logout.setBackground(new java.awt.Color(252, 205, 146));
+        btn_logout.setFont(new java.awt.Font("Dubai Medium", 0, 12)); // NOI18N
+        btn_logout.setForeground(new java.awt.Color(66, 63, 63));
+        btn_logout.setText("LOG OUT");
+        btn_logout.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        btn_logout.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ViewAccountBtnActionPerformed(evt);
+                btn_logoutActionPerformed(evt);
             }
         });
-        jPanel2.add(ViewAccountBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 20, 30, -1));
+        jPanel2.add(btn_logout, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 30, 90, 20));
         jPanel2.add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 50, 50, 10));
-        jPanel2.add(jSeparator4, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 50, 50, 10));
-        jPanel2.add(jSeparator5, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 50, 30, 10));
+        jPanel2.add(jSeparator5, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 50, 30, 10));
         jPanel2.add(jSeparator7, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 50, 60, 10));
-        jPanel2.add(jSeparator6, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 50, 100, 11));
+        jPanel2.add(jSeparator6, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 50, 110, 10));
+
+        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 796, 65));
 
         jPanel3.setBackground(new java.awt.Color(255, 255, 255));
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        employeeList_Btn1.setBackground(new java.awt.Color(252, 205, 146));
-        employeeList_Btn1.setFont(new java.awt.Font("Dubai Medium", 0, 12)); // NOI18N
-        employeeList_Btn1.setForeground(new java.awt.Color(66, 63, 63));
-        employeeList_Btn1.setText("Employees");
-        employeeList_Btn1.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
-        employeeList_Btn1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                employeeList_Btn1ActionPerformed(evt);
-            }
-        });
-        jPanel3.add(employeeList_Btn1, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 210, 85, 31));
 
         report_Btn.setBackground(new java.awt.Color(252, 205, 146));
         report_Btn.setFont(new java.awt.Font("Dubai Medium", 0, 12)); // NOI18N
@@ -160,7 +136,7 @@ public class Admin_Home_Page extends javax.swing.JFrame {
                 report_BtnActionPerformed(evt);
             }
         });
-        jPanel3.add(report_Btn, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 210, 85, 31));
+        jPanel3.add(report_Btn, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 210, 85, 31));
 
         jLabel3.setFont(new java.awt.Font("Dubai Medium", 0, 50)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(60, 63, 65));
@@ -174,24 +150,7 @@ public class Admin_Home_Page extends javax.swing.JFrame {
         jLabel1.setText("Hello,");
         jPanel3.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 40, -1, -1));
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, 796, Short.MAX_VALUE)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 546, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(120, 120, 120))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(35, 35, 35)
-                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 329, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(49, Short.MAX_VALUE))
-        );
+        jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 100, 546, 329));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -201,7 +160,7 @@ public class Admin_Home_Page extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 493, Short.MAX_VALUE)
         );
 
         pack();
@@ -219,12 +178,6 @@ public class Admin_Home_Page extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_goTo_bookingMouseClicked
 
-    private void goTo_paymentMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_goTo_paymentMouseClicked
-        Admin_payment pay = new Admin_payment();
-        pay.setVisible(true);
-        this.dispose();
-    }//GEN-LAST:event_goTo_paymentMouseClicked
-
     private void goTo_hostMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_goTo_hostMouseClicked
         Admin_Host host = new Admin_Host();
         host.setVisible(true);
@@ -237,17 +190,11 @@ public class Admin_Home_Page extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_goTo_carModelsMouseClicked
 
-    private void employeeList_Btn1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_employeeList_Btn1ActionPerformed
-        Admin_reg_viewAdminList empList = new Admin_reg_viewAdminList();
-        empList.setVisible(true);
+    private void btn_logoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_logoutActionPerformed
+        Admin_Login loginP = new Admin_Login();
+        loginP.setVisible(true);
         this.dispose();
-    }//GEN-LAST:event_employeeList_Btn1ActionPerformed
-
-    private void ViewAccountBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ViewAccountBtnActionPerformed
-        Admin_viewAccount acc = new Admin_viewAccount();
-        acc.setVisible(true);
-        this.dispose();
-    }//GEN-LAST:event_ViewAccountBtnActionPerformed
+    }//GEN-LAST:event_btn_logoutActionPerformed
 
     private void report_BtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_report_BtnActionPerformed
         Admin_genReport report = new Admin_genReport();
@@ -292,20 +239,17 @@ public class Admin_Home_Page extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton ViewAccountBtn;
-    private javax.swing.JButton employeeList_Btn1;
+    private javax.swing.JButton btn_logout;
     private javax.swing.JLabel goTo_booking;
     private javax.swing.JLabel goTo_carModels;
     private javax.swing.JLabel goTo_customer;
     private javax.swing.JLabel goTo_host;
-    private javax.swing.JLabel goTo_payment;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JSeparator jSeparator3;
-    private javax.swing.JSeparator jSeparator4;
     private javax.swing.JSeparator jSeparator5;
     private javax.swing.JSeparator jSeparator6;
     private javax.swing.JSeparator jSeparator7;

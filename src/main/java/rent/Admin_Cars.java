@@ -501,6 +501,7 @@ public class Admin_Cars extends javax.swing.JFrame {
     private void TXT_carModelFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_TXT_carModelFocusGained
         //when click whatever text on the box will disappear
         TXT_carModel.setText("");
+       
     }//GEN-LAST:event_TXT_carModelFocusGained
 
     private void TXT_carMakeFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_TXT_carMakeFocusGained
@@ -509,6 +510,7 @@ public class Admin_Cars extends javax.swing.JFrame {
 
     private void TXT_carYearFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_TXT_carYearFocusGained
         TXT_carYear.setText("");
+        
     }//GEN-LAST:event_TXT_carYearFocusGained
 
     private void TXT_plateNumFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_TXT_plateNumFocusGained
@@ -540,10 +542,12 @@ public class Admin_Cars extends javax.swing.JFrame {
             this.btnGrp_TRANSMISSION.getSelection().getActionCommand(),this.btnGrp_APPEARANCE.getSelection().getActionCommand(),
             this.TXT_rentPerDay.getText(),this.TXT_pickDropCar.getText()});
         
-        String admin_carFile = "D:\\OODJ_ASSIGNMENT\\Zebrax\\src\\main\\java\\admin_database\\Z_CarReg.txt";
-        File car_file = new File(admin_carFile);
         
-        try {
+            String admin_carFile = "D:\\OODJ_ASSIGNMENT\\Zebrax\\src\\main\\java\\admin_database\\Z_CarReg.txt";
+            File car_file = new File(admin_carFile);
+        
+        try 
+        {
             FileWriter fw = new FileWriter(car_file,true);
             BufferedWriter bw = new BufferedWriter(fw);
             for(int i = 0; i < car_data.getRowCount(); i++ )
@@ -566,8 +570,8 @@ public class Admin_Cars extends javax.swing.JFrame {
         catch (IOException ex) 
         {
             Logger.getLogger(Admin_Cars.class.getName()).log(Level.SEVERE, null, ex);
-        } 
-        
+        }     
+       
     }//GEN-LAST:event_Btn_saveActionPerformed
 
     private void radBtn_petrol95ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_radBtn_petrol95ActionPerformed

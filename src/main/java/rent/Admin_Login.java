@@ -98,7 +98,7 @@ public class Admin_Login extends javax.swing.JFrame {
 
         usernameTXT.setBackground(new java.awt.Color(198, 225, 176));
         usernameTXT.setFont(new java.awt.Font("Dubai Medium", 0, 13)); // NOI18N
-        usernameTXT.setForeground(new java.awt.Color(254, 254, 254));
+        usernameTXT.setForeground(new java.awt.Color(66, 63, 63));
         usernameTXT.setText("Username");
         usernameTXT.setBorder(null);
         usernameTXT.addFocusListener(new java.awt.event.FocusAdapter() {
@@ -106,25 +106,15 @@ public class Admin_Login extends javax.swing.JFrame {
                 usernameTXTFocusGained(evt);
             }
         });
-        usernameTXT.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                usernameTXTActionPerformed(evt);
-            }
-        });
         jPanel2.add(usernameTXT, new org.netbeans.lib.awtextra.AbsoluteConstraints(79, 187, 143, 30));
 
         passwordTXT.setBackground(new java.awt.Color(198, 225, 176));
         passwordTXT.setFont(new java.awt.Font("Franklin Gothic Demi", 0, 12)); // NOI18N
-        passwordTXT.setForeground(new java.awt.Color(249, 255, 245));
+        passwordTXT.setForeground(new java.awt.Color(66, 63, 63));
         passwordTXT.setBorder(null);
         passwordTXT.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 passwordTXTFocusGained(evt);
-            }
-        });
-        passwordTXT.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                passwordTXTActionPerformed(evt);
             }
         });
         jPanel2.add(passwordTXT, new org.netbeans.lib.awtextra.AbsoluteConstraints(79, 260, 143, 30));
@@ -138,7 +128,7 @@ public class Admin_Login extends javax.swing.JFrame {
         jPanel2.add(password_logo, new org.netbeans.lib.awtextra.AbsoluteConstraints(234, 260, 35, 28));
 
         ForgotPassLbl.setFont(new java.awt.Font("Dubai Medium", 0, 13)); // NOI18N
-        ForgotPassLbl.setForeground(new java.awt.Color(254, 254, 254));
+        ForgotPassLbl.setForeground(new java.awt.Color(66, 63, 63));
         ForgotPassLbl.setText("Forgot Password? ");
         ForgotPassLbl.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -165,7 +155,7 @@ public class Admin_Login extends javax.swing.JFrame {
         jPanel2.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 50, -1, 40));
 
         jLabel6.setFont(new java.awt.Font("Dubai Medium", 0, 13)); // NOI18N
-        jLabel6.setForeground(new java.awt.Color(254, 254, 254));
+        jLabel6.setForeground(new java.awt.Color(66, 63, 63));
         jLabel6.setText("Password");
         jPanel2.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 240, -1, -1));
 
@@ -173,14 +163,6 @@ public class Admin_Login extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void usernameTXTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_usernameTXTActionPerformed
-        
-    }//GEN-LAST:event_usernameTXTActionPerformed
-
-    private void passwordTXTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_passwordTXTActionPerformed
-        
-    }//GEN-LAST:event_passwordTXTActionPerformed
 
     private void usernameTXTFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_usernameTXTFocusGained
         usernameTXT.setText("");
@@ -199,7 +181,7 @@ public class Admin_Login extends javax.swing.JFrame {
         
         //find file to check the name inside the file
         try {
-            File admin = new File("D:\\OODJ_ASSIGNMENT\\Zebrax\\src\\main\\java\\admin_database\\Z_admins.txt");
+            File admin = new File("D:\\OODJ_ASSIGNMENT\\Zebrax\\src\\main\\java\\admin_database\\Z_adminsLogin.txt");
             Scanner scan = new Scanner(admin);
             scan.useDelimiter("[,\n]"); //pattern stop at space or newline
             

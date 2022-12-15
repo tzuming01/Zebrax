@@ -4,17 +4,34 @@
  */
 package rent;
 
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author aunir
  */
 public class Admin_Customer extends javax.swing.JFrame {
-
+    
+    private int row, column;
     /**
      * Creates new form Admin_Customer
      */
     public Admin_Customer() {
         initComponents();
+        
+        //set size of the column
+        Customer_data.getColumnModel().getColumn(1).setMinWidth(0); //to hide password column.
+        Customer_data.getColumnModel().getColumn(1).setMaxWidth(0);
     }
 
     /**
@@ -29,30 +46,35 @@ public class Admin_Customer extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         lbl_manageCustomer = new javax.swing.JLabel();
-        jButton5 = new javax.swing.JButton();
-        jLabel2 = new javax.swing.JLabel();
+        btn_homePageGo = new javax.swing.JButton();
+        lbl_bookPage = new javax.swing.JLabel();
+        jSeparator2 = new javax.swing.JSeparator();
         lbl_emailUser = new javax.swing.JLabel();
         lbl_CpassW = new javax.swing.JLabel();
         lbl_CfName = new javax.swing.JLabel();
         lbl_CLname = new javax.swing.JLabel();
         lbl_C_ctcNum = new javax.swing.JLabel();
         lbl_C_IC = new javax.swing.JLabel();
-        lbl__ = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jPasswordField1 = new javax.swing.JPasswordField();
-        jTextField2 = new javax.swing.JTextField();
-        jTextField3 = new javax.swing.JTextField();
-        jTextField4 = new javax.swing.JTextField();
-        jTextField5 = new javax.swing.JTextField();
-        jTextField6 = new javax.swing.JTextField();
+        TXT_C_email = new javax.swing.JTextField();
+        TXT_C_pw = new javax.swing.JPasswordField();
+        TXT_C_fName = new javax.swing.JTextField();
+        TXT_C_Lname = new javax.swing.JTextField();
+        TXT_C_ctcNum = new javax.swing.JTextField();
+        TXT_C_IC = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
+        Customer_data = new javax.swing.JTable();
+        btn_C_save = new javax.swing.JButton();
+        btn_C_delete = new javax.swing.JButton();
+        Btn_C_reset = new javax.swing.JButton();
+        btn_C_update = new javax.swing.JButton();
+        lbl_viewCust = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
+        jSeparator3 = new javax.swing.JSeparator();
+        jSeparator4 = new javax.swing.JSeparator();
+        jSeparator5 = new javax.swing.JSeparator();
+        jSeparator6 = new javax.swing.JSeparator();
+        jSeparator7 = new javax.swing.JSeparator();
+        jSeparator8 = new javax.swing.JSeparator();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("[Z] CUSTOMERS");
@@ -70,25 +92,36 @@ public class Admin_Customer extends javax.swing.JFrame {
         lbl_manageCustomer.setText("MANAGE CUSTOMER");
         jPanel2.add(lbl_manageCustomer, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 20, -1, 20));
 
-        jButton5.setBackground(new java.awt.Color(252, 205, 146));
-        jButton5.setFont(new java.awt.Font("Dubai Medium", 0, 12)); // NOI18N
-        jButton5.setForeground(new java.awt.Color(60, 63, 65));
-        jButton5.setText("HOME");
-        jButton5.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
-        jPanel2.add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 10, 60, 30));
+        btn_homePageGo.setBackground(new java.awt.Color(252, 205, 146));
+        btn_homePageGo.setFont(new java.awt.Font("Dubai Medium", 0, 12)); // NOI18N
+        btn_homePageGo.setForeground(new java.awt.Color(60, 63, 65));
+        btn_homePageGo.setText("HOME");
+        btn_homePageGo.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        btn_homePageGo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_homePageGoActionPerformed(evt);
+            }
+        });
+        jPanel2.add(btn_homePageGo, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 10, 60, 30));
 
-        jLabel2.setFont(new java.awt.Font("Dubai Medium", 0, 12)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(60, 63, 65));
-        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel2.setText("QUICK BOOK");
-        jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 10, -1, 30));
+        lbl_bookPage.setFont(new java.awt.Font("Dubai Medium", 0, 12)); // NOI18N
+        lbl_bookPage.setForeground(new java.awt.Color(60, 63, 65));
+        lbl_bookPage.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lbl_bookPage.setText("BOOKING ENQUIRIES");
+        lbl_bookPage.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lbl_bookPageMouseClicked(evt);
+            }
+        });
+        jPanel2.add(lbl_bookPage, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 10, -1, 30));
+        jPanel2.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 30, 110, 10));
 
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 810, 50));
 
         lbl_emailUser.setFont(new java.awt.Font("Dubai Medium", 0, 13)); // NOI18N
         lbl_emailUser.setForeground(new java.awt.Color(60, 63, 65));
         lbl_emailUser.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lbl_emailUser.setText("Username/email");
+        lbl_emailUser.setText("Email");
         jPanel1.add(lbl_emailUser, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 80, -1, -1));
 
         lbl_CpassW.setFont(new java.awt.Font("Dubai Medium", 0, 13)); // NOI18N
@@ -121,80 +154,157 @@ public class Admin_Customer extends javax.swing.JFrame {
         lbl_C_IC.setText("NRIC");
         jPanel1.add(lbl_C_IC, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 80, -1, -1));
 
-        lbl__.setFont(new java.awt.Font("Dubai Medium", 0, 13)); // NOI18N
-        lbl__.setForeground(new java.awt.Color(60, 63, 65));
-        lbl__.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lbl__.setText("Thelast one");
-        jPanel1.add(lbl__, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 180, -1, -1));
+        TXT_C_email.setBackground(new java.awt.Color(255, 255, 255));
+        TXT_C_email.setFont(new java.awt.Font("Dubai Medium", 0, 12)); // NOI18N
+        TXT_C_email.setForeground(new java.awt.Color(60, 63, 65));
+        TXT_C_email.setBorder(null);
+        TXT_C_email.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                TXT_C_emailFocusGained(evt);
+            }
+        });
+        jPanel1.add(TXT_C_email, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 100, 150, 30));
 
-        jTextField1.setText("jTextField1");
-        jPanel1.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 100, 150, -1));
+        TXT_C_pw.setBackground(new java.awt.Color(255, 255, 255));
+        TXT_C_pw.setFont(new java.awt.Font("Dubai Medium", 0, 12)); // NOI18N
+        TXT_C_pw.setForeground(new java.awt.Color(60, 63, 65));
+        TXT_C_pw.setBorder(null);
+        TXT_C_pw.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                TXT_C_pwFocusGained(evt);
+            }
+        });
+        jPanel1.add(TXT_C_pw, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 150, 150, 30));
 
-        jPasswordField1.setText("jPasswordField1");
-        jPanel1.add(jPasswordField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 150, 150, -1));
+        TXT_C_fName.setBackground(new java.awt.Color(255, 255, 255));
+        TXT_C_fName.setFont(new java.awt.Font("Dubai Medium", 0, 12)); // NOI18N
+        TXT_C_fName.setForeground(new java.awt.Color(60, 63, 65));
+        TXT_C_fName.setBorder(null);
+        TXT_C_fName.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                TXT_C_fNameFocusGained(evt);
+            }
+        });
+        jPanel1.add(TXT_C_fName, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 100, 150, 30));
 
-        jTextField2.setText("jTextField2");
-        jPanel1.add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 100, 150, -1));
+        TXT_C_Lname.setBackground(new java.awt.Color(255, 255, 255));
+        TXT_C_Lname.setFont(new java.awt.Font("Dubai Medium", 0, 12)); // NOI18N
+        TXT_C_Lname.setForeground(new java.awt.Color(60, 63, 65));
+        TXT_C_Lname.setBorder(null);
+        TXT_C_Lname.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                TXT_C_LnameFocusGained(evt);
+            }
+        });
+        jPanel1.add(TXT_C_Lname, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 150, 150, 30));
 
-        jTextField3.setText("jTextField3");
-        jPanel1.add(jTextField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 150, 150, -1));
+        TXT_C_ctcNum.setBackground(new java.awt.Color(255, 255, 255));
+        TXT_C_ctcNum.setFont(new java.awt.Font("Dubai Medium", 0, 12)); // NOI18N
+        TXT_C_ctcNum.setForeground(new java.awt.Color(60, 63, 65));
+        TXT_C_ctcNum.setBorder(null);
+        TXT_C_ctcNum.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                TXT_C_ctcNumFocusGained(evt);
+            }
+        });
+        jPanel1.add(TXT_C_ctcNum, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 150, 150, 30));
 
-        jTextField4.setText("jTextField4");
-        jPanel1.add(jTextField4, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 150, 150, -1));
+        TXT_C_IC.setBackground(new java.awt.Color(255, 255, 255));
+        TXT_C_IC.setFont(new java.awt.Font("Dubai Medium", 0, 12)); // NOI18N
+        TXT_C_IC.setForeground(new java.awt.Color(60, 63, 65));
+        TXT_C_IC.setBorder(null);
+        TXT_C_IC.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                TXT_C_ICFocusGained(evt);
+            }
+        });
+        jPanel1.add(TXT_C_IC, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 100, 150, 30));
 
-        jTextField5.setText("jTextField4");
-        jPanel1.add(jTextField5, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 100, 150, -1));
-
-        jTextField6.setText("jTextField6");
-        jPanel1.add(jTextField6, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 200, 150, -1));
-
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        Customer_data.setBackground(new java.awt.Color(255, 255, 255));
+        Customer_data.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        Customer_data.setFont(new java.awt.Font("Dubai Medium", 0, 12)); // NOI18N
+        Customer_data.setForeground(new java.awt.Color(60, 63, 65));
+        Customer_data.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "Email", "Password", "First name", "Last name", "Contact number", "NRIC"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        Customer_data.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                Customer_dataMouseClicked(evt);
+            }
+        });
+        jScrollPane1.setViewportView(Customer_data);
 
         jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 270, 810, 250));
 
-        jButton1.setBackground(new java.awt.Color(252, 205, 146));
-        jButton1.setFont(new java.awt.Font("Dubai Medium", 0, 12)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(60, 63, 65));
-        jButton1.setText("Save");
-        jButton1.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
-        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 100, 90, 30));
+        btn_C_save.setBackground(new java.awt.Color(252, 205, 146));
+        btn_C_save.setFont(new java.awt.Font("Dubai Medium", 0, 12)); // NOI18N
+        btn_C_save.setForeground(new java.awt.Color(60, 63, 65));
+        btn_C_save.setText("Save");
+        btn_C_save.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        btn_C_save.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_C_saveActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btn_C_save, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 100, 90, 30));
 
-        jButton2.setBackground(new java.awt.Color(255, 105, 97));
-        jButton2.setForeground(new java.awt.Color(255, 255, 255));
-        jButton2.setText("Delete");
-        jButton2.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
-        jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 180, 90, 30));
+        btn_C_delete.setBackground(new java.awt.Color(255, 105, 97));
+        btn_C_delete.setFont(new java.awt.Font("Dubai Medium", 0, 12)); // NOI18N
+        btn_C_delete.setForeground(new java.awt.Color(255, 255, 255));
+        btn_C_delete.setText("Delete");
+        btn_C_delete.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        btn_C_delete.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btn_C_deleteMouseClicked(evt);
+            }
+        });
+        jPanel1.add(btn_C_delete, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 180, 90, 30));
 
-        jButton3.setBackground(new java.awt.Color(198, 225, 176));
-        jButton3.setFont(new java.awt.Font("Dubai Medium", 0, 12)); // NOI18N
-        jButton3.setForeground(new java.awt.Color(97, 97, 97));
-        jButton3.setText("Reset");
-        jButton3.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
-        jPanel1.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 220, 90, 30));
+        Btn_C_reset.setBackground(new java.awt.Color(198, 225, 176));
+        Btn_C_reset.setFont(new java.awt.Font("Dubai Medium", 0, 12)); // NOI18N
+        Btn_C_reset.setForeground(new java.awt.Color(97, 97, 97));
+        Btn_C_reset.setText("Reset");
+        Btn_C_reset.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        Btn_C_reset.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Btn_C_resetActionPerformed(evt);
+            }
+        });
+        jPanel1.add(Btn_C_reset, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 220, 90, 30));
 
-        jButton4.setBackground(new java.awt.Color(255, 255, 255));
-        jButton4.setFont(new java.awt.Font("Dubai Medium", 0, 12)); // NOI18N
-        jButton4.setForeground(new java.awt.Color(97, 97, 97));
-        jButton4.setText("Update");
-        jButton4.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
-        jPanel1.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 140, 90, 30));
+        btn_C_update.setBackground(new java.awt.Color(255, 255, 255));
+        btn_C_update.setFont(new java.awt.Font("Dubai Medium", 0, 12)); // NOI18N
+        btn_C_update.setForeground(new java.awt.Color(97, 97, 97));
+        btn_C_update.setText("Update");
+        btn_C_update.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        btn_C_update.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_C_updateActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btn_C_update, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 140, 90, 30));
 
-        jLabel1.setFont(new java.awt.Font("Dubai Medium", 0, 13)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(60, 63, 65));
-        jLabel1.setText("View customer list");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 230, -1, 20));
-        jPanel1.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 250, 100, 10));
+        lbl_viewCust.setFont(new java.awt.Font("Dubai Medium", 0, 13)); // NOI18N
+        lbl_viewCust.setForeground(new java.awt.Color(60, 63, 65));
+        lbl_viewCust.setText("View customer list");
+        lbl_viewCust.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lbl_viewCustMouseClicked(evt);
+            }
+        });
+        jPanel1.add(lbl_viewCust, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 230, -1, 20));
+        jPanel1.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 250, 100, 10));
+        jPanel1.add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 130, 150, 10));
+        jPanel1.add(jSeparator4, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 130, 150, 10));
+        jPanel1.add(jSeparator5, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 130, 150, 10));
+        jPanel1.add(jSeparator6, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 180, 150, 10));
+        jPanel1.add(jSeparator7, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 180, 150, 10));
+        jPanel1.add(jSeparator8, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 180, 150, 10));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -209,6 +319,210 @@ public class Admin_Customer extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void lbl_bookPageMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbl_bookPageMouseClicked
+        Admin_Booking toViewBook = new Admin_Booking();
+        toViewBook.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_lbl_bookPageMouseClicked
+
+    private void btn_homePageGoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_homePageGoActionPerformed
+        Admin_Home_Page goHomePage = new Admin_Home_Page();
+        goHomePage.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_btn_homePageGoActionPerformed
+
+    private void TXT_C_emailFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_TXT_C_emailFocusGained
+        TXT_C_email.setText("");
+    }//GEN-LAST:event_TXT_C_emailFocusGained
+
+    private void TXT_C_fNameFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_TXT_C_fNameFocusGained
+        TXT_C_fName.setText("");
+    }//GEN-LAST:event_TXT_C_fNameFocusGained
+
+    private void TXT_C_LnameFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_TXT_C_LnameFocusGained
+        TXT_C_Lname.setText("");
+    }//GEN-LAST:event_TXT_C_LnameFocusGained
+
+    private void TXT_C_pwFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_TXT_C_pwFocusGained
+       TXT_C_pw.setText("");
+    }//GEN-LAST:event_TXT_C_pwFocusGained
+
+    private void TXT_C_ICFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_TXT_C_ICFocusGained
+       TXT_C_IC.setText("");
+    }//GEN-LAST:event_TXT_C_ICFocusGained
+
+    private void TXT_C_ctcNumFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_TXT_C_ctcNumFocusGained
+        TXT_C_ctcNum.setText("");
+    }//GEN-LAST:event_TXT_C_ctcNumFocusGained
+
+    private void btn_C_saveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_C_saveActionPerformed
+          //to get the table
+        DefaultTableModel customer_table = (DefaultTableModel)this.Customer_data.getModel();
+        //to get the value and add to the row
+        customer_table.addRow(new Object[]{this.TXT_C_email.getText(),this.TXT_C_pw.getText(),this.TXT_C_fName.getText(),
+        this.TXT_C_Lname.getText(),this.TXT_C_ctcNum.getText(),this.TXT_C_IC.getText()});
+        
+        String custFilePath = "D:\\OODJ_ASSIGNMENT\\Zebrax\\src\\main\\java\\admin_database\\user.txt";
+        File custFile = new File(custFilePath);
+        
+        try
+        {
+            FileWriter fw = new FileWriter(custFile,true);
+            BufferedWriter bw = new BufferedWriter(fw);
+            
+            for(int i = 0; i < Customer_data.getRowCount(); i++ )
+            {
+                
+                for(int j = 0; j <Customer_data.getColumnCount(); j++){ //rows
+                    bw.write(Customer_data.getValueAt(i , j).toString() + ",");//columns
+                        
+                }
+                bw.newLine();
+            
+            }
+            JOptionPane.showMessageDialog(this, "Saved!");
+            bw.close();
+            fw.close();
+        } 
+        catch (IOException ex) 
+        {
+            Logger.getLogger(Admin_Customer.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+    }//GEN-LAST:event_btn_C_saveActionPerformed
+
+    private void Customer_dataMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Customer_dataMouseClicked
+        //To get any number of row or column to get it clicked so that it could be
+        //update or delete
+        
+        // get value when point, and store the value in this.row / this.column
+        this.row = this.Customer_data.rowAtPoint(evt.getPoint()); 
+        
+        //means that it's a valid row not just anywhere
+        if(row >= 0) 
+        {
+            //to get the value, set to text
+            String cust_email = this.Customer_data.getModel().getValueAt(this.row,0).toString();  
+            this.TXT_C_email.setText(cust_email);
+            String cust_pw = this.Customer_data.getModel().getValueAt(this.row,1).toString();  
+            this.TXT_C_pw.setText(cust_pw);
+            String cust_fname = this.Customer_data.getModel().getValueAt(this.row,2).toString();  
+            this.TXT_C_fName.setText(cust_fname);
+            String cust_lname = this.Customer_data.getModel().getValueAt(this.row,3).toString();  
+            this.TXT_C_Lname.setText(cust_lname);
+            String cust_phone = this.Customer_data.getModel().getValueAt(this.row,4).toString();  
+            this.TXT_C_ctcNum.setText(cust_phone);
+            String cust_IC = this.Customer_data.getModel().getValueAt(this.row,5).toString();  
+            this.TXT_C_IC.setText(cust_IC);
+        }
+            
+    }//GEN-LAST:event_Customer_dataMouseClicked
+
+    private void btn_C_updateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_C_updateActionPerformed
+         // to get the value and set the value
+        DefaultTableModel customer_table = (DefaultTableModel)this.Customer_data.getModel();
+        int i = Customer_data.getSelectedRow();
+        
+        customer_table.setValueAt(this.TXT_C_email.getText(), i, 0);
+        customer_table.setValueAt(this.TXT_C_pw.getText(), i, 1);
+        customer_table.setValueAt(this.TXT_C_fName.getText(), i, 2);
+        customer_table.setValueAt(this.TXT_C_Lname.getText(), i, 3);
+        customer_table.setValueAt(this.TXT_C_ctcNum.getText(), i, 4);
+        customer_table.setValueAt(this.TXT_C_IC.getText(), i, 5);
+        
+        
+        String custFilePath = "D:\\OODJ_ASSIGNMENT\\Zebrax\\src\\main\\java\\admin_database\\user.txt";
+        File custFile = new File (custFilePath);
+        
+        try
+        {
+            FileWriter fw = new FileWriter(custFile);
+            BufferedWriter bw = new BufferedWriter(fw);
+            
+            for(i = 0; i < Customer_data.getRowCount(); i++)
+            {
+                for(int j = 0; j < Customer_data.getColumnCount(); j++)
+                { //rows
+                    bw.write(Customer_data.getValueAt(i , j).toString() + ",");//columns
+                        
+                }
+                bw.newLine();
+            
+            }
+            bw.flush();
+            bw.close();
+            fw.close();
+            } 
+        catch (IOException ex) 
+        {
+            Logger.getLogger(Admin_Customer.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_btn_C_updateActionPerformed
+
+    private void btn_C_deleteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_C_deleteMouseClicked
+       // To delete row from the table
+        String custFilePath = "D:\\OODJ_ASSIGNMENT\\Zebrax\\src\\main\\java\\admin_database\\user.txt";
+        File custFile = new File (custFilePath);
+        DefaultTableModel customer_table = (DefaultTableModel)this.Customer_data.getModel();
+        
+        try
+        {
+           BufferedWriter out = new BufferedWriter(new FileWriter(custFile)); // no longer append;
+           for(int i=0; i<row; i++)
+           {
+               for(int j=0; j< column; j++)
+               {
+                   Object data = customer_table.getValueAt(i,j);
+                   out.write(data+":");
+               }
+           }
+           out.close(); // to make sure the file connection is dropped
+              
+        }
+        catch (IOException ex) 
+        {
+            Logger.getLogger(Admin_Customer.class.getName()).log(Level.SEVERE, "Error!", ex);
+        }
+        ((DefaultTableModel)this.Customer_data.getModel()).removeRow(this.row);
+    }//GEN-LAST:event_btn_C_deleteMouseClicked
+
+    private void Btn_C_resetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_C_resetActionPerformed
+        // reset
+        TXT_C_email.setText("");
+        TXT_C_pw.setText("");
+        TXT_C_fName.setText("");
+        TXT_C_Lname.setText("");
+        TXT_C_ctcNum.setText("");
+        TXT_C_IC.setText("");
+        
+    }//GEN-LAST:event_Btn_C_resetActionPerformed
+
+    private void lbl_viewCustMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbl_viewCustMouseClicked
+        String custFilePath = "D:\\OODJ_ASSIGNMENT\\Zebrax\\src\\main\\java\\admin_database\\user.txt";
+        File custFile = new File (custFilePath);
+        
+         try 
+         {
+            FileReader fr = new FileReader(custFile);
+            BufferedReader br = new BufferedReader(fr);
+            
+            DefaultTableModel model = (DefaultTableModel)Customer_data.getModel();
+            Object[] lines = br.lines().toArray();
+            
+            for (int i = 0; i < lines.length; i++)
+            {
+                String [] row = lines[i].toString().split(",");
+                model.addRow(row);
+                
+            }
+            
+        } 
+         catch (FileNotFoundException ex) 
+         {
+            Logger.getLogger(Admin_Customer.class.getName()).log(Level.SEVERE, "File not found!", ex);
+        }
+    }//GEN-LAST:event_lbl_viewCustMouseClicked
 
     /**
      * @param args the command line arguments
@@ -246,32 +560,37 @@ public class Admin_Customer extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
+    private javax.swing.JButton Btn_C_reset;
+    private javax.swing.JTable Customer_data;
+    private javax.swing.JTextField TXT_C_IC;
+    private javax.swing.JTextField TXT_C_Lname;
+    private javax.swing.JTextField TXT_C_ctcNum;
+    private javax.swing.JTextField TXT_C_email;
+    private javax.swing.JTextField TXT_C_fName;
+    private javax.swing.JPasswordField TXT_C_pw;
+    private javax.swing.JButton btn_C_delete;
+    private javax.swing.JButton btn_C_save;
+    private javax.swing.JButton btn_C_update;
+    private javax.swing.JButton btn_homePageGo;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JPasswordField jPasswordField1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
-    private javax.swing.JTable jTable1;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
-    private javax.swing.JTextField jTextField5;
-    private javax.swing.JTextField jTextField6;
+    private javax.swing.JSeparator jSeparator2;
+    private javax.swing.JSeparator jSeparator3;
+    private javax.swing.JSeparator jSeparator4;
+    private javax.swing.JSeparator jSeparator5;
+    private javax.swing.JSeparator jSeparator6;
+    private javax.swing.JSeparator jSeparator7;
+    private javax.swing.JSeparator jSeparator8;
     private javax.swing.JLabel lbl_CLname;
     private javax.swing.JLabel lbl_C_IC;
     private javax.swing.JLabel lbl_C_ctcNum;
     private javax.swing.JLabel lbl_CfName;
     private javax.swing.JLabel lbl_CpassW;
-    private javax.swing.JLabel lbl__;
+    private javax.swing.JLabel lbl_bookPage;
     private javax.swing.JLabel lbl_emailUser;
     private javax.swing.JLabel lbl_manageCustomer;
+    private javax.swing.JLabel lbl_viewCust;
     // End of variables declaration//GEN-END:variables
 }

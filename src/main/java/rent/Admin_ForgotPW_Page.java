@@ -4,6 +4,18 @@
  */
 package rent;
 
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.Scanner;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author aunir
@@ -16,6 +28,20 @@ public class Admin_ForgotPW_Page extends javax.swing.JFrame {
     public Admin_ForgotPW_Page() {
         initComponents();
     }
+    
+    public void verifyUser()
+    {
+        if ((txt_username.equals(" ")))
+        {
+            lbl_warnNotFound.setText("Please enter your username.");
+        }
+        
+        else if ((txt_username.equals(" ")) || (txt_oldPW.equals(" ")) ||(txt_newPW.equals("")) )
+        {
+            JOptionPane.showMessageDialog(this, "Please fill in the empty fields.");
+        }
+        
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -27,37 +53,228 @@ public class Admin_ForgotPW_Page extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
+        jPanel2 = new javax.swing.JPanel();
+        lbl_username = new javax.swing.JLabel();
+        txt_username = new javax.swing.JTextField();
+        lbl_warnNotFound = new javax.swing.JLabel();
+        lbl_Npw = new javax.swing.JLabel();
+        txt_newPW = new javax.swing.JPasswordField();
+        btn_resetPW = new javax.swing.JButton();
+        lbl_Opw1 = new javax.swing.JLabel();
+        txt_oldPW = new javax.swing.JPasswordField();
+        lbl_text = new javax.swing.JLabel();
+        btn_toLogin = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("[Z] FORGOT PASSWORD?");
-        setLocation(new java.awt.Point(325, 95));
+        setTitle("[Z] RESET PASSWORD");
+        setLocation(new java.awt.Point(510, 100));
+        setResizable(false);
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.setPreferredSize(new java.awt.Dimension(362, 461));
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 362, Short.MAX_VALUE)
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 441, Short.MAX_VALUE)
-        );
+        jPanel2.setBackground(new java.awt.Color(198, 225, 176));
+        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        lbl_username.setFont(new java.awt.Font("Dubai Medium", 0, 13)); // NOI18N
+        lbl_username.setForeground(new java.awt.Color(60, 63, 65));
+        lbl_username.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lbl_username.setText("Username");
+        jPanel2.add(lbl_username, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 50, -1, -1));
+
+        txt_username.setFont(new java.awt.Font("Dubai Medium", 0, 12)); // NOI18N
+        txt_username.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                txt_usernameFocusGained(evt);
+            }
+        });
+        jPanel2.add(txt_username, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 50, 160, -1));
+
+        lbl_warnNotFound.setFont(new java.awt.Font("Dubai Medium", 0, 12)); // NOI18N
+        lbl_warnNotFound.setForeground(new java.awt.Color(60, 63, 65));
+        lbl_warnNotFound.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jPanel2.add(lbl_warnNotFound, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 80, 160, 20));
+
+        lbl_Npw.setFont(new java.awt.Font("Dubai Medium", 0, 13)); // NOI18N
+        lbl_Npw.setForeground(new java.awt.Color(60, 63, 65));
+        lbl_Npw.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lbl_Npw.setText("New password");
+        jPanel2.add(lbl_Npw, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 180, -1, -1));
+
+        txt_newPW.setFont(new java.awt.Font("Dubai Medium", 0, 12)); // NOI18N
+        txt_newPW.setForeground(new java.awt.Color(60, 63, 65));
+        txt_newPW.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                txt_newPWFocusGained(evt);
+            }
+        });
+        jPanel2.add(txt_newPW, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 180, 160, -1));
+
+        btn_resetPW.setBackground(new java.awt.Color(255, 255, 255));
+        btn_resetPW.setFont(new java.awt.Font("Dubai Medium", 0, 12)); // NOI18N
+        btn_resetPW.setForeground(new java.awt.Color(60, 63, 65));
+        btn_resetPW.setText("RESET");
+        btn_resetPW.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        btn_resetPW.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_resetPWActionPerformed(evt);
+            }
+        });
+        jPanel2.add(btn_resetPW, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 230, 90, 30));
+
+        lbl_Opw1.setFont(new java.awt.Font("Dubai Medium", 0, 13)); // NOI18N
+        lbl_Opw1.setForeground(new java.awt.Color(60, 63, 65));
+        lbl_Opw1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lbl_Opw1.setText("Old password");
+        jPanel2.add(lbl_Opw1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 120, -1, -1));
+
+        txt_oldPW.setFont(new java.awt.Font("Dubai Medium", 0, 12)); // NOI18N
+        txt_oldPW.setForeground(new java.awt.Color(60, 63, 65));
+        txt_oldPW.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                txt_oldPWFocusGained(evt);
+            }
+        });
+        jPanel2.add(txt_oldPW, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 120, 160, -1));
+
+        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 100, 300, 280));
+
+        lbl_text.setFont(new java.awt.Font("Dubai Medium", 0, 14)); // NOI18N
+        lbl_text.setForeground(new java.awt.Color(60, 63, 65));
+        lbl_text.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lbl_text.setText("Hi there, reset your password below ! ");
+        jPanel1.add(lbl_text, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 40, -1, -1));
+
+        btn_toLogin.setBackground(new java.awt.Color(252, 205, 146));
+        btn_toLogin.setFont(new java.awt.Font("Dubai Medium", 0, 12)); // NOI18N
+        btn_toLogin.setForeground(new java.awt.Color(60, 63, 65));
+        btn_toLogin.setText("Back to login");
+        btn_toLogin.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        btn_toLogin.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_toLoginActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btn_toLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 390, 80, 30));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 364, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 473, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void txt_usernameFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txt_usernameFocusGained
+        txt_username.setText("");
+    }//GEN-LAST:event_txt_usernameFocusGained
+
+    private void txt_newPWFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txt_newPWFocusGained
+        txt_newPW.setText("");
+    }//GEN-LAST:event_txt_newPWFocusGained
+
+    private void btn_resetPWActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_resetPWActionPerformed
+        verifyUser();
+        
+        String Username = txt_username.getText();
+        String Password = txt_newPW.getText();
+        String oPassword = txt_oldPW.getText();
+        
+        //find file to check the name inside the file
+        try 
+        {
+            File adminProfile = new File("D:\\OODJ_ASSIGNMENT\\Zebrax\\src\\main\\java\\admin_database\\Z_adminsLogin.txt");
+            Scanner scan = new Scanner(adminProfile);
+            scan.useDelimiter("[,\n]"); //pattern stop at space or newline
+            
+            while(scan.hasNext()) //to check if there's still non white space char
+            {
+                String user = scan.next(); //read the next thing until it reached ',' or newline
+                String oPass = scan.next();
+                String pass = scan.next();
+                
+                if((Username.equals(user.trim())) && (oPassword.equals(oPass.trim())) && (!Password.equals(pass.trim()))) // to see if it matches
+                {
+                    lbl_warnNotFound.setText("Valid user.");
+                    
+                    File originalFile = new File("D:\\OODJ_ASSIGNMENT\\Zebrax\\src\\main\\java\\admin_database\\Z_adminsLogin.txt");
+                    BufferedReader br = new BufferedReader(new FileReader(originalFile));
+                    
+                    // Construct the new file that will later be renamed to the original
+                    // filename.
+                    File tempFile = new File("tempfile.txt");
+                    PrintWriter pWrite = new PrintWriter(new FileWriter(tempFile));
+                    
+                    String line = null;
+                    // Read from the original file and write to the new
+                    // unless content matches data to be removed.
+                    while ((line = br.readLine()) != null)
+                    {
+                        if (line.contains(oPassword))
+                        {
+                            String passW = line.substring(line.lastIndexOf(" "), line.length());
+                            if (passW != null || !passW.trim().isEmpty())
+                            {
+                                String newPass = passW.trim() + Password;
+                                line = line.substring(0,line.lastIndexOf(" ")) + newPass;
+                            }
+                        }
+                        
+                        pWrite.flush();    
+                    }
+                    pWrite.close();
+                    br.close();
+                    
+                    // Delete the original file
+                    if (!originalFile.delete())
+                    {
+                        JOptionPane.showMessageDialog(this,"Could not delete file" );
+                        
+                    }
+
+                    // Rename the new file to the filename the original file had.
+                    if (!tempFile.renameTo(originalFile))
+                    {
+                        JOptionPane.showMessageDialog(this,"Could not rename the file");
+                    }
+                    
+                }
+                
+                else
+                {
+                    JOptionPane.showMessageDialog(this,"User not found!");
+                }
+                
+                
+                scan.close();
+            }    
+        } 
+        catch (FileNotFoundException ex) 
+        {
+            Logger.getLogger(Admin_ForgotPW_Page.class.getName()).log(Level.SEVERE, "Error!", ex);
+        } 
+        catch (IOException ex) 
+        {
+            Logger.getLogger(Admin_ForgotPW_Page.class.getName()).log(Level.SEVERE, "Error!", ex);
+        }
+    }//GEN-LAST:event_btn_resetPWActionPerformed
+
+    private void txt_oldPWFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txt_oldPWFocusGained
+        txt_oldPW.setText("");
+    }//GEN-LAST:event_txt_oldPWFocusGained
+
+    private void btn_toLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_toLoginActionPerformed
+        Admin_Login loginP = new Admin_Login();
+        loginP.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_btn_toLoginActionPerformed
 
     /**
      * @param args the command line arguments
@@ -95,6 +312,21 @@ public class Admin_ForgotPW_Page extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btn_resetPW;
+    private javax.swing.JButton btn_toLogin;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JLabel lbl_Npw;
+    private javax.swing.JLabel lbl_Opw1;
+    private javax.swing.JLabel lbl_text;
+    private javax.swing.JLabel lbl_username;
+    private javax.swing.JLabel lbl_warnNotFound;
+    private javax.swing.JPasswordField txt_newPW;
+    private javax.swing.JPasswordField txt_oldPW;
+    private javax.swing.JTextField txt_username;
     // End of variables declaration//GEN-END:variables
+
+    private void pWrite(String line) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
 }
