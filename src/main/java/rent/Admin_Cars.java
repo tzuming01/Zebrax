@@ -4,17 +4,33 @@
  */
 package rent;
 
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author aunir
  */
 public class Admin_Cars extends javax.swing.JFrame {
-
+    private int row, column;
     /**
      * Creates new form Admin_Cars
      */
     public Admin_Cars() {
         initComponents();
+        
+        //set size of column
+        car_data.getColumnModel().getColumn(0).setPreferredWidth(50);
+        
     }
 
     /**
@@ -26,22 +42,762 @@ public class Admin_Cars extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        btnGrp_PETROL = new javax.swing.ButtonGroup();
+        btnGrp_TRANSMISSION = new javax.swing.ButtonGroup();
+        btnGrp_APPEARANCE = new javax.swing.ButtonGroup();
+        jPanel1 = new javax.swing.JPanel();
+        jPanel2 = new javax.swing.JPanel();
+        lbl_refreshCarTable = new javax.swing.JLabel();
+        lbl_toHostPage = new javax.swing.JLabel();
+        jSeparator1 = new javax.swing.JSeparator();
+        btn_goHome = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        car_data = new javax.swing.JTable();
+        lbl_carMake = new javax.swing.JLabel();
+        lbl_carYear = new javax.swing.JLabel();
+        lbl_carModel = new javax.swing.JLabel();
+        lbl_hostID = new javax.swing.JLabel();
+        lbl_pickDropCar = new javax.swing.JLabel();
+        lbl_plateNum = new javax.swing.JLabel();
+        lbl_carType = new javax.swing.JLabel();
+        lbl_numSeats = new javax.swing.JLabel();
+        lbl_petrol = new javax.swing.JLabel();
+        lbl_transmission = new javax.swing.JLabel();
+        lbl_rentPerDay = new javax.swing.JLabel();
+        TXT_pickDropCar = new javax.swing.JTextField();
+        TXT_carModel = new javax.swing.JTextField();
+        TXT_carMake = new javax.swing.JTextField();
+        TXT_carYear = new javax.swing.JTextField();
+        TXT_plateNum = new javax.swing.JTextField();
+        TXT_numSeats = new javax.swing.JTextField();
+        TXT_rentPerDay = new javax.swing.JTextField();
+        radBtn_petrolDie = new javax.swing.JRadioButton();
+        radBtn_petrol95 = new javax.swing.JRadioButton();
+        radBtn_petrol97 = new javax.swing.JRadioButton();
+        radBtn_Auto = new javax.swing.JRadioButton();
+        radBtn_manual = new javax.swing.JRadioButton();
+        radBtn_MPV = new javax.swing.JRadioButton();
+        radBtn_sedan = new javax.swing.JRadioButton();
+        radBtn_compact = new javax.swing.JRadioButton();
+        radBtn_SUV = new javax.swing.JRadioButton();
+        TXT_carOwnerID = new javax.swing.JTextField();
+        Btn_reset = new javax.swing.JButton();
+        Btn_save = new javax.swing.JButton();
+        Btn_update = new javax.swing.JButton();
+        Btn_delete = new javax.swing.JButton();
+        jSeparator2 = new javax.swing.JSeparator();
+        jSeparator3 = new javax.swing.JSeparator();
+        jSeparator4 = new javax.swing.JSeparator();
+        jSeparator5 = new javax.swing.JSeparator();
+        jSeparator6 = new javax.swing.JSeparator();
+        jSeparator7 = new javax.swing.JSeparator();
+        jSeparator8 = new javax.swing.JSeparator();
+        jSeparator9 = new javax.swing.JSeparator();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("Z: Car Models");
+        setTitle("[Z] REGISTER CAR");
+        setLocation(new java.awt.Point(325, 95));
+
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jPanel2.setBackground(new java.awt.Color(198, 225, 176));
+        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        lbl_refreshCarTable.setFont(new java.awt.Font("Dubai Medium", 0, 14)); // NOI18N
+        lbl_refreshCarTable.setForeground(new java.awt.Color(66, 63, 63));
+        lbl_refreshCarTable.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lbl_refreshCarTable.setText("CAR REGISTRATION");
+        lbl_refreshCarTable.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lbl_refreshCarTableMouseClicked(evt);
+            }
+        });
+        jPanel2.add(lbl_refreshCarTable, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 10, -1, -1));
+
+        lbl_toHostPage.setFont(new java.awt.Font("Dubai Medium", 0, 12)); // NOI18N
+        lbl_toHostPage.setForeground(new java.awt.Color(66, 63, 63));
+        lbl_toHostPage.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lbl_toHostPage.setText("HOST");
+        lbl_toHostPage.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lbl_toHostPageMouseClicked(evt);
+            }
+        });
+        jPanel2.add(lbl_toHostPage, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 20, -1, 10));
+
+        jSeparator1.setForeground(new java.awt.Color(66, 63, 63));
+        jPanel2.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 35, 30, -1));
+
+        btn_goHome.setBackground(new java.awt.Color(252, 205, 146));
+        btn_goHome.setFont(new java.awt.Font("Dubai Medium", 0, 12)); // NOI18N
+        btn_goHome.setForeground(new java.awt.Color(66, 63, 63));
+        btn_goHome.setText("HOME");
+        btn_goHome.setBorder(null);
+        btn_goHome.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_goHomeActionPerformed(evt);
+            }
+        });
+        jPanel2.add(btn_goHome, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 10, 60, 30));
+
+        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 810, 50));
+
+        car_data.setBackground(new java.awt.Color(255, 255, 255));
+        car_data.setFont(new java.awt.Font("Dubai Medium", 0, 12)); // NOI18N
+        car_data.setForeground(new java.awt.Color(66, 63, 63));
+        car_data.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "H_ID", "Car make", "Car model", "MFG year", "Plate number", "No. of seats", "Petrol", "Transmission", "Appearance", "Rental/day", "Pick-up/drop off"
+            }
+        ));
+        car_data.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                car_dataMouseClicked(evt);
+            }
+        });
+        jScrollPane1.setViewportView(car_data);
+
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(2, 257, 810, 230));
+
+        lbl_carMake.setFont(new java.awt.Font("Dubai Medium", 0, 13)); // NOI18N
+        lbl_carMake.setForeground(new java.awt.Color(66, 63, 63));
+        lbl_carMake.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lbl_carMake.setText("CAR MAKE");
+        jPanel1.add(lbl_carMake, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 60, -1, -1));
+
+        lbl_carYear.setFont(new java.awt.Font("Dubai Medium", 0, 13)); // NOI18N
+        lbl_carYear.setForeground(new java.awt.Color(66, 63, 63));
+        lbl_carYear.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lbl_carYear.setText("MFG YEAR");
+        jPanel1.add(lbl_carYear, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 60, -1, -1));
+
+        lbl_carModel.setFont(new java.awt.Font("Dubai Medium", 0, 13)); // NOI18N
+        lbl_carModel.setForeground(new java.awt.Color(66, 63, 63));
+        lbl_carModel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lbl_carModel.setText("CAR MODEL");
+        jPanel1.add(lbl_carModel, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 60, -1, -1));
+
+        lbl_hostID.setFont(new java.awt.Font("Dubai Medium", 0, 13)); // NOI18N
+        lbl_hostID.setForeground(new java.awt.Color(66, 63, 63));
+        lbl_hostID.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lbl_hostID.setText("HOST ID");
+        jPanel1.add(lbl_hostID, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 60, -1, -1));
+
+        lbl_pickDropCar.setFont(new java.awt.Font("Dubai Medium", 0, 13)); // NOI18N
+        lbl_pickDropCar.setForeground(new java.awt.Color(66, 63, 63));
+        lbl_pickDropCar.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lbl_pickDropCar.setText("PREFERRED PICK-UP/DROP OFF");
+        jPanel1.add(lbl_pickDropCar, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 190, -1, -1));
+
+        lbl_plateNum.setFont(new java.awt.Font("Dubai Medium", 0, 13)); // NOI18N
+        lbl_plateNum.setForeground(new java.awt.Color(66, 63, 63));
+        lbl_plateNum.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lbl_plateNum.setText("PLATE NUMBER");
+        jPanel1.add(lbl_plateNum, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 60, -1, -1));
+
+        lbl_carType.setFont(new java.awt.Font("Dubai Medium", 0, 13)); // NOI18N
+        lbl_carType.setForeground(new java.awt.Color(66, 63, 63));
+        lbl_carType.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lbl_carType.setText("APPEARANCE");
+        jPanel1.add(lbl_carType, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 120, -1, -1));
+
+        lbl_numSeats.setFont(new java.awt.Font("Dubai Medium", 0, 13)); // NOI18N
+        lbl_numSeats.setForeground(new java.awt.Color(66, 63, 63));
+        lbl_numSeats.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lbl_numSeats.setText("NO. OF SEATS");
+        jPanel1.add(lbl_numSeats, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 120, -1, -1));
+
+        lbl_petrol.setFont(new java.awt.Font("Dubai Medium", 0, 13)); // NOI18N
+        lbl_petrol.setForeground(new java.awt.Color(66, 63, 63));
+        lbl_petrol.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lbl_petrol.setText("PETROL");
+        jPanel1.add(lbl_petrol, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 120, -1, -1));
+
+        lbl_transmission.setFont(new java.awt.Font("Dubai Medium", 0, 13)); // NOI18N
+        lbl_transmission.setForeground(new java.awt.Color(66, 63, 63));
+        lbl_transmission.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lbl_transmission.setText("TRANSMISSION");
+        jPanel1.add(lbl_transmission, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 120, -1, -1));
+
+        lbl_rentPerDay.setFont(new java.awt.Font("Dubai Medium", 0, 13)); // NOI18N
+        lbl_rentPerDay.setForeground(new java.awt.Color(66, 63, 63));
+        lbl_rentPerDay.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lbl_rentPerDay.setText("RENTAL/DAY");
+        jPanel1.add(lbl_rentPerDay, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 190, -1, -1));
+
+        TXT_pickDropCar.setBackground(new java.awt.Color(255, 255, 255));
+        TXT_pickDropCar.setFont(new java.awt.Font("Dubai Medium", 0, 12)); // NOI18N
+        TXT_pickDropCar.setForeground(new java.awt.Color(66, 63, 63));
+        TXT_pickDropCar.setBorder(null);
+        TXT_pickDropCar.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                TXT_pickDropCarFocusGained(evt);
+            }
+        });
+        jPanel1.add(TXT_pickDropCar, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 210, 150, 30));
+
+        TXT_carModel.setBackground(new java.awt.Color(255, 255, 255));
+        TXT_carModel.setFont(new java.awt.Font("Dubai Medium", 0, 12)); // NOI18N
+        TXT_carModel.setForeground(new java.awt.Color(66, 63, 63));
+        TXT_carModel.setBorder(null);
+        TXT_carModel.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                TXT_carModelFocusGained(evt);
+            }
+        });
+        jPanel1.add(TXT_carModel, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 80, 130, 30));
+
+        TXT_carMake.setBackground(new java.awt.Color(255, 255, 255));
+        TXT_carMake.setFont(new java.awt.Font("Dubai Medium", 0, 12)); // NOI18N
+        TXT_carMake.setForeground(new java.awt.Color(66, 63, 63));
+        TXT_carMake.setBorder(null);
+        TXT_carMake.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                TXT_carMakeFocusGained(evt);
+            }
+        });
+        jPanel1.add(TXT_carMake, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 80, 130, 30));
+
+        TXT_carYear.setBackground(new java.awt.Color(255, 255, 255));
+        TXT_carYear.setFont(new java.awt.Font("Dubai Medium", 0, 12)); // NOI18N
+        TXT_carYear.setForeground(new java.awt.Color(66, 63, 63));
+        TXT_carYear.setBorder(null);
+        TXT_carYear.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                TXT_carYearFocusGained(evt);
+            }
+        });
+        jPanel1.add(TXT_carYear, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 80, 70, 30));
+
+        TXT_plateNum.setBackground(new java.awt.Color(255, 255, 255));
+        TXT_plateNum.setFont(new java.awt.Font("Dubai Medium", 0, 12)); // NOI18N
+        TXT_plateNum.setForeground(new java.awt.Color(66, 63, 63));
+        TXT_plateNum.setBorder(null);
+        TXT_plateNum.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                TXT_plateNumFocusGained(evt);
+            }
+        });
+        jPanel1.add(TXT_plateNum, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 80, 110, 30));
+
+        TXT_numSeats.setBackground(new java.awt.Color(255, 255, 255));
+        TXT_numSeats.setFont(new java.awt.Font("Dubai Medium", 0, 12)); // NOI18N
+        TXT_numSeats.setForeground(new java.awt.Color(66, 63, 63));
+        TXT_numSeats.setBorder(null);
+        TXT_numSeats.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                TXT_numSeatsFocusGained(evt);
+            }
+        });
+        jPanel1.add(TXT_numSeats, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 140, 90, 30));
+
+        TXT_rentPerDay.setBackground(new java.awt.Color(255, 255, 255));
+        TXT_rentPerDay.setFont(new java.awt.Font("Dubai Medium", 0, 12)); // NOI18N
+        TXT_rentPerDay.setForeground(new java.awt.Color(66, 63, 63));
+        TXT_rentPerDay.setBorder(null);
+        TXT_rentPerDay.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                TXT_rentPerDayFocusGained(evt);
+            }
+        });
+        jPanel1.add(TXT_rentPerDay, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 210, 90, 30));
+
+        btnGrp_PETROL.add(radBtn_petrolDie);
+        radBtn_petrolDie.setFont(new java.awt.Font("Dubai Medium", 0, 12)); // NOI18N
+        radBtn_petrolDie.setForeground(new java.awt.Color(66, 63, 63));
+        radBtn_petrolDie.setText("Diesel");
+        radBtn_petrolDie.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                radBtn_petrolDieActionPerformed(evt);
+            }
+        });
+        jPanel1.add(radBtn_petrolDie, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 160, -1, 20));
+
+        btnGrp_PETROL.add(radBtn_petrol95);
+        radBtn_petrol95.setFont(new java.awt.Font("Dubai Medium", 0, 12)); // NOI18N
+        radBtn_petrol95.setForeground(new java.awt.Color(66, 63, 63));
+        radBtn_petrol95.setText("RON 95");
+        radBtn_petrol95.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                radBtn_petrol95ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(radBtn_petrol95, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 121, -1, 20));
+
+        btnGrp_PETROL.add(radBtn_petrol97);
+        radBtn_petrol97.setFont(new java.awt.Font("Dubai Medium", 0, 12)); // NOI18N
+        radBtn_petrol97.setForeground(new java.awt.Color(66, 63, 63));
+        radBtn_petrol97.setText("RON 97");
+        radBtn_petrol97.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                radBtn_petrol97ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(radBtn_petrol97, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 140, -1, 20));
+
+        btnGrp_TRANSMISSION.add(radBtn_Auto);
+        radBtn_Auto.setFont(new java.awt.Font("Dubai Medium", 0, 12)); // NOI18N
+        radBtn_Auto.setForeground(new java.awt.Color(66, 63, 63));
+        radBtn_Auto.setText("Automatic");
+        radBtn_Auto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                radBtn_AutoActionPerformed(evt);
+            }
+        });
+        jPanel1.add(radBtn_Auto, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 160, -1, 20));
+
+        btnGrp_TRANSMISSION.add(radBtn_manual);
+        radBtn_manual.setFont(new java.awt.Font("Dubai Medium", 0, 12)); // NOI18N
+        radBtn_manual.setForeground(new java.awt.Color(66, 63, 63));
+        radBtn_manual.setText("Manual");
+        radBtn_manual.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                radBtn_manualActionPerformed(evt);
+            }
+        });
+        jPanel1.add(radBtn_manual, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 140, -1, 20));
+
+        btnGrp_APPEARANCE.add(radBtn_MPV);
+        radBtn_MPV.setFont(new java.awt.Font("Dubai Medium", 0, 12)); // NOI18N
+        radBtn_MPV.setForeground(new java.awt.Color(66, 63, 63));
+        radBtn_MPV.setText("MPV");
+        radBtn_MPV.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                radBtn_MPVActionPerformed(evt);
+            }
+        });
+        jPanel1.add(radBtn_MPV, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 200, -1, 20));
+
+        btnGrp_APPEARANCE.add(radBtn_sedan);
+        radBtn_sedan.setFont(new java.awt.Font("Dubai Medium", 0, 12)); // NOI18N
+        radBtn_sedan.setForeground(new java.awt.Color(66, 63, 63));
+        radBtn_sedan.setText("Sedan");
+        radBtn_sedan.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                radBtn_sedanActionPerformed(evt);
+            }
+        });
+        jPanel1.add(radBtn_sedan, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 140, -1, 20));
+
+        btnGrp_APPEARANCE.add(radBtn_compact);
+        radBtn_compact.setFont(new java.awt.Font("Dubai Medium", 0, 12)); // NOI18N
+        radBtn_compact.setForeground(new java.awt.Color(66, 63, 63));
+        radBtn_compact.setText("Compact");
+        radBtn_compact.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                radBtn_compactActionPerformed(evt);
+            }
+        });
+        jPanel1.add(radBtn_compact, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 160, -1, 20));
+
+        btnGrp_APPEARANCE.add(radBtn_SUV);
+        radBtn_SUV.setFont(new java.awt.Font("Dubai Medium", 0, 12)); // NOI18N
+        radBtn_SUV.setForeground(new java.awt.Color(66, 63, 63));
+        radBtn_SUV.setText("SUV");
+        radBtn_SUV.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                radBtn_SUVActionPerformed(evt);
+            }
+        });
+        jPanel1.add(radBtn_SUV, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 180, -1, 20));
+
+        TXT_carOwnerID.setBackground(new java.awt.Color(255, 255, 255));
+        TXT_carOwnerID.setFont(new java.awt.Font("Dubai Medium", 0, 12)); // NOI18N
+        TXT_carOwnerID.setForeground(new java.awt.Color(66, 63, 63));
+        TXT_carOwnerID.setBorder(null);
+        TXT_carOwnerID.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                TXT_carOwnerIDFocusGained(evt);
+            }
+        });
+        jPanel1.add(TXT_carOwnerID, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 80, 60, 30));
+
+        Btn_reset.setBackground(new java.awt.Color(198, 225, 176));
+        Btn_reset.setFont(new java.awt.Font("Dubai Medium", 0, 12)); // NOI18N
+        Btn_reset.setForeground(new java.awt.Color(66, 63, 63));
+        Btn_reset.setText("Reset");
+        Btn_reset.setBorder(null);
+        Btn_reset.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Btn_resetActionPerformed(evt);
+            }
+        });
+        jPanel1.add(Btn_reset, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 210, 70, 30));
+
+        Btn_save.setBackground(new java.awt.Color(252, 205, 146));
+        Btn_save.setFont(new java.awt.Font("Dubai Medium", 0, 12)); // NOI18N
+        Btn_save.setForeground(new java.awt.Color(66, 63, 63));
+        Btn_save.setText("Save");
+        Btn_save.setBorder(null);
+        Btn_save.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Btn_saveActionPerformed(evt);
+            }
+        });
+        jPanel1.add(Btn_save, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 130, 70, 30));
+
+        Btn_update.setBackground(new java.awt.Color(255, 255, 255));
+        Btn_update.setFont(new java.awt.Font("Dubai Medium", 0, 12)); // NOI18N
+        Btn_update.setForeground(new java.awt.Color(66, 63, 63));
+        Btn_update.setText("Update");
+        Btn_update.setBorder(null);
+        Btn_update.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Btn_updateActionPerformed(evt);
+            }
+        });
+        jPanel1.add(Btn_update, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 170, 70, 30));
+
+        Btn_delete.setBackground(new java.awt.Color(255, 105, 97));
+        Btn_delete.setFont(new java.awt.Font("Dubai Medium", 0, 12)); // NOI18N
+        Btn_delete.setForeground(new java.awt.Color(255, 255, 255));
+        Btn_delete.setText("Delete");
+        Btn_delete.setBorder(null);
+        Btn_delete.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                Btn_deleteMouseClicked(evt);
+            }
+        });
+        jPanel1.add(Btn_delete, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 210, 70, 30));
+        jPanel1.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 110, 60, 10));
+        jPanel1.add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 110, 130, 10));
+        jPanel1.add(jSeparator4, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 110, 130, 10));
+        jPanel1.add(jSeparator5, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 110, 70, 20));
+        jPanel1.add(jSeparator6, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 110, 110, 10));
+        jPanel1.add(jSeparator7, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 170, 90, 10));
+        jPanel1.add(jSeparator8, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 240, 90, 10));
+        jPanel1.add(jSeparator9, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 240, 150, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void lbl_toHostPageMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbl_toHostPageMouseClicked
+        Admin_Host goToHost = new Admin_Host();
+        goToHost.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_lbl_toHostPageMouseClicked
+
+    private void btn_goHomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_goHomeActionPerformed
+        Admin_Home_Page goHome = new Admin_Home_Page();
+        goHome.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_btn_goHomeActionPerformed
+
+    private void TXT_carModelFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_TXT_carModelFocusGained
+        //when click whatever text on the box will disappear
+        TXT_carModel.setText("");
+       
+    }//GEN-LAST:event_TXT_carModelFocusGained
+
+    private void TXT_carMakeFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_TXT_carMakeFocusGained
+        TXT_carMake.setText("");
+    }//GEN-LAST:event_TXT_carMakeFocusGained
+
+    private void TXT_carYearFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_TXT_carYearFocusGained
+        TXT_carYear.setText("");
+        
+    }//GEN-LAST:event_TXT_carYearFocusGained
+
+    private void TXT_plateNumFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_TXT_plateNumFocusGained
+        TXT_plateNum.setText("");
+    }//GEN-LAST:event_TXT_plateNumFocusGained
+
+    private void TXT_numSeatsFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_TXT_numSeatsFocusGained
+        TXT_numSeats.setText("");
+    }//GEN-LAST:event_TXT_numSeatsFocusGained
+
+    private void TXT_rentPerDayFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_TXT_rentPerDayFocusGained
+        TXT_rentPerDay.setText("");
+    }//GEN-LAST:event_TXT_rentPerDayFocusGained
+
+    private void TXT_pickDropCarFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_TXT_pickDropCarFocusGained
+        TXT_pickDropCar.setText("");
+    }//GEN-LAST:event_TXT_pickDropCarFocusGained
+
+    private void TXT_carOwnerIDFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_TXT_carOwnerIDFocusGained
+        TXT_carOwnerID.setText("");
+    }//GEN-LAST:event_TXT_carOwnerIDFocusGained
+
+    private void Btn_saveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_saveActionPerformed
+        //to get the table
+        DefaultTableModel car_table = (DefaultTableModel)this.car_data.getModel();
+        
+        car_table.addRow(new Object[]{this.TXT_carOwnerID.getText(),this.TXT_carModel.getText(),this.TXT_carMake.getText(),this.TXT_carYear.getText(),
+            this.TXT_plateNum.getText(),this.TXT_numSeats.getText(),this.btnGrp_PETROL.getSelection().getActionCommand(),
+            this.btnGrp_TRANSMISSION.getSelection().getActionCommand(),this.btnGrp_APPEARANCE.getSelection().getActionCommand(),
+            this.TXT_rentPerDay.getText(),this.TXT_pickDropCar.getText()});
+        
+        
+            String admin_carFile = "D:\\OODJ_ASSIGNMENT\\Zebrax\\src\\main\\java\\admin_database\\Z_CarReg.txt";
+            File car_file = new File(admin_carFile);
+        
+        try 
+        {
+            FileWriter fw = new FileWriter(car_file,true);
+            BufferedWriter bw = new BufferedWriter(fw);
+            for(int i = 0; i < car_data.getRowCount(); i++ )
+            {
+                for(int j = 0; j <car_data.getColumnCount(); j++)
+                
+                { //rows
+                    bw.write(car_data.getValueAt(i , j).toString() + ",");//columns
+                }
+                
+                bw.newLine();
+            }
+            
+            JOptionPane.showMessageDialog(this, "Saved");
+            
+            bw.close();
+            fw.close();
+     
+        } 
+        catch (IOException ex) 
+        {
+            Logger.getLogger(Admin_Cars.class.getName()).log(Level.SEVERE, null, ex);
+        }     
+       
+    }//GEN-LAST:event_Btn_saveActionPerformed
+
+    private void radBtn_petrol95ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_radBtn_petrol95ActionPerformed
+        //to get the selected value 'RON95' return as text in Jtable
+        this.radBtn_petrol95.setActionCommand("RON 95");
+    }//GEN-LAST:event_radBtn_petrol95ActionPerformed
+
+    private void radBtn_petrol97ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_radBtn_petrol97ActionPerformed
+        //to get the selected value 'RON97' return as text in Jtable
+        this.radBtn_petrol97.setActionCommand("RON 97");
+    }//GEN-LAST:event_radBtn_petrol97ActionPerformed
+
+    private void radBtn_petrolDieActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_radBtn_petrolDieActionPerformed
+        //to get the selected value 'Diesel' return as text in Jtable
+        this.radBtn_petrolDie.setActionCommand("Diesel");
+    }//GEN-LAST:event_radBtn_petrolDieActionPerformed
+
+    private void radBtn_manualActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_radBtn_manualActionPerformed
+        //to get the selected value 'Manual' return as text in Jtable
+        this.radBtn_manual.setActionCommand("Manual");
+    }//GEN-LAST:event_radBtn_manualActionPerformed
+
+    private void radBtn_AutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_radBtn_AutoActionPerformed
+        //to get the selected value 'Automatic' return as text in Jtable
+        this.radBtn_Auto.setActionCommand("Automatic");
+    }//GEN-LAST:event_radBtn_AutoActionPerformed
+
+    private void radBtn_sedanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_radBtn_sedanActionPerformed
+        //to get the selected value 'Sedan' return as text in Jtable
+        this.radBtn_sedan.setActionCommand("Sedan");
+    }//GEN-LAST:event_radBtn_sedanActionPerformed
+
+    private void radBtn_compactActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_radBtn_compactActionPerformed
+        //to get the selected value 'Compact' return as text in Jtable
+        this.radBtn_compact.setActionCommand("Compact");
+    }//GEN-LAST:event_radBtn_compactActionPerformed
+
+    private void radBtn_SUVActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_radBtn_SUVActionPerformed
+        //to get the selected value 'SUV' return as text in Jtable
+        this.radBtn_SUV.setActionCommand("SUV");
+    }//GEN-LAST:event_radBtn_SUVActionPerformed
+
+    private void radBtn_MPVActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_radBtn_MPVActionPerformed
+        //to get the selected value 'MPV' return as text in Jtable
+        this.radBtn_MPV.setActionCommand("MPV");
+    }//GEN-LAST:event_radBtn_MPVActionPerformed
+
+    private void car_dataMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_car_dataMouseClicked
+        //To get any number of row or column to get it clicked so that it could be
+        //update or delete
+        
+        // get value when point, and store the value in this.row / this.column
+        this.row = this.car_data.getSelectedRow();
+        this.column = this.car_data.columnAtPoint(evt.getPoint());
+        
+        //means that it's a valid row not just anywhere
+        if(row >= 0) 
+        {
+            //to get the value, set to text
+            String carOwnerID = this.car_data.getModel().getValueAt(this.row,0).toString();
+            this.TXT_carOwnerID.setText(carOwnerID);
+            String modelCar = this.car_data.getModel().getValueAt(this.row,1).toString();  
+            this.TXT_carModel.setText(modelCar);
+            String carMake = this.car_data.getModel().getValueAt(this.row,2).toString();  
+            this.TXT_carMake.setText(carMake);
+            String carYear = this.car_data.getModel().getValueAt(this.row,3).toString();  
+            this.TXT_carYear.setText(carYear);
+            String numPlate = this.car_data.getModel().getValueAt(this.row,4).toString();  
+            this.TXT_plateNum.setText(numPlate);
+            String seatNum = this.car_data.getModel().getValueAt(this.row,5).toString();  
+            this.TXT_numSeats.setText(seatNum);
+            
+            //to get one of the selected radio button 
+            String petrol = this.car_data.getModel().getValueAt(this.row,6).toString();
+            switch (petrol) {
+                case "RON 95" -> radBtn_petrol95.setSelected(true);
+                case "RON 97" -> radBtn_petrol97.setSelected(true);
+                default -> radBtn_petrolDie.setSelected(true);
+            }
+            String transmission = this.car_data.getModel().getValueAt(this.row,7).toString();
+            if (transmission.equals("Manual"))
+            {
+                radBtn_manual.setSelected(true);
+            }
+            else
+            {
+                radBtn_Auto.setSelected(true);
+            }
+            
+            String carLook = this.car_data.getModel().getValueAt(this.row,8).toString();
+            switch (carLook) {
+                case "Sedan" -> radBtn_sedan.setSelected(true);
+                case "Compact" -> radBtn_compact.setSelected(true);
+                case "SUV" -> radBtn_SUV.setSelected(true);
+                default -> radBtn_MPV.setSelected(true);
+            }
+            
+            String rentCarPrice = this.car_data.getModel().getValueAt(this.row,9).toString();  
+            this.TXT_rentPerDay.setText(rentCarPrice);
+            String carLocation = this.car_data.getModel().getValueAt(this.row,10).toString();  
+            this.TXT_pickDropCar.setText(carLocation);
+        }
+    }//GEN-LAST:event_car_dataMouseClicked
+
+    private void Btn_updateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_updateActionPerformed
+        // to get the value and set the value
+        DefaultTableModel car_table = (DefaultTableModel)this.car_data.getModel();
+        int i = car_data.getSelectedRow();
+        
+        if (i >= 0)
+        {
+            car_table.setValueAt(this.TXT_carOwnerID.getText(),i,0);
+            car_table.setValueAt(this.TXT_carModel.getText(), i, 1);
+            car_table.setValueAt(this.TXT_carMake.getText(),i, 2);
+            car_table.setValueAt(this.TXT_carYear.getText(),i,3);
+            car_table.setValueAt(this.TXT_plateNum.getText(),i,4);
+            car_table.setValueAt(this.TXT_numSeats.getText(),i,5);
+            car_table.setValueAt(this.btnGrp_PETROL.getSelection().getActionCommand(),i,6);
+            car_table.setValueAt(this.btnGrp_TRANSMISSION.getSelection().getActionCommand(),i,7);       
+            car_table.setValueAt(this.btnGrp_APPEARANCE.getSelection().getActionCommand(),i,8);
+            car_table.setValueAt(this.TXT_rentPerDay.getText(),i,9);
+            car_table.setValueAt(this.TXT_pickDropCar.getText(),i,10);
+            
+        }
+        
+        String admin_carFile = "D:\\OODJ_ASSIGNMENT\\Zebrax\\src\\main\\java\\admin_database\\Z_CarReg.txt";
+        File car_file = new File(admin_carFile);
+        
+        try {
+            FileWriter fw = new FileWriter(car_file);
+            BufferedWriter bw = new BufferedWriter(fw);
+            
+            for(i = 0; i < car_data.getRowCount(); i++ )
+            {
+                
+                for(int j = 0; j <car_data.getColumnCount(); j++)
+                { //rows
+                    bw.write(car_data.getValueAt(i , j).toString() + ",");//columns
+                        
+                }
+                bw.newLine();
+            
+            }
+            bw.flush(); //to clear whatever in buffered writer stream
+            bw.close();
+            fw.close();
+     
+        }
+        catch (IOException ex) 
+        {
+            Logger.getLogger(Admin_Cars.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_Btn_updateActionPerformed
+
+    private void Btn_deleteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Btn_deleteMouseClicked
+       // to delete row from the table and in txt file
+       String admin_carFile = "D:\\OODJ_ASSIGNMENT\\Zebrax\\src\\main\\java\\admin_database\\Z_CarReg.txt";
+       File car_file = new File(admin_carFile);
+       DefaultTableModel car_table = (DefaultTableModel)this.car_data.getModel();
+       
+       this.row = this.car_data.rowAtPoint(evt.getPoint());
+       this.column = this.car_data.columnAtPoint(evt.getPoint());
+       
+       try
+       {
+           BufferedWriter out = new BufferedWriter(new FileWriter(car_file)); //no longer append
+           for (int i = 0; i<row; i++)
+           {
+               for(int j = 0; j<column; j++)
+               {
+                   Object data = car_table.getValueAt(i,j);
+                   out.write(data+":");
+               }
+               
+           }
+           out.close();//to make sure there's no  connection 
+           
+       }
+       catch (IOException e)
+       {
+           System.out.println(e);
+       }
+       ((DefaultTableModel)this.car_data.getModel()).removeRow(this.row);
+    }//GEN-LAST:event_Btn_deleteMouseClicked
+
+    private void Btn_resetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_resetActionPerformed
+        //reset
+        TXT_carOwnerID.setText("");
+        TXT_carMake.setText("");
+        TXT_carModel.setText("");
+        TXT_carYear.setText("");
+        TXT_plateNum.setText("");
+        TXT_numSeats.setText("");
+        btnGrp_PETROL.clearSelection();
+        btnGrp_TRANSMISSION.clearSelection();
+        btnGrp_APPEARANCE.clearSelection();
+        TXT_rentPerDay.setText("");
+        TXT_pickDropCar.setText("");
+        
+    }//GEN-LAST:event_Btn_resetActionPerformed
+
+    private void lbl_refreshCarTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbl_refreshCarTableMouseClicked
+       String admin_carFile = "D:\\OODJ_ASSIGNMENT\\Zebrax\\src\\main\\java\\admin_database\\Z_CarReg.txt";
+       File car_file = new File(admin_carFile);
+       
+         try {
+            FileReader fr = new FileReader(car_file);
+            BufferedReader br = new BufferedReader(fr);
+            
+            DefaultTableModel model = (DefaultTableModel)car_data.getModel();
+            Object[] lines = br.lines().toArray();
+            
+            for (int i = 0; i < lines.length; i++)
+            {
+                String [] row = lines[i].toString().split(",");
+                model.addRow(row);
+                
+            }
+            
+        } 
+        catch (FileNotFoundException ex) 
+        {
+            Logger.getLogger(Admin_Cars.class.getName()).log(Level.SEVERE, null, ex);
+        }
+      
+    }//GEN-LAST:event_lbl_refreshCarTableMouseClicked
 
     /**
      * @param args the command line arguments
@@ -60,24 +816,78 @@ public class Admin_Cars extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Admin_Cars.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Admin_Host.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Admin_Cars.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Admin_Host.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Admin_Cars.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Admin_Host.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Admin_Cars.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Admin_Host.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
+            @Override
             public void run() {
                 new Admin_Cars().setVisible(true);
             }
         });
     }
 
+
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton Btn_delete;
+    private javax.swing.JButton Btn_reset;
+    private javax.swing.JButton Btn_save;
+    private javax.swing.JButton Btn_update;
+    private javax.swing.JTextField TXT_carMake;
+    private javax.swing.JTextField TXT_carModel;
+    private javax.swing.JTextField TXT_carOwnerID;
+    private javax.swing.JTextField TXT_carYear;
+    private javax.swing.JTextField TXT_numSeats;
+    private javax.swing.JTextField TXT_pickDropCar;
+    private javax.swing.JTextField TXT_plateNum;
+    private javax.swing.JTextField TXT_rentPerDay;
+    private javax.swing.ButtonGroup btnGrp_APPEARANCE;
+    private javax.swing.ButtonGroup btnGrp_PETROL;
+    private javax.swing.ButtonGroup btnGrp_TRANSMISSION;
+    private javax.swing.JButton btn_goHome;
+    private javax.swing.JTable car_data;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JSeparator jSeparator2;
+    private javax.swing.JSeparator jSeparator3;
+    private javax.swing.JSeparator jSeparator4;
+    private javax.swing.JSeparator jSeparator5;
+    private javax.swing.JSeparator jSeparator6;
+    private javax.swing.JSeparator jSeparator7;
+    private javax.swing.JSeparator jSeparator8;
+    private javax.swing.JSeparator jSeparator9;
+    private javax.swing.JLabel lbl_carMake;
+    private javax.swing.JLabel lbl_carModel;
+    private javax.swing.JLabel lbl_carType;
+    private javax.swing.JLabel lbl_carYear;
+    private javax.swing.JLabel lbl_hostID;
+    private javax.swing.JLabel lbl_numSeats;
+    private javax.swing.JLabel lbl_petrol;
+    private javax.swing.JLabel lbl_pickDropCar;
+    private javax.swing.JLabel lbl_plateNum;
+    private javax.swing.JLabel lbl_refreshCarTable;
+    private javax.swing.JLabel lbl_rentPerDay;
+    private javax.swing.JLabel lbl_toHostPage;
+    private javax.swing.JLabel lbl_transmission;
+    private javax.swing.JRadioButton radBtn_Auto;
+    private javax.swing.JRadioButton radBtn_MPV;
+    private javax.swing.JRadioButton radBtn_SUV;
+    private javax.swing.JRadioButton radBtn_compact;
+    private javax.swing.JRadioButton radBtn_manual;
+    private javax.swing.JRadioButton radBtn_petrol95;
+    private javax.swing.JRadioButton radBtn_petrol97;
+    private javax.swing.JRadioButton radBtn_petrolDie;
+    private javax.swing.JRadioButton radBtn_sedan;
     // End of variables declaration//GEN-END:variables
 }
