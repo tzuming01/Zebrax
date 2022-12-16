@@ -65,8 +65,8 @@ public class Admin_Cars extends javax.swing.JFrame {
         lbl_transmission = new javax.swing.JLabel();
         lbl_rentPerDay = new javax.swing.JLabel();
         TXT_pickDropCar = new javax.swing.JTextField();
-        TXT_carModel = new javax.swing.JTextField();
         TXT_carMake = new javax.swing.JTextField();
+        TXT_carModel = new javax.swing.JTextField();
         TXT_carYear = new javax.swing.JTextField();
         TXT_plateNum = new javax.swing.JTextField();
         TXT_numSeats = new javax.swing.JTextField();
@@ -240,17 +240,6 @@ public class Admin_Cars extends javax.swing.JFrame {
         });
         jPanel1.add(TXT_pickDropCar, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 210, 150, 30));
 
-        TXT_carModel.setBackground(new java.awt.Color(255, 255, 255));
-        TXT_carModel.setFont(new java.awt.Font("Dubai Medium", 0, 12)); // NOI18N
-        TXT_carModel.setForeground(new java.awt.Color(66, 63, 63));
-        TXT_carModel.setBorder(null);
-        TXT_carModel.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                TXT_carModelFocusGained(evt);
-            }
-        });
-        jPanel1.add(TXT_carModel, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 80, 130, 30));
-
         TXT_carMake.setBackground(new java.awt.Color(255, 255, 255));
         TXT_carMake.setFont(new java.awt.Font("Dubai Medium", 0, 12)); // NOI18N
         TXT_carMake.setForeground(new java.awt.Color(66, 63, 63));
@@ -261,6 +250,17 @@ public class Admin_Cars extends javax.swing.JFrame {
             }
         });
         jPanel1.add(TXT_carMake, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 80, 130, 30));
+
+        TXT_carModel.setBackground(new java.awt.Color(255, 255, 255));
+        TXT_carModel.setFont(new java.awt.Font("Dubai Medium", 0, 12)); // NOI18N
+        TXT_carModel.setForeground(new java.awt.Color(66, 63, 63));
+        TXT_carModel.setBorder(null);
+        TXT_carModel.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                TXT_carModelFocusGained(evt);
+            }
+        });
+        jPanel1.add(TXT_carModel, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 80, 130, 30));
 
         TXT_carYear.setBackground(new java.awt.Color(255, 255, 255));
         TXT_carYear.setFont(new java.awt.Font("Dubai Medium", 0, 12)); // NOI18N
@@ -498,15 +498,15 @@ public class Admin_Cars extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_btn_goHomeActionPerformed
 
-    private void TXT_carModelFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_TXT_carModelFocusGained
-        //when click whatever text on the box will disappear
-        TXT_carModel.setText("");
-       
-    }//GEN-LAST:event_TXT_carModelFocusGained
-
     private void TXT_carMakeFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_TXT_carMakeFocusGained
+        //when click whatever text on the box will disappear
         TXT_carMake.setText("");
+       
     }//GEN-LAST:event_TXT_carMakeFocusGained
+
+    private void TXT_carModelFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_TXT_carModelFocusGained
+        TXT_carModel.setText("");
+    }//GEN-LAST:event_TXT_carModelFocusGained
 
     private void TXT_carYearFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_TXT_carYearFocusGained
         TXT_carYear.setText("");
@@ -537,15 +537,16 @@ public class Admin_Cars extends javax.swing.JFrame {
         //to get the table
         DefaultTableModel car_table = (DefaultTableModel)this.car_data.getModel();
         
-        car_table.addRow(new Object[]{this.TXT_carOwnerID.getText(),this.TXT_carModel.getText(),this.TXT_carMake.getText(),this.TXT_carYear.getText(),
+        car_table.addRow(new Object[]{this.TXT_carOwnerID.getText(),this.TXT_carMake.getText(),this.TXT_carModel.getText(),this.TXT_carYear.getText(),
             this.TXT_plateNum.getText(),this.TXT_numSeats.getText(),this.btnGrp_PETROL.getSelection().getActionCommand(),
             this.btnGrp_TRANSMISSION.getSelection().getActionCommand(),this.btnGrp_APPEARANCE.getSelection().getActionCommand(),
             this.TXT_rentPerDay.getText(),this.TXT_pickDropCar.getText()});
         
         
-            String admin_carFile = "D:\\OODJ_ASSIGNMENT\\Zebrax\\src\\main\\java\\admin_database\\Z_CarReg.txt";
+            String admin_carFile = "D:\\OODJ_ASSIGNMENT\\Zebrax\\src\\main\\java\\admin_database\\car.txt";
             File car_file = new File(admin_carFile);
         
+        //if(!TXT_carOwnerID.equals(" ") || )
         try 
         {
             FileWriter fw = new FileWriter(car_file,true);
@@ -634,9 +635,9 @@ public class Admin_Cars extends javax.swing.JFrame {
             String carOwnerID = this.car_data.getModel().getValueAt(this.row,0).toString();
             this.TXT_carOwnerID.setText(carOwnerID);
             String modelCar = this.car_data.getModel().getValueAt(this.row,1).toString();  
-            this.TXT_carModel.setText(modelCar);
+            this.TXT_carMake.setText(modelCar);
             String carMake = this.car_data.getModel().getValueAt(this.row,2).toString();  
-            this.TXT_carMake.setText(carMake);
+            this.TXT_carModel.setText(carMake);
             String carYear = this.car_data.getModel().getValueAt(this.row,3).toString();  
             this.TXT_carYear.setText(carYear);
             String numPlate = this.car_data.getModel().getValueAt(this.row,4).toString();  
@@ -684,8 +685,8 @@ public class Admin_Cars extends javax.swing.JFrame {
         if (i >= 0)
         {
             car_table.setValueAt(this.TXT_carOwnerID.getText(),i,0);
-            car_table.setValueAt(this.TXT_carModel.getText(), i, 1);
-            car_table.setValueAt(this.TXT_carMake.getText(),i, 2);
+            car_table.setValueAt(this.TXT_carMake.getText(), i, 1);
+            car_table.setValueAt(this.TXT_carModel.getText(),i, 2);
             car_table.setValueAt(this.TXT_carYear.getText(),i,3);
             car_table.setValueAt(this.TXT_plateNum.getText(),i,4);
             car_table.setValueAt(this.TXT_numSeats.getText(),i,5);
@@ -697,7 +698,7 @@ public class Admin_Cars extends javax.swing.JFrame {
             
         }
         
-        String admin_carFile = "D:\\OODJ_ASSIGNMENT\\Zebrax\\src\\main\\java\\admin_database\\Z_CarReg.txt";
+        String admin_carFile = "D:\\OODJ_ASSIGNMENT\\Zebrax\\src\\main\\java\\admin_database\\car.txt";
         File car_file = new File(admin_carFile);
         
         try {
@@ -728,7 +729,7 @@ public class Admin_Cars extends javax.swing.JFrame {
 
     private void Btn_deleteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Btn_deleteMouseClicked
        // to delete row from the table and in txt file
-       String admin_carFile = "D:\\OODJ_ASSIGNMENT\\Zebrax\\src\\main\\java\\admin_database\\Z_CarReg.txt";
+       String admin_carFile = "D:\\OODJ_ASSIGNMENT\\Zebrax\\src\\main\\java\\admin_database\\car.txt";
        File car_file = new File(admin_carFile);
        DefaultTableModel car_table = (DefaultTableModel)this.car_data.getModel();
        
@@ -762,6 +763,7 @@ public class Admin_Cars extends javax.swing.JFrame {
         TXT_carOwnerID.setText("");
         TXT_carMake.setText("");
         TXT_carModel.setText("");
+        TXT_carMake.setText("");
         TXT_carYear.setText("");
         TXT_plateNum.setText("");
         TXT_numSeats.setText("");
@@ -774,7 +776,7 @@ public class Admin_Cars extends javax.swing.JFrame {
     }//GEN-LAST:event_Btn_resetActionPerformed
 
     private void lbl_refreshCarTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbl_refreshCarTableMouseClicked
-       String admin_carFile = "D:\\OODJ_ASSIGNMENT\\Zebrax\\src\\main\\java\\admin_database\\Z_CarReg.txt";
+       String admin_carFile = "D:\\OODJ_ASSIGNMENT\\Zebrax\\src\\main\\java\\admin_database\\car.txt";
        File car_file = new File(admin_carFile);
        
          try {

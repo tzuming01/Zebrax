@@ -100,12 +100,12 @@
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="3f" green="3f" red="42" type="rgb"/>
             </Property>
-            <Property name="horizontalAlignment" type="int" value="0"/>
-            <Property name="text" type="java.lang.String" value="NRIC/Passport"/>
+            <Property name="horizontalAlignment" type="int" value="2"/>
+            <Property name="text" type="java.lang.String" value="NRIC"/>
           </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="140" y="150" width="100" height="-1"/>
+              <AbsoluteConstraints x="150" y="150" width="60" height="-1"/>
             </Constraint>
           </Constraints>
         </Component>
@@ -257,7 +257,7 @@
                     <Column editable="true" title="ID" type="java.lang.Object"/>
                     <Column editable="true" title="First name" type="java.lang.Object"/>
                     <Column editable="true" title="Last name" type="java.lang.Object"/>
-                    <Column editable="true" title="NRIC/Passport" type="java.lang.Object"/>
+                    <Column editable="true" title="NRIC" type="java.lang.Object"/>
                     <Column editable="true" title="Date valid from" type="java.lang.Object"/>
                     <Column editable="true" title="Date valid to " type="java.lang.Object"/>
                     <Column editable="true" title="Z Shield" type="java.lang.Object"/>

@@ -1,2 +1,0 @@
-H1001,Nissan,Almera,2014,AFJ 7651,5,RON 95,Automatic,Sedan,100,Shah Alam,
-H1003,Honda,City,2015,BME 878,7,RON 97,Automatic,Compact,200,Damansara,

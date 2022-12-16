@@ -32,7 +32,7 @@ public class Admin_Booking extends javax.swing.JFrame {
         
         //set size of column
         BookingStatus_table.getColumnModel().getColumn(0).setPreferredWidth(50);
-        BookingStatus_table.getColumnModel().getColumn(1).setPreferredWidth(50);
+        BookingStatus_table.getColumnModel().getColumn(1).setPreferredWidth(80);
         BookingStatus_table.getColumnModel().getColumn(2).setPreferredWidth(60);
         BookingStatus_table.getColumnModel().getColumn(3).setPreferredWidth(70);
     }
@@ -114,7 +114,7 @@ public class Admin_Booking extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Car Make", "Car Model", "No. Plate", "Customer Name", "Total Payment", "Booking Status"
+                "ID", "Date Booked", "Plate Number", "Start date", "End date", "Email", "First name", "Last name ", "IC", "Total Paid", "Payment status ", "Booking status"
             }
         ));
         BookingStatus_table.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -124,12 +124,12 @@ public class Admin_Booking extends javax.swing.JFrame {
         });
         jScrollPane2.setViewportView(BookingStatus_table);
 
-        jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 130, 500, 310));
+        jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 250, 810, 260));
 
         lbl_confirmation.setFont(new java.awt.Font("Dubai Medium", 0, 12)); // NOI18N
         lbl_confirmation.setForeground(new java.awt.Color(60, 63, 65));
         lbl_confirmation.setText("BOOKING STATUS");
-        jPanel1.add(lbl_confirmation, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 120, -1, -1));
+        jPanel1.add(lbl_confirmation, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 70, -1, -1));
 
         btnGrp_bookingStats.add(radBtn_booked);
         radBtn_booked.setFont(new java.awt.Font("Dubai Medium", 0, 14)); // NOI18N
@@ -140,7 +140,7 @@ public class Admin_Booking extends javax.swing.JFrame {
                 radBtn_bookedActionPerformed(evt);
             }
         });
-        jPanel1.add(radBtn_booked, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 160, -1, -1));
+        jPanel1.add(radBtn_booked, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 120, -1, -1));
 
         btnGrp_bookingStats.add(radBtn_cancel);
         radBtn_cancel.setFont(new java.awt.Font("Dubai Medium", 0, 14)); // NOI18N
@@ -151,7 +151,7 @@ public class Admin_Booking extends javax.swing.JFrame {
                 radBtn_cancelActionPerformed(evt);
             }
         });
-        jPanel1.add(radBtn_cancel, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 190, -1, -1));
+        jPanel1.add(radBtn_cancel, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 120, -1, -1));
 
         btn_confirm.setBackground(new java.awt.Color(252, 205, 146));
         btn_confirm.setFont(new java.awt.Font("Dubai Medium", 0, 12)); // NOI18N
@@ -163,7 +163,7 @@ public class Admin_Booking extends javax.swing.JFrame {
                 btn_confirmActionPerformed(evt);
             }
         });
-        jPanel1.add(btn_confirm, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 260, 80, 30));
+        jPanel1.add(btn_confirm, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 190, 80, 30));
 
         btn_viewEnquiries.setBackground(new java.awt.Color(198, 225, 176));
         btn_viewEnquiries.setFont(new java.awt.Font("Dubai Medium", 0, 12)); // NOI18N
@@ -175,7 +175,7 @@ public class Admin_Booking extends javax.swing.JFrame {
                 btn_viewEnquiriesActionPerformed(evt);
             }
         });
-        jPanel1.add(btn_viewEnquiries, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 90, 90, 30));
+        jPanel1.add(btn_viewEnquiries, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 200, 90, 30));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -185,7 +185,7 @@ public class Admin_Booking extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 507, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
@@ -205,7 +205,7 @@ public class Admin_Booking extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_goToHomePageActionPerformed
 
     private void btn_viewEnquiriesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_viewEnquiriesActionPerformed
-        String bookFilePath = "D:\\OODJ_ASSIGNMENT\\Zebrax\\src\\main\\java\\admin_database\\car.txt";
+        String bookFilePath = "D:\\OODJ_ASSIGNMENT\\Zebrax\\src\\main\\java\\admin_database\\rental_history.txt";
         File bookingFile = new File(bookFilePath);
         
         try
@@ -240,11 +240,11 @@ public class Admin_Booking extends javax.swing.JFrame {
         
         if (i >= 0)
         {
-            bookingTable.setValueAt(this.btnGrp_bookingStats.getSelection().getActionCommand(),i,5);
+            bookingTable.setValueAt(this.btnGrp_bookingStats.getSelection().getActionCommand(),i,11);
             
         }
         
-        String bookFilePath = "D:\\OODJ_ASSIGNMENT\\Zebrax\\src\\main\\java\\admin_database\\car.txt";
+        String bookFilePath = "D:\\OODJ_ASSIGNMENT\\Zebrax\\src\\main\\java\\admin_database\\rental_history.txt";
         File bookFile = new File(bookFilePath);
         
         try
@@ -299,7 +299,7 @@ public class Admin_Booking extends javax.swing.JFrame {
         
         if (row >= 0)
         {
-            String bookStats = this.BookingStatus_table.getModel().getValueAt(this.row,5).toString();
+            String bookStats = this.BookingStatus_table.getModel().getValueAt(this.row,11).toString();
             if (bookStats.equals("Booked"))
             {
                 radBtn_booked.setSelected(true);

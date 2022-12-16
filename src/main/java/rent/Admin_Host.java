@@ -57,6 +57,7 @@ public class Admin_Host extends javax.swing.JFrame {
     }
     
     
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -129,9 +130,9 @@ public class Admin_Host extends javax.swing.JFrame {
 
         hostIdentityLbl.setFont(new java.awt.Font("Dubai Medium", 0, 13)); // NOI18N
         hostIdentityLbl.setForeground(new java.awt.Color(66, 63, 63));
-        hostIdentityLbl.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        hostIdentityLbl.setText("NRIC/Passport");
-        jPanel1.add(hostIdentityLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 150, 100, -1));
+        hostIdentityLbl.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        hostIdentityLbl.setText("NRIC");
+        jPanel1.add(hostIdentityLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 150, 60, -1));
 
         hostLicenseLbl.setFont(new java.awt.Font("Dubai Medium", 0, 13)); // NOI18N
         hostLicenseLbl.setForeground(new java.awt.Color(66, 63, 63));
@@ -190,7 +191,7 @@ public class Admin_Host extends javax.swing.JFrame {
 
             },
             new String [] {
-                "ID", "First name", "Last name", "NRIC/Passport", "Date valid from", "Date valid to ", "Z Shield", "Z Track"
+                "ID", "First name", "Last name", "NRIC", "Date valid from", "Date valid to ", "Z Shield", "Z Track"
             }
         ));
         host_data.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -421,7 +422,7 @@ public class Admin_Host extends javax.swing.JFrame {
         SimpleDateFormat dFormat = new SimpleDateFormat("dd-MM-yyyy");
         date1 = dFormat.format(DateFrom_license.getDate());
         date2 = dFormat.format(DateTo_license.getDate());
-        
+       
         //to get the table
         DefaultTableModel host_table = (DefaultTableModel)this.host_data.getModel();
         //to add row
@@ -430,7 +431,10 @@ public class Admin_Host extends javax.swing.JFrame {
         
         String filepath = "D:\\OODJ_ASSIGNMENT\\Zebrax\\src\\main\\java\\admin_database\\Z_hosts.txt";
         File file = new File(filepath);
-        try {
+        
+        if ((!hostFirstName.equals(" ") && (hostFirstName.equals("[a-zA-Z]+")) || (!hostLastName.equals(" ")) && (hostFirstName.equals("[a-zA-Z]+")) || (!hostIdentity.equals(" ")) && (hostIdentity.equals("[0-9]+")) || (date1 != null) || (date2 != null) || (!btnGroupZshield.equals(" "))) || !btnGroupZtrack.equals(" "))
+        {
+            try {
             FileWriter fw = new FileWriter(file,true);
             BufferedWriter bw = new BufferedWriter(fw);
             
@@ -456,6 +460,14 @@ public class Admin_Host extends javax.swing.JFrame {
         hostId = uid++;
         String hostIDInString = "H" +Integer.toString(hostId);
         lbl_hIDno.setText(hostIDInString);
+        }
+        
+        else
+        {
+            JOptionPane.showMessageDialog(this, "Please make sure all fields are not empty and entered correctly.");
+        }
+    
+        
         
     }//GEN-LAST:event_saveHostBtnActionPerformed
 
