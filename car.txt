@@ -1,5 +1,5 @@
-Nissa,Almera,Yew Jian Pang,RM100
-Nissan,GTR,Yew Jian Pang,RM1000
-Honda,City,Yew Jian Pang,RM100
-Honda,Civic,Yew Jian Pang,RM200
-Mercedes,CLA45,Yew Jian Pang,RM1000
+H1001,Nissan,Almera,2014,AJF 7651,5,RON 95,Automatic,Sedan,100,Shah Alam
+H1002,Nissan,GTR,2008,JUG 71,4,RON 97,Automatic,Sport,1000,Shah Alam
+H1003,Honda,City,2016,BME 878,5,RON 95,Automatic,Sedan,100,Shah Alam
+H1004,Honda,Civic,2016,MCA 999,5,RON 95,Automatic,Sedan,200,Shah Alam
+H1005,Mercedes,CLA45,2014,AMG 455,5,RON 97,Manual,Hatchback,1000,Shah Alam

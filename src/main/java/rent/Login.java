@@ -15,20 +15,6 @@ import javax.swing.JOptionPane;
  */
 public class Login extends javax.swing.JFrame {
     
-    String userName;
-    String passWord;
-    String firstName;
-    String lastName;
-    String mobileNumber;
-    
-    public void setUser(String userName, String passWord, String firstName, String lastName, String mobileNumber) {
-        this.userName=userName;
-        this.passWord=passWord;
-        this.firstName=firstName;
-        this.lastName=lastName;
-        this.mobileNumber=mobileNumber;
-    }
-    
     /** Creates new form Login */
     public Login() {
         initComponents();
@@ -136,48 +122,28 @@ public class Login extends javax.swing.JFrame {
         // TODO add your handling code here:
         this.setVisible(false);
     }//GEN-LAST:event_btncancelActionPerformed
-
-    private void VerifyLogin(String email, String password) {
-        boolean found = false;
-        
-        try {
-            BufferedReader br = new BufferedReader(new FileReader("user.txt"));
-            String s="";
-            while ((s=br.readLine()) != null && !found) {
-                String data[] = new String[5];
-                data = s.split(",");
-                
-                if (data[0].trim().equals(email.trim()) && data[1].trim().equals(password.trim())) {
-                    found = true;
-                    this.setUser(data[0], data[1], data[2], data[3], data[4]);
-                }
-            }
-            if (found == true) {
-                Main main = new Main(this.userName);
-                this.hide();
-                main.setVisible(true);
-            } else {
-                JOptionPane.showMessageDialog(this, "Login Failed. Email or Password incorrect.");
-            }
-        } catch (Exception e) {
-            System.out.println("Error");
-        }
-    }
    
     private void btnloginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnloginActionPerformed
         // TODO add your handling code here:
-        String email = txtemail.getText();
-        String password = txtpassword.getText();
+        String emailtxt = txtemail.getText();
+        String passwordtxt = txtpassword.getText();
        
         String errormsg = "";
-        if (email.length()==0 || password.length()==0) {
+        if (emailtxt.length()==0 || passwordtxt.length()==0) {
             errormsg += "Email or Password cannot be empty.";
         }
         
         if (errormsg.length()>0) {
             JOptionPane.showMessageDialog(this, errormsg);
         } else {
-             VerifyLogin(email, password);
+            User user = new User();
+            if (user.VerifyLogin(emailtxt, passwordtxt)==true) {
+                Main main = new Main();
+                this.hide();
+                main.setVisible(true);  
+            } else {
+                JOptionPane.showMessageDialog(this, "Login Failed. Email or Password incorrect.");
+            }
         }
     }//GEN-LAST:event_btnloginActionPerformed
 
