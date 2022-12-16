@@ -5,11 +5,24 @@
     <artifactId>Zebrax</artifactId>
     <version>1.0-SNAPSHOT</version>
     <packaging>jar</packaging>
+    <dependencies>
+        <dependency>
+            <groupId>org.netbeans.external</groupId>
+            <artifactId>AbsoluteLayout</artifactId>
+            <version>RELEASE150</version>
+        </dependency>
+        <dependency>
+            <groupId>com.toedter</groupId>
+            <artifactId>jcalendar</artifactId>
+            <version>1.4</version>
+        </dependency>
+    </dependencies>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.source>18</maven.compiler.source>
         <maven.compiler.target>18</maven.compiler.target>
     </properties>
+<<<<<<< HEAD
     <name>Zebrax</name>
     <dependencies>
         <dependency>
@@ -18,4 +31,7 @@
             <version>1.4</version>
         </dependency>
     </dependencies>
+=======
+    <name>zebrax</name>
+>>>>>>> bb06831bdac53732956807befb5b06817363d8a9
 </project>
