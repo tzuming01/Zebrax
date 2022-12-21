@@ -20,7 +20,7 @@ import java.util.regex.*;
  *
  * @author tzuming
  */
-public class User {
+public class Customer_User {
     public static String email;
     public static String password;
     public static String firstname;
@@ -28,7 +28,7 @@ public class User {
     public static String mobilenumber;
     public static String icnumber;
     
-    public User getUser() {
+    public Customer_User getUser() {
         return this;
     }
 
@@ -65,8 +65,24 @@ public class User {
             errormsg += (!errormsg.isEmpty())? "\n" :"" + "Invalid email format.";
         }
         
+        if (email.indexOf(",")!=-1) {
+            errormsg += (!errormsg.isEmpty())? "\n" :"" + "Comma sign is not allow for email.";
+        }
+        
+        if (firstname.indexOf(",")!=-1) {
+            errormsg += (!errormsg.isEmpty())? "\n" :"" + "Comma sign is not allow for first name.";
+        }
+        
+        if (lastname.indexOf(",")!=-1) {
+            errormsg += (!errormsg.isEmpty())? "\n" :"" + "Comma sign is not allow for last name.";
+        }
+        
         if (password.length()<8) {
             errormsg += (!errormsg.isEmpty())? "\n" :"" + "Password must be at least 8 characters.";
+        }
+        
+        if (password.indexOf(",")!=-1) {
+            errormsg += (!errormsg.isEmpty())? "\n" :"" + "Comma sign is not allow for password.";
         }
         
         if (!isNumeric(mobilenumber)) {
@@ -113,7 +129,7 @@ public class User {
         boolean found = false;
   
         try {
-            BufferedReader br = new BufferedReader(new FileReader("user.txt"));
+            BufferedReader br = new BufferedReader(new FileReader("src/main/java/database/user.txt"));
             String s="";
             while ((s=br.readLine()) != null && !found) {
                 String data[] = new String[7];
@@ -134,7 +150,7 @@ public class User {
         Scanner sc = new Scanner(System.in);
         try
         {
-            File f =new File("user.txt");
+            File f =new File("src/main/java/database/user.txt");
             PrintWriter pw=new PrintWriter(new FileOutputStream(f,true));
             pw.append(email+","+password+","+firstname+","+lastname+","+mobilenumber+","+icnumber+"\n");
             pw.close();
@@ -148,8 +164,8 @@ public class User {
         boolean successful = false;
         try
         {
-            File inputFile = new File("user.txt");
-            File tempFile = new File("tempuser.txt");
+            File inputFile = new File("src/main/java/database/user.txt");
+            File tempFile = new File("src/main/java/database/tempuser.txt");
 
             BufferedReader reader = new BufferedReader(new FileReader(inputFile));
             BufferedWriter writer = new BufferedWriter(new FileWriter(tempFile));
@@ -208,7 +224,7 @@ public class User {
         boolean found = false;
         
         try {
-            BufferedReader br = new BufferedReader(new FileReader("user.txt"));
+            BufferedReader br = new BufferedReader(new FileReader("src/main/java/database/user.txt"));
             String s="";
             while ((s=br.readLine()) != null && !found) {
                 String data[] = new String[7];

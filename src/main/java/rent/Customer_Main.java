@@ -10,12 +10,12 @@ import javax.swing.JOptionPane;
  *
  * @author tzuming
  */
-public class Main extends javax.swing.JFrame {
+public class Customer_Main extends javax.swing.JFrame {
 
     /**
      * Creates new form Main
      */
-    public Main () {
+    public Customer_Main () {
         initComponents();
     }
 
@@ -95,27 +95,27 @@ public class Main extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {                                         
         // TODO add your handling code here:
-        Booking booking = new Booking();
+        Customer_Booking booking = new Customer_Booking();
         booking.setVisible(true);
         //JOptionPane.showMessageDialog(this, this.userName);
     }                                        
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {                                         
         // TODO add your handling code here:
-        Login login = new Login();
+        Customer_Login login = new Customer_Login();
         this.hide();
         login.setVisible(true);
     }                                        
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {                                         
         // TODO add your handling code here:
-        Booking_History booking_history = new Booking_History();
+        Customer_Booking_History booking_history = new Customer_Booking_History();
         booking_history.setVisible(true);
     }  
     
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         // TODO add your handling code here:
-        Profile profile = new Profile();
+        Customer_Profile profile = new Customer_Profile();
         this.hide();
         profile.setVisible(true);
     }//GEN-LAST:event_jButton4ActionPerformed
@@ -137,20 +137,21 @@ public class Main extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Main.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Customer_Main.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Main.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Customer_Main.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Main.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Customer_Main.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Main.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Customer_Main.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Main().setVisible(true);
+                new Customer_Main().setVisible(true);
             }
         });
     }

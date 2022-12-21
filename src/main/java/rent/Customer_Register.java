@@ -10,12 +10,12 @@ import javax.swing.JOptionPane;
  *
  * @author tzuming
  */
-public class Register extends javax.swing.JFrame {
+public class Customer_Register extends javax.swing.JFrame {
    
     /**
      * Creates new form Register
      */
-    public Register() {
+    public Customer_Register() {
         initComponents();
     }
 
@@ -241,14 +241,14 @@ public class Register extends javax.swing.JFrame {
         if (email.length()==0 || password.length()==0 || firstname.length()==0 || lastname.length()==0 || mobilenumber.length()==0 || icnumber.length()==0) {
             JOptionPane.showMessageDialog(this, "All are mandatory field, cannot be empty"); 
         } else {
-            User user = new User();
+            Customer_User user = new Customer_User();
             user.setUser(email, password, firstname, lastname, mobilenumber, icnumber);
             errormsg = user.insertUser();
             if (!errormsg.isEmpty()) {
                 JOptionPane.showMessageDialog(this, errormsg);
             } else {
                 JOptionPane.showMessageDialog(this, "Registration Successfully");
-                Login login = new Login();
+                Customer_Login login = new Customer_Login();
                 this.hide();
                 login.setVisible(true);
             }
@@ -261,7 +261,7 @@ public class Register extends javax.swing.JFrame {
 
     private void btnloginActionPerformed(java.awt.event.ActionEvent evt) {                                         
         // TODO add your handling code here:
-        Login login = new Login();
+        Customer_Login login = new Customer_Login();
         this.hide();
         login.setVisible(true);
     }                                        
@@ -272,7 +272,9 @@ public class Register extends javax.swing.JFrame {
 
     private void btncancelActionPerformed(java.awt.event.ActionEvent evt) {                                          
         // TODO add your handling code here:
-        this.setVisible(false);
+        Dashboard dashboard = new Dashboard();
+        this.hide();
+        dashboard.setVisible(true);
     }                                         
 
     /**
@@ -292,14 +294,18 @@ public class Register extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Register.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Customer_Register.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Register.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Customer_Register.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Register.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Customer_Register.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Register.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Customer_Register.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
@@ -308,7 +314,7 @@ public class Register extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Register().setVisible(true);
+                new Customer_Register().setVisible(true);
             }
         });
     }

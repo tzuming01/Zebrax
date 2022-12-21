@@ -10,29 +10,29 @@ import java.text.SimpleDateFormat;
 import java.util.Vector;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
-import static rent.Booking.enddate;
-import static rent.Booking.lastid;
-import static rent.Booking.startdate;
+import static rent.Customer_Booking.enddate;
+import static rent.Customer_Booking.lastid;
+import static rent.Customer_Booking.startdate;
 
 /**
  *
  * @author tzuming
  */
-public class Booking_History extends javax.swing.JFrame {
-    User user = new User();
-    User user_info = user.getUser();
+public class Customer_Booking_History extends javax.swing.JFrame {
+    Customer_User user = new Customer_User();
+    Customer_User user_info = user.getUser();
 
     /**
      * Creates new form Booking_History
      */
-    public Booking_History() {
+    public Customer_Booking_History() {
         initComponents();
         
         DefaultTableModel df = (DefaultTableModel)jTable1.getModel();
         df.setRowCount(0);
 
         try {
-            BufferedReader br = new BufferedReader(new FileReader("rental_history.txt"));
+            BufferedReader br = new BufferedReader(new FileReader("src/main/java/database/rental_history.txt"));
             String s="";
             while ((s=br.readLine()) != null) {
                 String data[] = new String[12];
@@ -42,7 +42,7 @@ public class Booking_History extends javax.swing.JFrame {
                     continue;
                 }
 
-                BufferedReader br_car = new BufferedReader(new FileReader("car.txt"));
+                BufferedReader br_car = new BufferedReader(new FileReader("src/main/java/database/car.txt"));
                 String s2="";
                 String car[] = new String[8];
                 while ((s2=br_car.readLine()) != null) {
@@ -96,7 +96,8 @@ public class Booking_History extends javax.swing.JFrame {
                 "ID", "Created Date", "Start Date", "End Date", "Car Brand", "Car Model", "Car Plate", "Total Rental", "Status"
             }
         ));
-        jTable1.setSize(new java.awt.Dimension(700, 64));
+        jTable1.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_ALL_COLUMNS);
+        jTable1.setSize(new java.awt.Dimension(900, 64));
         jTable1.getTableHeader().setReorderingAllowed(false);
         jScrollPane1.setViewportView(jTable1);
 
@@ -112,10 +113,10 @@ public class Booking_History extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(21, Short.MAX_VALUE)
+                .addGap(21, 21, 21)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 972, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 972, Short.MAX_VALUE)
                         .addGap(29, 29, 29))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(btnback, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -132,11 +133,12 @@ public class Booking_History extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnbackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnbackActionPerformed
         // TODO add your handling code here:
-        Main main = new Main();
+        Customer_Main main = new Customer_Main();
         this.hide();
         main.setVisible(true);
     }//GEN-LAST:event_btnbackActionPerformed
@@ -158,20 +160,21 @@ public class Booking_History extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Booking_History.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Customer_Booking_History.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Booking_History.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Customer_Booking_History.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Booking_History.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Customer_Booking_History.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Booking_History.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Customer_Booking_History.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Booking_History().setVisible(true);
+                new Customer_Booking_History().setVisible(true);
             }
         });
     }

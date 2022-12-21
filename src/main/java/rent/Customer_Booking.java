@@ -13,7 +13,7 @@ import java.text.SimpleDateFormat;
  *
  * @author tzuming
  */
-public class Booking extends javax.swing.JFrame {
+public class Customer_Booking extends javax.swing.JFrame {
 
     public static int lastid;
     public static String carbrand;
@@ -24,13 +24,13 @@ public class Booking extends javax.swing.JFrame {
     public static long diffdate;
     public static String rental;
     
-    User user = new User();
-    User user_info = user.getUser();
+    Customer_User user = new Customer_User();
+    Customer_User user_info = user.getUser();
         
     /**
      * Creates new form Rental
      */
-    public Booking() {           
+    public Customer_Booking() {           
         initComponents();
         
         LoadCarBrand();
@@ -38,7 +38,7 @@ public class Booking extends javax.swing.JFrame {
         txtenddate.setDateFormatString("yyyy/MM/dd");
     }
     
-    public Booking getBooking() {
+    public Customer_Booking getBooking() {
         return this;
     }
     
@@ -55,7 +55,7 @@ public class Booking extends javax.swing.JFrame {
     
     public void LoadCarBrand() {
         try {
-            BufferedReader br = new BufferedReader(new FileReader("car.txt"));
+            BufferedReader br = new BufferedReader(new FileReader("src/main/java/database/car.txt"));
             String s="";
             txtcarbrand.removeAllItems();
             txtcarbrand.addItem("Please Select");
@@ -82,7 +82,7 @@ public class Booking extends javax.swing.JFrame {
     public void LoadCarModel(String carbrand) {
         try {
           
-            BufferedReader br = new BufferedReader(new FileReader("car.txt"));
+            BufferedReader br = new BufferedReader(new FileReader("src/main/java/database/car.txt"));
             String s="";
             txtcarmodel.removeAllItems();
             txtcarmodel.addItem("Please Select");
@@ -123,8 +123,7 @@ public class Booking extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "Date is required.");
             return;
         }
-        String date1 = sdf.format(txtstartdate.getDate());
-        
+       
         String errormsg = "";
         
         if (!isNumeric(min_seat) || !isNumeric(max_seat)) {
@@ -172,7 +171,7 @@ public class Booking extends javax.swing.JFrame {
                 df.setRowCount(0);
 
                 try {
-                    BufferedReader br = new BufferedReader(new FileReader("car.txt"));
+                    BufferedReader br = new BufferedReader(new FileReader("src/main/java/database/car.txt"));
                     String s="";
                     while ((s=br.readLine()) != null) {
                         String data[] = new String[5];
@@ -189,7 +188,7 @@ public class Booking extends javax.swing.JFrame {
                             continue;
                         }
 
-                        BufferedReader br_rental = new BufferedReader(new FileReader("rental_history.txt"));
+                        BufferedReader br_rental = new BufferedReader(new FileReader("src/main/java/database/rental_history.txt"));
                         String s2="";
                         String available = "Yes";
                         while ((s2=br_rental.readLine()) != null) {
@@ -572,7 +571,7 @@ public class Booking extends javax.swing.JFrame {
             } else {
                 setBooking(lastid, carbrandtxt, carmodeltxt, carplatetxt, startdate, enddate, diffdate, rentaltxt);
 
-                Payment payment = new Payment();
+                Customer_Payment payment = new Customer_Payment();
                 this.hide();
                 payment.setVisible(true);
             }
@@ -602,7 +601,7 @@ public class Booking extends javax.swing.JFrame {
     public boolean makePayment() {
         try
         {
-            File f =new File("rental_history.txt");
+            File f =new File("src/main/java/database/rental_history.txt");
             PrintWriter pw=new PrintWriter(new FileOutputStream(f,true));
             SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");  
             Date date = new Date();  
@@ -633,21 +632,23 @@ public class Booking extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Booking.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Customer_Booking.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Booking.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Customer_Booking.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Booking.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Customer_Booking.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Booking.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Customer_Booking.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Booking().setVisible(true);
+                new Customer_Booking().setVisible(true);
             }
         });
     }

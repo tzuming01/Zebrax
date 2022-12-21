@@ -13,10 +13,10 @@ import javax.swing.JOptionPane;
  *
  * @author tzuming
  */
-public class Login extends javax.swing.JFrame {
+public class Customer_Login extends javax.swing.JFrame {
     
     /** Creates new form Login */
-    public Login() {
+    public Customer_Login() {
         initComponents();
     }
 
@@ -120,7 +120,9 @@ public class Login extends javax.swing.JFrame {
 
     private void btncancelActionPerformed(java.awt.event.ActionEvent evt) {                                          
         // TODO add your handling code here:
-        this.setVisible(false);
+        Dashboard dashboard = new Dashboard();
+        this.hide();
+        dashboard.setVisible(true);
     }                                         
 
     private void btnloginActionPerformed(java.awt.event.ActionEvent evt) {                                         
@@ -136,9 +138,9 @@ public class Login extends javax.swing.JFrame {
         if (errormsg.length()>0) {
             JOptionPane.showMessageDialog(this, errormsg);
         } else {
-            User user = new User();
+            Customer_User user = new Customer_User();
             if (user.VerifyLogin(emailtxt, passwordtxt)==true) {
-                Main main = new Main();
+                Customer_Main main = new Customer_Main();
                 this.hide();
                 main.setVisible(true);  
             } else {
@@ -149,7 +151,7 @@ public class Login extends javax.swing.JFrame {
 
     private void btnregisterActionPerformed(java.awt.event.ActionEvent evt) {                                            
         // TODO add your handling code here:
-        Register register = new Register();
+        Customer_Register register = new Customer_Register();
         this.hide();
         register.setVisible(true);
     }                                           
@@ -175,20 +177,51 @@ public class Login extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Customer_Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Customer_Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Customer_Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Customer_Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Login().setVisible(true);
+                new Customer_Login().setVisible(true);
             }
         });
     }
