@@ -203,7 +203,7 @@ public class Admin_Booking extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_goToHomePageActionPerformed
 
     private void btn_viewEnquiriesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_viewEnquiriesActionPerformed
-        String bookFilePath = "src/main/java/database/rental_history.txt";
+        String bookFilePath = "D:\\OODJ_ASSIGNMENT\\Zebrax\\src\\main\\java\\database\\rental_history.txt";
         File bookingFile = new File(bookFilePath);
         
         try
@@ -242,7 +242,7 @@ public class Admin_Booking extends javax.swing.JFrame {
             
         }
         
-        String bookFilePath = "src/main/java/database/rental_history.txt";
+        String bookFilePath = "D:\\OODJ_ASSIGNMENT\\Zebrax\\src\\main\\java\\database\\rental_history.txt";
         File bookFile = new File(bookFilePath);
         
         try

@@ -190,7 +190,7 @@ public class Admin_genReport extends javax.swing.JFrame {
         String salesTo = dateFormat.format(date_to.getDate());
         
         
-        String salesFP = "src/main/java/database/rental_history.txt";
+        String salesFP = "D:\\OODJ_ASSIGNMENT\\Zebrax\\src\\main\\java\\database\\rental_history.txt";
         File salesFile = new File(salesFP);
 
         DefaultTableModel salesTable = (DefaultTableModel)report_table.getModel();
@@ -216,9 +216,35 @@ public class Admin_genReport extends javax.swing.JFrame {
         } catch (Exception e) {
             System.out.println("Error");
         }
-        if (salesTable.getRowCount()<=0) {
-            JOptionPane.showMessageDialog(this, "No any booking found.");
+        int total = 0;
+        for (int row = 0; row < report_table.getRowCount(); row++) 
+        {
+            // Get the value of the cell at the column with the integers
+            Object value = report_table.getValueAt(row, 9);
+            if (value instanceof Integer) 
+            {
+                // Value is an integer, add it to the total
+                total += (Integer) value;
+            }            
+            else if (value instanceof String)
+            {
+                // Value is a string, try to parse it as an integer
+                try 
+                {
+                    total += Integer.parseInt((String) value);
+                } 
+                catch (NumberFormatException e) 
+                {
+                    // Value is not a valid integer, skip it
+                }
+            }
         }
+
+        // Set the text of the JLabel to the total
+        String sales = Integer.toString(total);
+        lbl_totalAmountSales.setText("RM " + sales);
+
+
     }//GEN-LAST:event_btn_generateActionPerformed
 
     /**

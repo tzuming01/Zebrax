@@ -363,7 +363,7 @@ public class Admin_Customer extends javax.swing.JFrame {
         customer_table.addRow(new Object[]{this.TXT_C_email.getText(),this.TXT_C_pw.getText(),this.TXT_C_fName.getText(),
         this.TXT_C_Lname.getText(),this.TXT_C_ctcNum.getText(),this.TXT_C_IC.getText()});
         
-        String custFilePath = "src/main/java/database/user.txt";
+        String custFilePath = "D:\\OODJ_ASSIGNMENT\\Zebrax\\src\\main\\java\\database\\user.txt";
         File custFile = new File(custFilePath);
         
         try
@@ -462,7 +462,7 @@ public class Admin_Customer extends javax.swing.JFrame {
 
     private void btn_C_deleteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_C_deleteMouseClicked
        // To delete row from the table
-        String custFilePath = "src/main/java/database/user.txt";
+        String custFilePath = "D:\\OODJ_ASSIGNMENT\\Zebrax\\src\\main\\java\\database\\user.txt";
         File custFile = new File (custFilePath);
         DefaultTableModel customer_table = (DefaultTableModel)this.Customer_data.getModel();
         
@@ -499,7 +499,7 @@ public class Admin_Customer extends javax.swing.JFrame {
     }//GEN-LAST:event_Btn_C_resetActionPerformed
 
     private void lbl_viewCustMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbl_viewCustMouseClicked
-        String custFilePath = "src/main/java/database/user.txt";
+        String custFilePath = "D:\\OODJ_ASSIGNMENT\\Zebrax\\src\\main\\java\\database\\user.txt";
         File custFile = new File (custFilePath);
         
          try 

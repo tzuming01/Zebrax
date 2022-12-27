@@ -543,7 +543,7 @@ public class Admin_Cars extends javax.swing.JFrame {
             this.TXT_rentPerDay.getText(),this.TXT_pickDropCar.getText()});
         
         
-            String admin_carFile = "src/main/java/database/car.txt";
+            String admin_carFile = "D:\\OODJ_ASSIGNMENT\\Zebrax\\src\\main\\java\\database\\car.txt";
             File car_file = new File(admin_carFile);
         
         //if(!TXT_carOwnerID.equals(" ") || )
@@ -729,7 +729,7 @@ public class Admin_Cars extends javax.swing.JFrame {
 
     private void Btn_deleteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Btn_deleteMouseClicked
        // to delete row from the table and in txt file
-       String admin_carFile = "src/main/java/database/car.txt";
+       String admin_carFile = "D:\\OODJ_ASSIGNMENT\\Zebrax\\src\\main\\java\\database\\car.txt";
        File car_file = new File(admin_carFile);
        DefaultTableModel car_table = (DefaultTableModel)this.car_data.getModel();
        
@@ -776,7 +776,7 @@ public class Admin_Cars extends javax.swing.JFrame {
     }//GEN-LAST:event_Btn_resetActionPerformed
 
     private void lbl_refreshCarTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbl_refreshCarTableMouseClicked
-       String admin_carFile = "src/main/java/database/car.txt";
+       String admin_carFile = "D:\\OODJ_ASSIGNMENT\\Zebrax\\src\\main\\java\\database\\car.txt";
        File car_file = new File(admin_carFile);
        
          try {
